@@ -12,6 +12,8 @@ using GMap.NET;
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
 
+
+//dzialajaca mapa v1.0
 namespace CanSatGUI
 {
     public partial class Form1 : Form
