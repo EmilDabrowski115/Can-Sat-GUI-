@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using GMap.NET; 
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
-//paluszkiewicz 
+//pianino
 
 //dzialajaca mapa v1.0
 namespace CanSatGUI
