@@ -61,6 +61,14 @@ namespace CanSatGUI
             chart1.Series[0].Points.AddXY(secondsElapsed, temperature);
             chart1.Update();
         }
+        private void UpdatePressureChart()
+        {
+            TimeSpan elapsed = timer.Elapsed;
+            double secondsElapsed = elapsed.TotalSeconds;
+            double Pressure = Convert.ToDouble(psrtxt.Text);
+            chart2.Series[0].Points.AddXY(secondsElapsed, Pressure);
+            chart2.Update();
+        }
 
         //dzialajaca mapa v1.0
         private void MapSearch_Click(object sender, EventArgs e)
@@ -127,6 +135,7 @@ namespace CanSatGUI
             DataStream.AppendText(rxString);
             UpdateTextboxes(rxString);
             UpdateTemperatureChart();
+            UpdatePressureChart();
         }
 
         //koniec czesci wyckonawczej serial port 
@@ -150,21 +159,9 @@ namespace CanSatGUI
         {
 
         }
-        private void UpdatePressureChart()
-        {
-            TimeSpan elapsed = timer.Elapsed;
-            double secondsElapsed = elapsed.TotalSeconds;
-            double temperature = Convert.ToDouble(tmptxt.Text);
-            chart2.Series[0].Points.AddXY(secondsElapsed, temperature);
-            chart1.Update();
-        }
-
-
-
+       
     }
 
-
-    ////
 
     class Utils
     {
