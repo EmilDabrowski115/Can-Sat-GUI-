@@ -158,7 +158,7 @@ namespace CanSatGUI
             chart2.Series[0].Points.AddXY(secondsElapsed, temperature);
             chart1.Update();
         }
-
+       
 
 
     }

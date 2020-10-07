@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
@@ -103,14 +104,17 @@
             // 
             // map
             // 
+            this.map.BackColor = System.Drawing.SystemColors.Control;
+            this.map.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("map.BackgroundImage")));
             this.map.Bearing = 0F;
             this.map.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.map.CanDragMap = true;
             this.map.EmptyTileColor = System.Drawing.Color.Navy;
+            this.map.ForeColor = System.Drawing.SystemColors.Control;
             this.map.GrayScaleMode = false;
             this.map.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.map.LevelsKeepInMemmory = 5;
-            this.map.Location = new System.Drawing.Point(0, 0);
+            this.map.Location = new System.Drawing.Point(-3, 8);
             this.map.MarkersEnabled = true;
             this.map.MaxZoom = 2;
             this.map.MinZoom = 2;
@@ -245,7 +249,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1107, 559);
+            this.Controls.Add(this.map);
             this.Controls.Add(this.chart2);
             this.Controls.Add(this.chart1);
             this.Controls.Add(this.label6);
@@ -256,7 +262,6 @@
             this.Controls.Add(this.tmptxt);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.DataStream);
-            this.Controls.Add(this.map);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.MapSearch);
             this.Controls.Add(this.label2);
