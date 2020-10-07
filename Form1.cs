@@ -25,8 +25,10 @@ namespace CanSatGUI
 
         public Form1()  //definiowanie ustawienia oraz port szeregowy
         {
-            // init serial port
+            // init window
             InitializeComponent();
+
+            // init serial port
             SerialPort1 = new SerialPort();
             SerialPort1.PortName = "COM3";
             SerialPort1.BaudRate = 9600;
@@ -55,10 +57,24 @@ namespace CanSatGUI
 
         private void UpdateTemperatureChart()
         {
+            int MaxChartWidth = 5;
             TimeSpan elapsed = timer.Elapsed;
-            double secondsElapsed = elapsed.TotalSeconds;
+            double secondsElapsed = Convert.ToInt32(elapsed.TotalSeconds);
             double temperature = Convert.ToDouble(tmptxt.Text);
+           
+
+            int pointsCount = chart1.Series[0].Points.Count;
+            Console.WriteLine(pointsCount);
+            if(pointsCount >= MaxChartWidth)
+            {
+                //chart1.ChartAreas[0].AxisX.Interval = 1;
+                //chart1.ChartAreas[0].AxisX.MajorGrid.IntervalOffset += 1;
+                chart1.Series[0].Points.Clear();
+                //chart1.Series[0].Points.RemoveAt(0);
+            }
+
             chart1.Series[0].Points.AddXY(secondsElapsed, temperature);
+
             chart1.Update();
         }
 
@@ -150,21 +166,20 @@ namespace CanSatGUI
         {
 
         }
+
+        /*
         private void UpdatePressureChart()
         {
             TimeSpan elapsed = timer.Elapsed;
             double secondsElapsed = elapsed.TotalSeconds;
-            double temperature = Convert.ToDouble(tmptxt.Text);
-            chart2.Series[0].Points.AddXY(secondsElapsed, temperature);
-            chart1.Update();
+            double pressure = Convert.ToDouble(psrtxt.Text);
+            chart2.Series[0].Points.AddXY(secondsElapsed, pressure);
+            chart2.Update();
         }
-       
-
+        */
 
     }
 
-
-    ////
 
     class Utils
     {
@@ -175,9 +190,6 @@ namespace CanSatGUI
             return list;
         }
     }
-
-
 }
-
 
 
