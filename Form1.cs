@@ -12,6 +12,7 @@ using GMap.NET;
 using GMap.NET.MapProviders;
 using GMap.NET.WindowsForms;
 using System.Threading;
+using System.Diagnostics;
 
 
 
@@ -20,9 +21,14 @@ namespace CanSatGUI
     public partial class Form1 : Form
     {
         string rxString;
-        public Form1()
+        Stopwatch timer = new Stopwatch();
+
+        public Form1()  //definiowanie ustawienia oraz port szeregowy
         {
+            // init window
             InitializeComponent();
+
+            // init serial port
             SerialPort1 = new SerialPort();
             SerialPort1.PortName = "COM3";
             SerialPort1.BaudRate = 9600;
@@ -31,19 +37,45 @@ namespace CanSatGUI
             SerialPort1.StopBits = StopBits.One;
             SerialPort1.Open();
             SerialPort1.DataReceived += myPort_DataReceived;
-        }
-                    
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
+
+            // init timer
+            timer.Start();
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        //parsowanie dane od arduino
         public void UpdateTextboxes(string packet)
         {
-            string[] packetElems = Utils.ParsePacket(packet); // możesz odp
-            
+            string[] packetElems = Utils.ParsePacket(packet);
             psrtxt.Text = packetElems[1];
             tmptxt.Text = packetElems[2];
+        }
+
+        private void UpdateTemperatureChart()
+        {
+            int MaxChartWidth = 5;
+            TimeSpan elapsed = timer.Elapsed;
+            double secondsElapsed = Convert.ToInt32(elapsed.TotalSeconds);
+            double temperature = Convert.ToDouble(tmptxt.Text);
+           
+
+            int pointsCount = chart1.Series[0].Points.Count;
+            Console.WriteLine(pointsCount);
+            if(pointsCount >= MaxChartWidth)
+            {
+                //chart1.ChartAreas[0].AxisX.Interval = 1;
+                //chart1.ChartAreas[0].AxisX.MajorGrid.IntervalOffset += 1;
+                chart1.Series[0].Points.Clear();
+                //chart1.Series[0].Points.RemoveAt(0);
+            }
+
+            chart1.Series[0].Points.AddXY(secondsElapsed, temperature);
+
+            chart1.Update();
         }
 
         //dzialajaca mapa v1.0
@@ -97,25 +129,57 @@ namespace CanSatGUI
 
         private void DataStream_TextChanged(object sender, EventArgs e)
         {
-            
-        } // poczatek czesci wykonawczej serial port txt box v1.0
+
+        }
+        // poczatek czesci wykonawczej serial port txt box v1.0
         private void myPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             rxString = SerialPort1.ReadExisting();
-            this.Invoke(new EventHandler(DisplayText));
+            this.Invoke(new EventHandler(UpdateWidgets));
         }
 
-        private void DisplayText(object sender, EventArgs e)
+        private void UpdateWidgets(object sender, EventArgs e)
         {
             DataStream.AppendText(rxString);
             UpdateTextboxes(rxString);
+            UpdateTemperatureChart();
         }
+
         //koniec czesci wyckonawczej serial port 
         private void label3_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tmptxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void chart2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        /*
+        private void UpdatePressureChart()
+        {
+            TimeSpan elapsed = timer.Elapsed;
+            double secondsElapsed = elapsed.TotalSeconds;
+            double pressure = Convert.ToDouble(psrtxt.Text);
+            chart2.Series[0].Points.AddXY(secondsElapsed, pressure);
+            chart2.Update();
+        }
+        */
+
     }
+
 
     class Utils
     {
@@ -127,7 +191,5 @@ namespace CanSatGUI
         }
     }
 }
-
-
 
 
