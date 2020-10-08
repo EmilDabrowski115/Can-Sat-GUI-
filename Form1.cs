@@ -16,6 +16,27 @@ using System.Diagnostics;
 
 
 
+/*possible missions
+ * magnetosphere reading
+wind patterns
+atmospheric data
+soil ph level
+soil composition
+any signs of life
+size/mass of the planet
+microscopic data
+if theirs water in the area
+if the planet is habitable
+weatherman data type shit
+
+*/
+
+
+
+
+
+
+
 namespace CanSatGUI
 {
     public partial class Form1 : Form
@@ -36,10 +57,10 @@ namespace CanSatGUI
             SerialPort1.DataBits = 8;
             SerialPort1.StopBits = StopBits.One;
             SerialPort1.Open();
-            SerialPort1.DataReceived += myPort_DataReceived;
+            SerialPort1.DataReceived += myPort_DataReceived; 
 
-            // init timer
-            timer.Start();
+// init timer
+timer.Start();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -47,12 +68,30 @@ namespace CanSatGUI
 
         }
 
+        private void mapupdate()
+        {
+            GMapProviders.GoogleMap.ApiKey = @"AIzaSyAZouhXULQgPGPckADOmiHqfCc_YvD5QzQ";
+            map.DragButton = MouseButtons.Left;
+            map.MapProvider = GMapProviders.GoogleMap;
+            double lat = Convert.ToDouble(txtLat.Text);
+            double longt = Convert.ToDouble(txtLong.Text);
+            map.Position = new PointLatLng(lat, longt);
+            map.MinZoom = 0;
+            map.MaxZoom = 25;
+            map.Zoom = 10;
+        }
+
+
+
         //parsowanie dane od arduino
         public void UpdateTextboxes(string packet)
         {
             string[] packetElems = Utils.ParsePacket(packet);
-            psrtxt.Text = packetElems[1];
-            tmptxt.Text = packetElems[2];
+            psrtxt.Text = packetElems[3];
+            tmptxt.Text = packetElems[4];
+            txtLat.Text = packetElems[6];
+            txtLong.Text = packetElems[7];
+            hghttxt.Text = packetElems[8];
         }
 
         private void UpdateTemperatureChart()
@@ -78,18 +117,33 @@ namespace CanSatGUI
             chart1.Update();
         }
 
+        private void UpdatPressureChart()
+        {
+            int MaxChartWidth = 5;
+            TimeSpan elapsed = timer.Elapsed;
+            double secondsElapsed = Convert.ToInt32(elapsed.TotalSeconds);
+            double pressure = Convert.ToDouble(psrtxt.Text);
+
+
+            int pointsCount = chart2.Series[0].Points.Count;
+            Console.WriteLine(pointsCount);
+            if (pointsCount >= MaxChartWidth)
+            {
+                //chart1.ChartAreas[0].AxisX.Interval = 1;
+                //chart1.ChartAreas[0].AxisX.MajorGrid.IntervalOffset += 1;
+                chart2.Series[0].Points.Clear();
+                //chart1.Series[0].Points.RemoveAt(0);
+            }
+
+            chart2.Series[0].Points.AddXY(secondsElapsed, pressure);
+
+            chart2.Update();
+        }
+
         //dzialajaca mapa v1.0
         private void MapSearch_Click(object sender, EventArgs e)
         {
-            GMapProviders.GoogleMap.ApiKey = @"AIzaSyAZouhXULQgPGPckADOmiHqfCc_YvD5QzQ";
-            map.DragButton = MouseButtons.Left;
-            map.MapProvider = GMapProviders.GoogleMap;
-            double lat = Convert.ToDouble(txtLat.Text);
-            double longt = Convert.ToDouble(txtLong.Text);
-            map.Position = new PointLatLng(lat, longt);
-            map.MinZoom = 0;
-            map.MaxZoom = 25;
-            map.Zoom = 10;
+            
         }
 
         private void txtLat_TextChanged(object sender, EventArgs e)
@@ -143,6 +197,7 @@ namespace CanSatGUI
             DataStream.AppendText(rxString);
             UpdateTextboxes(rxString);
             UpdateTemperatureChart();
+            mapupdate();
         }
 
         //koniec czesci wyckonawczej serial port 
@@ -186,7 +241,7 @@ namespace CanSatGUI
         public static string[] ParsePacket(string packet)
         {
             // "$$ZSM-Sat,997.27,1018,END$$$"
-            string[] list = packet.Split(',');
+            string[] list = packet.Split(';');
             return list;
         }
     }
