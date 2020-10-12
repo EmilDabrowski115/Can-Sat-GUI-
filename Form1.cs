@@ -51,7 +51,7 @@ namespace CanSatGUI
 
             // init serial port
             SerialPort1 = new SerialPort();
-            SerialPort1.PortName = "COM3";
+            SerialPort1.PortName = "COM4";
             SerialPort1.BaudRate = 9600;
             SerialPort1.Parity = Parity.None;
             SerialPort1.DataBits = 8;
@@ -59,8 +59,8 @@ namespace CanSatGUI
             SerialPort1.Open();
             SerialPort1.DataReceived += myPort_DataReceived; 
 
-// init timer
-timer.Start();
+            // init timer
+            timer.Start();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -82,16 +82,23 @@ timer.Start();
         }
 
 
-
-        //parsowanie dane od arduino
+        //parsowanie dane od arduino    //$$ZSM-Sat;24;980;25;74;50.71;14.01;2057;END$$
         public void UpdateTextboxes(string packet)
         {
+            Console.WriteLine(packet);
+            
             string[] packetElems = Utils.ParsePacket(packet);
-            psrtxt.Text = packetElems[3];
-            tmptxt.Text = packetElems[4];
-            txtLat.Text = packetElems[6];
-            txtLong.Text = packetElems[7];
-            hghttxt.Text = packetElems[8];
+            
+            /*
+            psrtxt.Text = packetElems[0];
+            tmptxt.Text = packetElems[1];
+            // humtxt.Text = packetElems[2]; 
+            txtLat.Text = packetElems[3];
+            txtLong.Text = packetElems[4];
+            hghttxt.Text = packetElems[5];
+            */
+            
+            
         }
 
         private void UpdateTemperatureChart()
@@ -117,7 +124,7 @@ timer.Start();
             chart1.Update();
         }
 
-        private void UpdatPressureChart()
+        private void UpdatePressureChart()
         {
             int MaxChartWidth = 5;
             TimeSpan elapsed = timer.Elapsed;
@@ -141,86 +148,28 @@ timer.Start();
         }
 
         //dzialajaca mapa v1.0
-        private void MapSearch_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtLat_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtLong_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void map_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cboxserial_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DataStream_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        
         // poczatek czesci wykonawczej serial port txt box v1.0
         private void myPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             rxString = SerialPort1.ReadExisting();
+            Console.WriteLine(rxString);
             this.Invoke(new EventHandler(UpdateWidgets));
         }
 
         private void UpdateWidgets(object sender, EventArgs e)
         {
             DataStream.AppendText(rxString);
+            /*
             UpdateTextboxes(rxString);
             UpdateTemperatureChart();
             mapupdate();
+            */
         }
 
         //koniec czesci wyckonawczej serial port 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void chart1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tmptxt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void chart2_Click(object sender, EventArgs e)
-        {
-
-        }
+       
+       
 
         /*
         private void UpdatePressureChart()

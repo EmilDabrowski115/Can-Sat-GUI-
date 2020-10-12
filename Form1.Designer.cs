@@ -39,7 +39,6 @@
             this.txtLat = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtLong = new System.Windows.Forms.TextBox();
-            this.MapSearch = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.map = new GMap.NET.WindowsForms.GMapControl();
             this.SerialPort1 = new System.IO.Ports.SerialPort(this.components);
@@ -63,7 +62,7 @@
             this.txtLat.Name = "txtLat";
             this.txtLat.Size = new System.Drawing.Size(100, 20);
             this.txtLat.TabIndex = 1;
-            this.txtLat.TextChanged += new System.EventHandler(this.txtLat_TextChanged);
+           
             // 
             // label2
             // 
@@ -80,17 +79,7 @@
             this.txtLong.Name = "txtLong";
             this.txtLong.Size = new System.Drawing.Size(100, 20);
             this.txtLong.TabIndex = 3;
-            this.txtLong.TextChanged += new System.EventHandler(this.txtLong_TextChanged);
-            // 
-            // MapSearch
-            // 
-            this.MapSearch.Location = new System.Drawing.Point(247, 119);
-            this.MapSearch.Name = "MapSearch";
-            this.MapSearch.Size = new System.Drawing.Size(75, 23);
-            this.MapSearch.TabIndex = 5;
-            this.MapSearch.Text = "Find Me";
-            this.MapSearch.UseVisualStyleBackColor = true;
-            this.MapSearch.Click += new System.EventHandler(this.MapSearch_Click);
+            
             // 
             // label1
             // 
@@ -100,7 +89,7 @@
             this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "Latitude";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+           
             // 
             // map
             // 
@@ -131,7 +120,7 @@
             this.map.Size = new System.Drawing.Size(227, 236);
             this.map.TabIndex = 7;
             this.map.Zoom = 0D;
-            this.map.Load += new System.EventHandler(this.map_Load);
+            
             // 
             // SerialPort1
             // 
@@ -144,7 +133,7 @@
             this.DataStream.Size = new System.Drawing.Size(291, 68);
             this.DataStream.TabIndex = 8;
             this.DataStream.Text = "";
-            this.DataStream.TextChanged += new System.EventHandler(this.DataStream_TextChanged);
+            
             // 
             // label3
             // 
@@ -154,7 +143,6 @@
             this.label3.Size = new System.Drawing.Size(66, 13);
             this.label3.TabIndex = 9;
             this.label3.Text = "Data Stream";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // tmptxt
             // 
@@ -162,7 +150,7 @@
             this.tmptxt.Name = "tmptxt";
             this.tmptxt.Size = new System.Drawing.Size(100, 20);
             this.tmptxt.TabIndex = 10;
-            this.tmptxt.TextChanged += new System.EventHandler(this.tmptxt_TextChanged);
+            
             // 
             // psrtxt
             // 
@@ -223,7 +211,7 @@
             this.chart1.Size = new System.Drawing.Size(363, 273);
             this.chart1.TabIndex = 16;
             this.chart1.Text = "chart1";
-            this.chart1.Click += new System.EventHandler(this.chart1_Click);
+            
             // 
             // chart2
             // 
@@ -243,7 +231,7 @@
             this.chart2.Size = new System.Drawing.Size(379, 273);
             this.chart2.TabIndex = 17;
             this.chart2.Text = "chart2";
-            this.chart2.Click += new System.EventHandler(this.chart2_Click);
+            
             // 
             // Form1
             // 
@@ -263,7 +251,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.DataStream);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.MapSearch);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtLong);
             this.Controls.Add(this.txtLat);
@@ -281,7 +268,6 @@
         private System.Windows.Forms.TextBox txtLat;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtLong;
-        private System.Windows.Forms.Button MapSearch;
         private System.Windows.Forms.Label label1;
         private GMap.NET.WindowsForms.GMapControl map;
         private System.IO.Ports.SerialPort SerialPort1;
