@@ -62,7 +62,6 @@
             this.txtLat.Name = "txtLat";
             this.txtLat.Size = new System.Drawing.Size(100, 20);
             this.txtLat.TabIndex = 1;
-           
             // 
             // label2
             // 
@@ -79,7 +78,6 @@
             this.txtLong.Name = "txtLong";
             this.txtLong.Size = new System.Drawing.Size(100, 20);
             this.txtLong.TabIndex = 3;
-            
             // 
             // label1
             // 
@@ -89,7 +87,6 @@
             this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 6;
             this.label1.Text = "Latitude";
-           
             // 
             // map
             // 
@@ -120,7 +117,7 @@
             this.map.Size = new System.Drawing.Size(227, 236);
             this.map.TabIndex = 7;
             this.map.Zoom = 0D;
-            
+            this.map.Load += new System.EventHandler(this.map_Load);
             // 
             // SerialPort1
             // 
@@ -133,7 +130,6 @@
             this.DataStream.Size = new System.Drawing.Size(291, 68);
             this.DataStream.TabIndex = 8;
             this.DataStream.Text = "";
-            
             // 
             // label3
             // 
@@ -150,7 +146,6 @@
             this.tmptxt.Name = "tmptxt";
             this.tmptxt.Size = new System.Drawing.Size(100, 20);
             this.tmptxt.TabIndex = 10;
-            
             // 
             // psrtxt
             // 
@@ -158,6 +153,7 @@
             this.psrtxt.Name = "psrtxt";
             this.psrtxt.Size = new System.Drawing.Size(100, 20);
             this.psrtxt.TabIndex = 11;
+            this.psrtxt.TextChanged += new System.EventHandler(this.psrtxt_TextChanged);
             // 
             // hghttxt
             // 
@@ -195,12 +191,13 @@
             // 
             // chart1
             // 
+            chartArea1.BackSecondaryColor = System.Drawing.Color.Transparent;
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
             this.chart1.Cursor = System.Windows.Forms.Cursors.Arrow;
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(247, 215);
+            this.chart1.Location = new System.Drawing.Point(-12, 382);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
@@ -208,10 +205,9 @@
             series1.Name = "Series1";
             series1.XValueMember = "tmptxt";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(363, 273);
+            this.chart1.Size = new System.Drawing.Size(212, 150);
             this.chart1.TabIndex = 16;
             this.chart1.Text = "chart1";
-            
             // 
             // chart2
             // 
@@ -220,7 +216,7 @@
             this.chart2.Cursor = System.Windows.Forms.Cursors.Arrow;
             legend2.Name = "Legend1";
             this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(655, 215);
+            this.chart2.Location = new System.Drawing.Point(246, 382);
             this.chart2.Name = "chart2";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
@@ -228,10 +224,10 @@
             series2.Name = "Series1";
             series2.XValueMember = "tmptxt";
             this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(379, 273);
+            this.chart2.Size = new System.Drawing.Size(229, 150);
             this.chart2.TabIndex = 17;
             this.chart2.Text = "chart2";
-            
+            this.chart2.Click += new System.EventHandler(this.chart2_Click);
             // 
             // Form1
             // 
@@ -239,9 +235,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1428, 577);
-            this.Controls.Add(this.map);
-            this.Controls.Add(this.chart2);
-            this.Controls.Add(this.chart1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -254,6 +247,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtLong);
             this.Controls.Add(this.txtLat);
+            this.Controls.Add(this.map);
+            this.Controls.Add(this.chart1);
+            this.Controls.Add(this.chart2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -281,6 +277,12 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
-    }
+    
 }
+
+}
+
+
+
+
 

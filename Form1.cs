@@ -57,7 +57,8 @@ namespace CanSatGUI
             SerialPort1.DataBits = 8;
             SerialPort1.StopBits = StopBits.One;
             SerialPort1.Open();
-            SerialPort1.DataReceived += myPort_DataReceived; 
+            SerialPort1.DataReceived += myPort_DataReceived;
+            SerialPort1.NewLine = "\n";
 
             // init timer
             timer.Start();
@@ -68,55 +69,55 @@ namespace CanSatGUI
 
         }
 
-        private void mapupdate()
+        private void mapupdate(string lat, string longt)
         {
             GMapProviders.GoogleMap.ApiKey = @"AIzaSyAZouhXULQgPGPckADOmiHqfCc_YvD5QzQ";
             map.DragButton = MouseButtons.Left;
             map.MapProvider = GMapProviders.GoogleMap;
-            double lat = Convert.ToDouble(txtLat.Text);
-            double longt = Convert.ToDouble(txtLong.Text);
-            map.Position = new PointLatLng(lat, longt);
+            double latitude = Convert.ToDouble(lat);
+            double longtitude = Convert.ToDouble(longt);
+            map.Position = new PointLatLng(latitude, longtitude);
             map.MinZoom = 0;
             map.MaxZoom = 25;
             map.Zoom = 10;
         }
 
 
-        //parsowanie dane od arduino    //$$ZSM-Sat;24;980;25;74;50.71;14.01;2057;END$$
-        public void UpdateTextboxes(string packet)
+        //aktualizacja GUI    //$$ZSM-Sat;24;980;25;74;50.71;14.01;2057;END$$
+        public void UpdateGUI(string packet)
         {
             Console.WriteLine(packet);
             
             string[] packetElems = Utils.ParsePacket(packet);
             
-            /*
-            psrtxt.Text = packetElems[0];
-            tmptxt.Text = packetElems[1];
+           
+            psrtxt.Text = packetElems[2];
+            tmptxt.Text = packetElems[3];
             // humtxt.Text = packetElems[2]; 
-            txtLat.Text = packetElems[3];
-            txtLong.Text = packetElems[4];
-            hghttxt.Text = packetElems[5];
-            */
-            
-            
+            txtLat.Text = packetElems[5];
+            txtLong.Text = packetElems[6];
+            hghttxt.Text = packetElems[7];
+            UpdateTemperatureChart(packetElems[3]);
+            UpdatePressureChart(packetElems[2]);
+            mapupdate(packetElems[5],packetElems[6]);
+
         }
 
-        private void UpdateTemperatureChart()
+        private void UpdateTemperatureChart(string temp)
         {
-            int MaxChartWidth = 5;
+
+            int MaxChartWidth = 7;
             TimeSpan elapsed = timer.Elapsed;
             double secondsElapsed = Convert.ToInt32(elapsed.TotalSeconds);
-            double temperature = Convert.ToDouble(tmptxt.Text);
+            double temperature = Convert.ToDouble(temp);
            
 
             int pointsCount = chart1.Series[0].Points.Count;
             Console.WriteLine(pointsCount);
             if(pointsCount >= MaxChartWidth)
             {
-                //chart1.ChartAreas[0].AxisX.Interval = 1;
-                //chart1.ChartAreas[0].AxisX.MajorGrid.IntervalOffset += 1;
-                chart1.Series[0].Points.Clear();
-                //chart1.Series[0].Points.RemoveAt(0);
+                chart1.Series[0].Points.RemoveAt(0);
+                chart1.ResetAutoValues();
             }
 
             chart1.Series[0].Points.AddXY(secondsElapsed, temperature);
@@ -124,25 +125,24 @@ namespace CanSatGUI
             chart1.Update();
         }
 
-        private void UpdatePressureChart()
+        private void UpdatePressureChart(string psr)
         {
-            int MaxChartWidth = 5;
+            int MaxChartWidth = 7;
             TimeSpan elapsed = timer.Elapsed;
             double secondsElapsed = Convert.ToInt32(elapsed.TotalSeconds);
-            double pressure = Convert.ToDouble(psrtxt.Text);
+            double pressure = Convert.ToDouble(psr);
 
 
             int pointsCount = chart2.Series[0].Points.Count;
             Console.WriteLine(pointsCount);
             if (pointsCount >= MaxChartWidth)
             {
-                //chart1.ChartAreas[0].AxisX.Interval = 1;
-                //chart1.ChartAreas[0].AxisX.MajorGrid.IntervalOffset += 1;
-                chart2.Series[0].Points.Clear();
-                //chart1.Series[0].Points.RemoveAt(0);
+                
+                chart2.Series[0].Points.RemoveAt(0);
+                chart2.ResetAutoValues();
             }
 
-            chart2.Series[0].Points.AddXY(secondsElapsed, pressure);
+            chart2.Series[0].Points.AddXY(secondsElapsed,pressure);
 
             chart2.Update();
         }
@@ -152,7 +152,7 @@ namespace CanSatGUI
         // poczatek czesci wykonawczej serial port txt box v1.0
         private void myPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            rxString = SerialPort1.ReadExisting();
+            rxString = SerialPort1.ReadLine();
             Console.WriteLine(rxString);
             this.Invoke(new EventHandler(UpdateWidgets));
         }
@@ -160,28 +160,27 @@ namespace CanSatGUI
         private void UpdateWidgets(object sender, EventArgs e)
         {
             DataStream.AppendText(rxString);
-            /*
-            UpdateTextboxes(rxString);
-            UpdateTemperatureChart();
-            mapupdate();
-            */
+            
+            UpdateGUI(rxString);
+           
+            
         }
 
-        //koniec czesci wyckonawczej serial port 
-       
-       
-
-        /*
-        private void UpdatePressureChart()
+        private void psrtxt_TextChanged(object sender, EventArgs e)
         {
-            TimeSpan elapsed = timer.Elapsed;
-            double secondsElapsed = elapsed.TotalSeconds;
-            double pressure = Convert.ToDouble(psrtxt.Text);
-            chart2.Series[0].Points.AddXY(secondsElapsed, pressure);
-            chart2.Update();
-        }
-        */
 
+        }
+
+        private void chart2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void map_Load(object sender, EventArgs e)
+        {
+
+        }
+        //koniec czesci wyckonawczej serial port 
     }
 
 
@@ -193,6 +192,8 @@ namespace CanSatGUI
             string[] list = packet.Split(';');
             return list;
         }
+        
+        
     }
 }
 
