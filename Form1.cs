@@ -28,13 +28,7 @@ microscopic data
 if theirs water in the area
 if the planet is habitable
 weatherman data type shit
-
 */
-
-
-
-
-
 
 
 namespace CanSatGUI
@@ -44,7 +38,7 @@ namespace CanSatGUI
         string rxString;
         Stopwatch timer = new Stopwatch();
 
-        public Form1()  //definiowanie ustawienia oraz port szeregowy
+        public Form1()
         {
             // init window
             InitializeComponent();
@@ -56,12 +50,28 @@ namespace CanSatGUI
             SerialPort1.Parity = Parity.None;
             SerialPort1.DataBits = 8;
             SerialPort1.StopBits = StopBits.One;
-            SerialPort1.Open();
             SerialPort1.DataReceived += myPort_DataReceived;
             SerialPort1.NewLine = "\n";
+            try
+            {
+                SerialPort1.Open();
+            }
+            catch(System.IO.IOException)
+            {
+                DataStream.AppendText("Nie wykryto urządzenia w porcie " + SerialPort1.PortName);
+            }
 
             // init timer
             timer.Start();
+
+            // init map
+            GMapProviders.GoogleMap.ApiKey = @"AIzaSyAZouhXULQgPGPckADOmiHqfCc_YvD5QzQ";
+            map.DragButton = MouseButtons.Left;
+            map.MapProvider = GMapProviders.GoogleMap;
+            // map.Position = new PointLatLng(20, 30);
+            map.MinZoom = 0;
+            map.MaxZoom = 25;
+            map.Zoom = 10;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -69,82 +79,36 @@ namespace CanSatGUI
 
         }
 
-        private void mapupdate(string lat, string longt)
+        // $$ZSM-Sat;24;980;25;74;50.71;14.01;2057;END$$
+        // start; packet_num; pressure; temp; humidity; lat; long; height; end
+        public void UpdateGUI(object sender, EventArgs e)
         {
-            GMapProviders.GoogleMap.ApiKey = @"AIzaSyAZouhXULQgPGPckADOmiHqfCc_YvD5QzQ";
-            map.DragButton = MouseButtons.Left;
-            map.MapProvider = GMapProviders.GoogleMap;
-            double latitude = Convert.ToDouble(lat);
-            double longtitude = Convert.ToDouble(longt);
-            map.Position = new PointLatLng(latitude, longtitude);
-            map.MinZoom = 0;
-            map.MaxZoom = 25;
-            map.Zoom = 10;
-        }
+            Console.WriteLine(rxString);
+            DataStream.AppendText(rxString);
 
+            TimeSpan elapsed = timer.Elapsed;
+            double secondsElapsed = Convert.ToInt32(elapsed.TotalSeconds);
 
-        //aktualizacja GUI    //$$ZSM-Sat;24;980;25;74;50.71;14.01;2057;END$$
-        public void UpdateGUI(string packet)
-        {
-            Console.WriteLine(packet);
+            string[] packetElems = Utils.ParsePacket(rxString);
             
-            string[] packetElems = Utils.ParsePacket(packet);
-            
-           
+            // pressure
             psrtxt.Text = packetElems[2];
+            Utils.UpdateChart(chart2, secondsElapsed, Convert.ToDouble(packetElems[2]), maxChartWidth: 7);
+
+            // temperature
             tmptxt.Text = packetElems[3];
-            // humtxt.Text = packetElems[2]; 
+            Utils.UpdateChart(chart1, secondsElapsed, Convert.ToDouble(packetElems[3]), maxChartWidth: 7);
+
+            // humidity
+            // humtxt.Text = packetElems[4]; 
+
+            // latidude, longtitude
             txtLat.Text = packetElems[5];
             txtLong.Text = packetElems[6];
+            Utils.UpdateMap(map, Convert.ToDouble(packetElems[5]), Convert.ToDouble(packetElems[6]));
+
+            // height
             hghttxt.Text = packetElems[7];
-            UpdateTemperatureChart(packetElems[3]);
-            UpdatePressureChart(packetElems[2]);
-            mapupdate(packetElems[5],packetElems[6]);
-
-        }
-
-        private void UpdateTemperatureChart(string temp)
-        {
-
-            int MaxChartWidth = 7;
-            TimeSpan elapsed = timer.Elapsed;
-            double secondsElapsed = Convert.ToInt32(elapsed.TotalSeconds);
-            double temperature = Convert.ToDouble(temp);
-           
-
-            int pointsCount = chart1.Series[0].Points.Count;
-            Console.WriteLine(pointsCount);
-            if(pointsCount >= MaxChartWidth)
-            {
-                chart1.Series[0].Points.RemoveAt(0);
-                chart1.ResetAutoValues();
-            }
-
-            chart1.Series[0].Points.AddXY(secondsElapsed, temperature);
-
-            chart1.Update();
-        }
-
-        private void UpdatePressureChart(string psr)
-        {
-            int MaxChartWidth = 7;
-            TimeSpan elapsed = timer.Elapsed;
-            double secondsElapsed = Convert.ToInt32(elapsed.TotalSeconds);
-            double pressure = Convert.ToDouble(psr);
-
-
-            int pointsCount = chart2.Series[0].Points.Count;
-            Console.WriteLine(pointsCount);
-            if (pointsCount >= MaxChartWidth)
-            {
-                
-                chart2.Series[0].Points.RemoveAt(0);
-                chart2.ResetAutoValues();
-            }
-
-            chart2.Series[0].Points.AddXY(secondsElapsed,pressure);
-
-            chart2.Update();
         }
 
         //dzialajaca mapa v1.0
@@ -154,31 +118,7 @@ namespace CanSatGUI
         {
             rxString = SerialPort1.ReadLine();
             Console.WriteLine(rxString);
-            this.Invoke(new EventHandler(UpdateWidgets));
-        }
-
-        private void UpdateWidgets(object sender, EventArgs e)
-        {
-            DataStream.AppendText(rxString);
-            
-            UpdateGUI(rxString);
-           
-            
-        }
-
-        private void psrtxt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void chart2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void map_Load(object sender, EventArgs e)
-        {
-
+            this.Invoke(new EventHandler(UpdateGUI));
         }
         //koniec czesci wyckonawczej serial port 
     }
@@ -192,8 +132,30 @@ namespace CanSatGUI
             string[] list = packet.Split(';');
             return list;
         }
-        
-        
+
+        public static void UpdateChart(
+            System.Windows.Forms.DataVisualization.Charting.Chart chart,
+            double x,
+            double y,
+            int maxChartWidth
+            )
+        {
+            int pointsCount = chart.Series[0].Points.Count;
+
+            if (pointsCount >= maxChartWidth)
+            {
+                chart.Series[0].Points.RemoveAt(0);
+                chart.ResetAutoValues();
+            }
+
+            chart.Series[0].Points.AddXY(x, y);
+            chart.Update();
+        }
+
+        public static void UpdateMap(GMap.NET.WindowsForms.GMapControl map, double lat, double longt)
+        {
+            map.Position = new PointLatLng(lat, longt);
+        }
     }
 }
 

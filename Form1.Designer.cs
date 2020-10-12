@@ -52,8 +52,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtLat
@@ -117,7 +119,6 @@
             this.map.Size = new System.Drawing.Size(227, 236);
             this.map.TabIndex = 7;
             this.map.Zoom = 0D;
-            this.map.Load += new System.EventHandler(this.map_Load);
             // 
             // SerialPort1
             // 
@@ -153,7 +154,6 @@
             this.psrtxt.Name = "psrtxt";
             this.psrtxt.Size = new System.Drawing.Size(100, 20);
             this.psrtxt.TabIndex = 11;
-            this.psrtxt.TextChanged += new System.EventHandler(this.psrtxt_TextChanged);
             // 
             // hghttxt
             // 
@@ -197,7 +197,7 @@
             this.chart1.Cursor = System.Windows.Forms.Cursors.Arrow;
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(-12, 382);
+            this.chart1.Location = new System.Drawing.Point(3, 3);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
@@ -205,18 +205,21 @@
             series1.Name = "Series1";
             series1.XValueMember = "tmptxt";
             this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(212, 150);
+            this.chart1.Size = new System.Drawing.Size(275, 157);
             this.chart1.TabIndex = 16;
             this.chart1.Text = "chart1";
             // 
             // chart2
             // 
+            this.chart2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             chartArea2.Name = "ChartArea1";
             this.chart2.ChartAreas.Add(chartArea2);
             this.chart2.Cursor = System.Windows.Forms.Cursors.Arrow;
             legend2.Name = "Legend1";
             this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(246, 382);
+            this.chart2.Location = new System.Drawing.Point(284, 3);
             this.chart2.Name = "chart2";
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
@@ -224,17 +227,29 @@
             series2.Name = "Series1";
             series2.XValueMember = "tmptxt";
             this.chart2.Series.Add(series2);
-            this.chart2.Size = new System.Drawing.Size(229, 150);
+            this.chart2.Size = new System.Drawing.Size(269, 157);
             this.chart2.TabIndex = 17;
             this.chart2.Text = "chart2";
-            this.chart2.Click += new System.EventHandler(this.chart2_Click);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.Controls.Add(this.chart1);
+            this.flowLayoutPanel1.Controls.Add(this.chart2);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 427);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(829, 170);
+            this.flowLayoutPanel1.TabIndex = 18;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(1428, 577);
+            this.ClientSize = new System.Drawing.Size(822, 590);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -248,13 +263,12 @@
             this.Controls.Add(this.txtLong);
             this.Controls.Add(this.txtLat);
             this.Controls.Add(this.map);
-            this.Controls.Add(this.chart1);
-            this.Controls.Add(this.chart2);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -277,8 +291,8 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
-    
-}
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+    }
 
 }
 
