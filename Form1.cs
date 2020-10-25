@@ -6,21 +6,6 @@ using GMap.NET.MapProviders;
 using System.Diagnostics;
 
 
-/*possible missions
- * magnetosphere reading
-wind patterns
-atmospheric data
-soil ph level
-soil composition
-any signs of life
-size/mass of the planet
-microscopic data
-if theirs water in the area
-if the planet is habitable
-weatherman data type shit
-*/
-
-
 namespace CanSatGUI
 {
     public partial class Form1 : Form
@@ -58,7 +43,6 @@ namespace CanSatGUI
             GMapProviders.GoogleMap.ApiKey = @"AIzaSyAZouhXULQgPGPckADOmiHqfCc_YvD5QzQ";
             map.DragButton = MouseButtons.Left;
             map.MapProvider = GMapProviders.GoogleMap;
-            // map.Position = new PointLatLng(20, 30);
             map.MinZoom = 0;
             map.MaxZoom = 25;
             map.Zoom = 10;
@@ -69,8 +53,6 @@ namespace CanSatGUI
 
         }
 
-        // $$ZSM-Sat;24;980;25;74;50.71;14.01;2057;END$$
-        // start; packet_num; pressure; temp; humidity; lat; long; height; end
         public void UpdateGUI(string packetString)
         {
             Console.WriteLine(packetString);
@@ -103,7 +85,6 @@ namespace CanSatGUI
 
         //dzialajaca mapa v1.0
         
-        // poczatek czesci wykonawczej serial port txt box v1.0
         private void myPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             rxString = SerialPort1.ReadLine();
@@ -115,7 +96,6 @@ namespace CanSatGUI
             string packet = Utils.RandomPacket();
             UpdateGUI(packet);
         }
-        //koniec czesci wyckonawczej serial port 
     }
 
 
@@ -123,7 +103,8 @@ namespace CanSatGUI
     {
         public static string[] ParsePacket(string packet)
         {
-            // "$$ZSM-Sat,997.27,1018,END$$$"
+            // $$ZSM-Sat;24;980;25;74;50.71;14.01;2057;END$$
+            // start; packet_num; pressure; temp; humidity; lat; long; height; end
             string[] list = packet.Split(';');
             return list;
         }
