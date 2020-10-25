@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.txtLat = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtLong = new System.Windows.Forms.TextBox();
@@ -53,6 +53,7 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.mockUpdateGUIButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.flowLayoutPanel1.SuspendLayout();
@@ -102,7 +103,7 @@
             this.map.GrayScaleMode = false;
             this.map.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.map.LevelsKeepInMemmory = 5;
-            this.map.Location = new System.Drawing.Point(-3, 8);
+            this.map.Location = new System.Drawing.Point(0, -1);
             this.map.MarkersEnabled = true;
             this.map.MaxZoom = 2;
             this.map.MinZoom = 2;
@@ -165,7 +166,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(707, 23);
+            this.label4.Location = new System.Drawing.Point(707, 26);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 13);
             this.label4.TabIndex = 13;
@@ -174,7 +175,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(707, 49);
+            this.label5.Location = new System.Drawing.Point(707, 52);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(38, 13);
             this.label5.TabIndex = 14;
@@ -183,7 +184,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(707, 81);
+            this.label6.Location = new System.Drawing.Point(707, 78);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(48, 13);
             this.label6.TabIndex = 15;
@@ -191,20 +192,20 @@
             // 
             // chart1
             // 
-            chartArea1.BackSecondaryColor = System.Drawing.Color.Transparent;
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
+            chartArea3.BackSecondaryColor = System.Drawing.Color.Transparent;
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
             this.chart1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(3, 3);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            series1.XValueMember = "tmptxt";
-            this.chart1.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            series3.XValueMember = "tmptxt";
+            this.chart1.Series.Add(series3);
             this.chart1.Size = new System.Drawing.Size(275, 157);
             this.chart1.TabIndex = 16;
             this.chart1.Text = "chart1";
@@ -214,19 +215,19 @@
             this.chart2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea2.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea2);
+            chartArea4.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea4);
             this.chart2.Cursor = System.Windows.Forms.Cursors.Arrow;
-            legend2.Name = "Legend1";
-            this.chart2.Legends.Add(legend2);
+            legend4.Name = "Legend1";
+            this.chart2.Legends.Add(legend4);
             this.chart2.Location = new System.Drawing.Point(284, 3);
             this.chart2.Name = "chart2";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            series2.XValueMember = "tmptxt";
-            this.chart2.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            series4.XValueMember = "tmptxt";
+            this.chart2.Series.Add(series4);
             this.chart2.Size = new System.Drawing.Size(269, 157);
             this.chart2.TabIndex = 17;
             this.chart2.Text = "chart2";
@@ -240,15 +241,26 @@
             this.flowLayoutPanel1.Controls.Add(this.chart2);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 427);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(829, 170);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(884, 170);
             this.flowLayoutPanel1.TabIndex = 18;
+            // 
+            // mockUpdateGUIButton
+            // 
+            this.mockUpdateGUIButton.Location = new System.Drawing.Point(39, 280);
+            this.mockUpdateGUIButton.Name = "mockUpdateGUIButton";
+            this.mockUpdateGUIButton.Size = new System.Drawing.Size(75, 23);
+            this.mockUpdateGUIButton.TabIndex = 19;
+            this.mockUpdateGUIButton.Text = "test update";
+            this.mockUpdateGUIButton.UseVisualStyleBackColor = true;
+            this.mockUpdateGUIButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(822, 590);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ClientSize = new System.Drawing.Size(877, 590);
+            this.Controls.Add(this.mockUpdateGUIButton);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -292,6 +304,7 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button mockUpdateGUIButton;
     }
 
 }
