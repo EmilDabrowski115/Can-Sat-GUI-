@@ -1,19 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
 using GMap.NET; 
 using GMap.NET.MapProviders;
-using GMap.NET.WindowsForms;
-using System.Threading;
 using System.Diagnostics;
-
 
 
 /*possible missions
@@ -81,15 +71,15 @@ namespace CanSatGUI
 
         // $$ZSM-Sat;24;980;25;74;50.71;14.01;2057;END$$
         // start; packet_num; pressure; temp; humidity; lat; long; height; end
-        public void UpdateGUI(object sender, EventArgs e)
+        public void UpdateGUI(string packetString)
         {
-            Console.WriteLine(rxString);
-            DataStream.AppendText(rxString);
+            Console.WriteLine(packetString);
+            DataStream.AppendText(packetString);
 
             TimeSpan elapsed = timer.Elapsed;
             double secondsElapsed = Convert.ToInt32(elapsed.TotalSeconds);
 
-            string[] packetElems = Utils.ParsePacket(rxString);
+            string[] packetElems = Utils.ParsePacket(packetString);
             
             // pressure
             psrtxt.Text = packetElems[2];
@@ -117,8 +107,13 @@ namespace CanSatGUI
         private void myPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             rxString = SerialPort1.ReadLine();
-            Console.WriteLine(rxString);
-            this.Invoke(new EventHandler(UpdateGUI));
+            UpdateGUI(rxString);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string packet = Utils.RandomPacket();
+            UpdateGUI(packet);
         }
         //koniec czesci wyckonawczej serial port 
     }
@@ -155,6 +150,11 @@ namespace CanSatGUI
         public static void UpdateMap(GMap.NET.WindowsForms.GMapControl map, double lat, double longt)
         {
             map.Position = new PointLatLng(lat, longt);
+        }
+
+        public static string RandomPacket()
+        {
+            return "$$ZSM-Sat;24;980;25;74;50.71;14.01;2057;END$$";
         }
     }
 }
