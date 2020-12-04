@@ -1,39 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO.Ports;
 using GMap.NET; 
 using GMap.NET.MapProviders;
-using GMap.NET.WindowsForms;
-using System.Threading;
+
 using System.Diagnostics;
-
-
-
-/*possible missions
- * magnetosphere reading
-wind patterns
-atmospheric data
-soil ph level
-soil composition
-any signs of life
-size/mass of the planet
-microscopic data
-if theirs water in the area
-if the planet is habitable
-weatherman data type shit
-
-*/
-
-
-
-
 
 
 
@@ -51,7 +22,7 @@ namespace CanSatGUI
 
             // init serial port
             SerialPort1 = new SerialPort();
-            SerialPort1.PortName = "COM4";
+            SerialPort1.PortName = "COM5";
             SerialPort1.BaudRate = 9600;
             SerialPort1.Parity = Parity.None;
             SerialPort1.DataBits = 8;
