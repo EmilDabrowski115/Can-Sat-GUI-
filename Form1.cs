@@ -3,7 +3,9 @@ using System.Windows.Forms;
 using System.IO.Ports;
 using GMap.NET; 
 using GMap.NET.MapProviders;
-
+using SharpGL;
+using SharpGL.WinForms;
+using SharpGL.SceneGraph;
 using System.Diagnostics;
 
 
@@ -148,6 +150,11 @@ namespace CanSatGUI
         }
 
         private void map_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void openGLControl1_Load(object sender, EventArgs e)
         {
 
         }
