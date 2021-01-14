@@ -1,13 +1,22 @@
 ﻿using System.IO.Ports;
-
+using System.Text.RegularExpressions;
+using System;
 
 namespace CanSatGUI
 {
     class Utils
     {
+        static Regex valid_packet_regex = new Regex(@"^([0-9\-;:\.]+\s+$)");
+
         public static string[] ParsePacket(string packet)
         {
-            // "$$ZSM-Sat,997.27,1018,END$$$"
+            MatchCollection matches = valid_packet_regex.Matches(packet);
+            if (matches.Count == 0) {
+                Console.Write("skipping packet: invalid packet");
+                return null;
+            }
+            //Console.Write("matched");
+            /// "$$ZSM-Sat,997.27,1018,END$$$"
             string[] list = packet.Split(';');
             return list;
         }
