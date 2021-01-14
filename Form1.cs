@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.IO.Ports;
-using GMap.NET; 
+using GMap.NET;
 using GMap.NET.MapProviders;
-using SharpGL;
-using SharpGL.WinForms;
-using SharpGL.SceneGraph;
+//using SharpGL;
+//using SharpGL.WinForms;
+//using SharpGL.SceneGraph;
 using System.Diagnostics;
+using System.Threading;
+using System.IO.Ports;
+using System.Windows.Forms.DataVisualization.Charting;
 
 
 
@@ -14,35 +16,28 @@ namespace CanSatGUI
 {
     public partial class Form1 : Form
     {
-        string rxString;
         Stopwatch timer = new Stopwatch();
+        string DefaultPortName = "COM4";
+        string rxString;
 
         public Form1()  //definiowanie ustawienia oraz port szeregowy
         {
+            // sets double conversion separator to '.'
+            Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+
             // init window
             InitializeComponent();
 
-            // init serial port
-            SerialPort1 = new SerialPort();
-            SerialPort1.PortName = "COM5";
-            SerialPort1.BaudRate = 9600;
-            SerialPort1.Parity = Parity.None;
-            SerialPort1.DataBits = 8;
-            SerialPort1.StopBits = StopBits.One;
-            SerialPort1.Open();
+            // init COM
+            SerialPort1 = Utils.InitSerialPort(DefaultPortName);
             SerialPort1.DataReceived += myPort_DataReceived;
-            SerialPort1.NewLine = "\n";
 
             // init timer
             timer.Start();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
 
-        }
-
-        private void mapupdate(string lat, string longt)
+        private void UpdateMap(string lat, string longt)
         {
             GMapProviders.GoogleMap.ApiKey = @"AIzaSyAZouhXULQgPGPckADOmiHqfCc_YvD5QzQ";
             map.DragButton = MouseButtons.Left;
@@ -55,26 +50,6 @@ namespace CanSatGUI
             map.Zoom = 10;
         }
 
-
-        //aktualizacja GUI    //$$ZSM-Sat;24;980;25;74;50.71;14.01;2057;END$$
-        public void UpdateGUI(string packet)
-        {
-            Console.WriteLine(packet);
-            
-            string[] packetElems = Utils.ParsePacket(packet);
-            
-           
-            psrtxt.Text = packetElems[2];
-            tmptxt.Text = packetElems[3];
-            // humtxt.Text = packetElems[2]; 
-            txtLat.Text = packetElems[5];
-            txtLong.Text = packetElems[6];
-            hghttxt.Text = packetElems[7];
-            UpdateTemperatureChart(packetElems[3]);
-            UpdatePressureChart(packetElems[2]);
-            mapupdate(packetElems[5],packetElems[6]);
-
-        }
 
         private void UpdateTemperatureChart(string temp)
         {
@@ -116,27 +91,40 @@ namespace CanSatGUI
             }
 
             chart2.Series[0].Points.AddXY(secondsElapsed,pressure);
-
+            
             chart2.Update();
         }
 
-        //dzialajaca mapa v1.0
         
         // poczatek czesci wykonawczej serial port txt box v1.0
         private void myPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             rxString = SerialPort1.ReadLine();
             Console.WriteLine(rxString);
+            string[] args = new string[] { rxString };
             this.Invoke(new EventHandler(UpdateWidgets));
         }
 
+        //private void UpdateWidgets(object sender, EventArgs e)
         private void UpdateWidgets(object sender, EventArgs e)
         {
             DataStream.AppendText(rxString);
             
-            UpdateGUI(rxString);
-           
-            
+            //Console.WriteLine(rxString);
+
+            string[] packetElems = Utils.ParsePacket(rxString);
+
+            psrtxt.Text = packetElems[2];
+            tmptxt.Text = packetElems[3];
+            // humtxt.Text = packetElems[2]; 
+            txtLat.Text = packetElems[5];
+            txtLong.Text = packetElems[6];
+            hghttxt.Text = packetElems[7];
+            UpdateTemperatureChart(packetElems[3]);
+            UpdatePressureChart(packetElems[2]);
+            UpdateMap(packetElems[5], packetElems[6]);
+
+
         }
 
         private void psrtxt_TextChanged(object sender, EventArgs e)
@@ -158,20 +146,16 @@ namespace CanSatGUI
         {
 
         }
-        //koniec czesci wyckonawczej serial port 
-    }
 
-
-    class Utils
-    {
-        public static string[] ParsePacket(string packet)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // "$$ZSM-Sat,997.27,1018,END$$$"
-            string[] list = packet.Split(';');
-            return list;
+
         }
-        
-        
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
