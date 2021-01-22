@@ -50,19 +50,32 @@ namespace CanSatGUI
         //private void UpdateWidgets(object sender, EventArgs e)
         private async void UpdateWidgets(object sender, EventArgs e)
         {
-            // framenr; xmss; ymss; zmss; xrads; yrads; zrads; magx; magy; magz; preassure; temp;
-            // RSSI; framenr; xmss; ymss; zmss; xrads; yrads; zrads; magx; magy; magz; preassure; temp; lat; lng; alt; speed; crouze; h: m: s: cs; Hall
+
+            // RSSI; framenr; xaccel; yaccel; zaccel; xtilt; ytilt; ztilt; xmag; ymag; zmag; pressure; temp; lat; long; alt; speed; course; h:m:s:ms; hall
             DataStream.AppendText(rxString);
             string[] packetElems = Utils.ParsePacket(rxString);
             if (packetElems == null)
                 return;
-
-            psrtxt.Text = packetElems[2];
-            tmptxt.Text = packetElems[3];
-            // humtxt.Text = packetElems[2]; 
-            txtLat.Text = packetElems[5];
-            txtLong.Text = packetElems[6];
-            hghttxt.Text = packetElems[7];
+            rssitxt.Text = packetElems[0];
+            framenrtxt.Text = packetElems[1];
+            xacceltxt.Text = packetElems[2];
+            yacceltxt.Text = packetElems[3];
+            zacceltxt.Text = packetElems[4];
+            xtilttxt.Text = packetElems[5];
+            ytilttxt.Text = packetElems[6];
+            ztilttxt.Text = packetElems[7];
+            xmagtxt.Text = packetElems[8];
+            ymagtxt.Text = packetElems[9];
+            zmagtxt.Text = packetElems[10];
+            psrtxt.Text = packetElems[11];
+            temptxt.Text = packetElems[12];
+            lattxt.Text = packetElems[13];
+            longtxt.Text = packetElems[14];
+            alttxt.Text = packetElems[15];
+            speedtxt.Text = packetElems[16];
+            coursetxt.Text = packetElems[17];
+            timetxt.Text = packetElems[18];
+            halltxt.Text = packetElems[19];
 
 
             double time = Convert.ToInt32(timer.Elapsed.TotalSeconds);
@@ -77,7 +90,7 @@ namespace CanSatGUI
             double longtitude = Convert.ToDouble(packetElems[6]);
             Upd.UpdateMap(map, latitude, longtitude);
 
-            string json = JsonConvert.SerializeObject(new { psrtxt = psrtxt.Text, tmptxt = tmptxt.Text, txtLat = txtLat.Text, txtLong = txtLong.Text, hghttext = hghttxt.Text });
+            string json = JsonConvert.SerializeObject(new { psrtxt = psrtxt.Text, tmptxt = temptxt.Text, txtLat = lattxt.Text, txtLong = longtxt.Text, hghttext = alttxt.Text });
             try
             {
                 await client.EmitAsync("data", json);
@@ -126,6 +139,18 @@ namespace CanSatGUI
             {
 
             }
+        }
+
+       
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chart1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
