@@ -10,13 +10,16 @@ using System.Threading;
 using System.IO.Ports;
 // using System.Windows.Forms.DataVisualization.Charting; // Chart
 // using GMap.NET.WindowsForms; // GMapControl
-
+using SocketIOClient;
+using Newtonsoft.Json;
 
 
 namespace CanSatGUI
 {
     public partial class Form1 : Form
     {
+        public SocketIO client = new SocketIO("http://77.55.213.87:3000");
+
         Stopwatch timer = new Stopwatch();
         string rxString;
 
@@ -29,7 +32,7 @@ namespace CanSatGUI
             InitializeComponent();
 
             // init COM
-            SerialPort1 = Utils.InitSerialPort("COM4");
+            SerialPort1 = Utils.InitSerialPort("COM5");
             SerialPort1.DataReceived += myPort_DataReceived;
 
             // init timer
@@ -45,8 +48,10 @@ namespace CanSatGUI
         }
 
         //private void UpdateWidgets(object sender, EventArgs e)
-        private void UpdateWidgets(object sender, EventArgs e)
+        private async void UpdateWidgets(object sender, EventArgs e)
         {
+            // framenr; xmss; ymss; zmss; xrads; yrads; zrads; magx; magy; magz; preassure; temp;
+            // RSSI; framenr; xmss; ymss; zmss; xrads; yrads; zrads; magx; magy; magz; preassure; temp; lat; lng; alt; speed; crouze; h: m: s: cs; Hall
             DataStream.AppendText(rxString);
             string[] packetElems = Utils.ParsePacket(rxString);
             if (packetElems == null)
@@ -71,6 +76,16 @@ namespace CanSatGUI
             double latitude = Convert.ToDouble(packetElems[5]);
             double longtitude = Convert.ToDouble(packetElems[6]);
             Upd.UpdateMap(map, latitude, longtitude);
+
+            string json = JsonConvert.SerializeObject(new { psrtxt = psrtxt.Text, tmptxt = tmptxt.Text, txtLat = txtLat.Text, txtLong = txtLong.Text, hghttext = hghttxt.Text });
+            try
+            {
+                await client.EmitAsync("data", json);
+            }
+            catch (SocketIOClient.Exceptions.InvalidSocketStateException)
+            {
+
+            }
         }
 
         private void psrtxt_TextChanged(object sender, EventArgs e)
@@ -98,9 +113,19 @@ namespace CanSatGUI
 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private async void Form1_Load(object sender, EventArgs e)
         {
+            client.OnConnected += async (sender_socket, e_socket) => {
+                //await client.EmitAsync("data", ".net core");
+            };
+            try
+            {
+                await client.ConnectAsync();
+            }
+            catch (System.Net.WebSockets.WebSocketException)
+            {
 
+            }
         }
     }
 }
