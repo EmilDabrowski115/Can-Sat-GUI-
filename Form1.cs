@@ -14,26 +14,34 @@ using SocketIOClient;
 using Newtonsoft.Json;
 
 
+
 namespace CanSatGUI
 {
+  
+
+
+
     public partial class Form1 : Form
     {
         public SocketIO client = new SocketIO("http://77.55.213.87:3000");
 
         Stopwatch timer = new Stopwatch();
         string rxString;
+        string ComPort;
+
+        
+
 
         public Form1()  //definiowanie ustawienia oraz port szeregowy
         {
+
+             
+
             // sets double conversion separator to '.'
             Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
 
             // init window
             InitializeComponent();
-
-            // init COM
-            SerialPort1 = Utils.InitSerialPort("COM5");
-            SerialPort1.DataReceived += myPort_DataReceived;
 
             // init timer
             timer.Start();
@@ -45,7 +53,16 @@ namespace CanSatGUI
             rxString = SerialPort1.ReadLine();
             Console.WriteLine(rxString);
             this.Invoke(new EventHandler(UpdateWidgets));
+            //try
+           // {
+            //    this.Invoke(new EventHandler(UpdateWidgets));
+           // }
+           // catch ()
+           // {
+           // }
         }
+
+        
 
         //private void UpdateWidgets(object sender, EventArgs e)
         private async void UpdateWidgets(object sender, EventArgs e)
@@ -76,7 +93,7 @@ namespace CanSatGUI
             coursetxt.Text = packetElems[17];
             timetxt.Text = packetElems[18];
             halltxt.Text = packetElems[19];
-
+            DataStream.Text = "...";
 
             double time = Convert.ToInt32(timer.Elapsed.TotalSeconds);
 
@@ -145,10 +162,32 @@ namespace CanSatGUI
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string Dropdown;
+            
+            Dropdown = ComboBox1.GetItemText(ComboBox1.SelectedItem);
+            Console.WriteLine(Dropdown);
+
+            // init COM
+            SerialPort1 = Utils.InitSerialPort(Dropdown);     
+            SerialPort1.DataReceived += myPort_DataReceived;
+
+            // ComPort = Dropdown;
+
+
 
         }
 
         private void chart1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DataStream_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
         {
 
         }
