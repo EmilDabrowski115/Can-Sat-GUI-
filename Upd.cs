@@ -25,6 +25,22 @@ namespace CanSatGUI
             map.Zoom = 10;
         }
 
+        public static void UpdateChart(Chart chart, double y, double x)
+        {
+            int MaxChartWidth = 10;
+
+            int pointsCount = chart.Series[0].Points.Count;
+            Console.WriteLine(pointsCount);
+            if (pointsCount >= MaxChartWidth)
+            {
+                chart.Series[0].Points.RemoveAt(0);
+                chart.ResetAutoValues();
+            }
+
+            chart.Series[0].Points.AddXY(x, y);
+            chart.Update();
+        }
+
         public static void UpdateTemperatureChart(Chart chart, double temperature, double secondsElapsed)
         {
             int MaxChartWidth = 10;
@@ -91,6 +107,42 @@ namespace CanSatGUI
             }
 
             chart.Series[0].Points.AddXY(secondsElapsed, Hall);
+            chart.Update();
+        }
+
+        public static void UpdateSpeedChart(Chart chart, double speed, double secondsElapsed)
+        {
+            int MaxChartWidth = 10;
+
+
+            int pointsCount = chart.Series[0].Points.Count;
+            Console.WriteLine(pointsCount);
+            if (pointsCount >= MaxChartWidth)
+            {
+
+                chart.Series[0].Points.RemoveAt(0);
+                chart.ResetAutoValues();
+            }
+
+            chart.Series[0].Points.AddXY(secondsElapsed,speed);
+            chart.Update();
+        }
+
+        public static void UpdateSignalChart(Chart chart, double Signal, double secondsElapsed)
+        {
+            int MaxChartWidth = 10;
+
+
+            int pointsCount = chart.Series[0].Points.Count;
+            Console.WriteLine(pointsCount);
+            if (pointsCount >= MaxChartWidth)
+            {
+
+                chart.Series[0].Points.RemoveAt(0);
+                chart.ResetAutoValues();
+            }
+
+            chart.Series[0].Points.AddXY(secondsElapsed, Signal);
             chart.Update();
         }
     }

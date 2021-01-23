@@ -44,6 +44,12 @@ namespace CanSatGUI
             }
             return port;
         }
+
+        public static double WindSpeed(double hall)
+        {
+            double radius = 0.018; // in meters
+            return Math.PI * radius * hall;
+        }
     }
 }
 

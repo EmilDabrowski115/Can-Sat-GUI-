@@ -15,6 +15,7 @@ using Newtonsoft.Json;
 
 
 
+
 namespace CanSatGUI
 {
   
@@ -103,12 +104,19 @@ namespace CanSatGUI
             double pressure = Convert.ToDouble(packetElems[2]);
             Upd.UpdatePressureChart(chart2, pressure, time);
 
+            double Hall = Convert.ToDouble(packetElems[19]);
+            double windSpeed = Utils.WindSpeed(Hall);
+            Upd.UpdateHallChart(chart3, windSpeed, time);
+
             double Altitude = Convert.ToDouble(packetElems[15]);
             Upd.UpdateAltitudeChart(chart4, Altitude, time);
 
-            double Hall = Convert.ToDouble(packetElems[19]);
-            Upd.UpdateHallChart(chart3, Hall, time);
+            double signal = Convert.ToDouble(packetElems[0]);
+            Upd.UpdateSpeedChart(chart5, signal, time);
 
+            double speed = Convert.ToDouble(packetElems[16]);
+            Upd.UpdateSpeedChart(chart6, speed, time);
+            
             double latitude = Convert.ToDouble(packetElems[5]);
             double longtitude = Convert.ToDouble(packetElems[6]);
             Upd.UpdateMap(map, latitude, longtitude);
@@ -191,6 +199,7 @@ namespace CanSatGUI
         private void DataStream_TextChanged(object sender, EventArgs e)
         {
             DataStream.ScrollToCaret();
+          
         }
 
         private void progressBar1_Click(object sender, EventArgs e)
@@ -214,6 +223,11 @@ namespace CanSatGUI
         }
 
         private void chart4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chart6_Click(object sender, EventArgs e)
         {
 
         }
