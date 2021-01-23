@@ -39,6 +39,9 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.lattxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.longtxt = new System.Windows.Forms.TextBox();
@@ -90,15 +93,21 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.chart4 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.openGLControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart4)).BeginInit();
             this.SuspendLayout();
             // 
             // lattxt
             // 
-            this.lattxt.Location = new System.Drawing.Point(233, 27);
+            this.lattxt.Location = new System.Drawing.Point(230, 27);
             this.lattxt.Name = "lattxt";
             this.lattxt.Size = new System.Drawing.Size(100, 20);
             this.lattxt.TabIndex = 1;
@@ -106,7 +115,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(230, 59);
+            this.label2.Location = new System.Drawing.Point(227, 59);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 13);
             this.label2.TabIndex = 4;
@@ -114,7 +123,7 @@
             // 
             // longtxt
             // 
-            this.longtxt.Location = new System.Drawing.Point(233, 75);
+            this.longtxt.Location = new System.Drawing.Point(230, 75);
             this.longtxt.Name = "longtxt";
             this.longtxt.Size = new System.Drawing.Size(100, 20);
             this.longtxt.TabIndex = 3;
@@ -122,7 +131,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(230, 11);
+            this.label1.Location = new System.Drawing.Point(227, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 6;
@@ -165,21 +174,24 @@
             // 
             // DataStream
             // 
-            this.DataStream.Location = new System.Drawing.Point(369, 27);
+            this.DataStream.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.DataStream.Location = new System.Drawing.Point(620, 27);
             this.DataStream.Name = "DataStream";
-            this.DataStream.Size = new System.Drawing.Size(291, 68);
+            this.DataStream.Size = new System.Drawing.Size(706, 68);
             this.DataStream.TabIndex = 8;
             this.DataStream.Text = "";
             this.DataStream.TextChanged += new System.EventHandler(this.DataStream_TextChanged);
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(484, 8);
+            this.label3.Location = new System.Drawing.Point(945, 8);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 13);
             this.label3.TabIndex = 9;
             this.label3.Text = "Data Stream";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // temptxt
             // 
@@ -238,18 +250,23 @@
             // 
             // chart1
             // 
+            this.chart1.BorderlineColor = System.Drawing.Color.Black;
+            this.chart1.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
             chartArea1.BackSecondaryColor = System.Drawing.Color.Transparent;
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
             this.chart1.Cursor = System.Windows.Forms.Cursors.Arrow;
+            legend1.Enabled = false;
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(856, 173);
+            this.chart1.Location = new System.Drawing.Point(1114, 143);
             this.chart1.Name = "chart1";
+            series1.BorderWidth = 2;
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series1.Color = System.Drawing.Color.Red;
             series1.Legend = "Legend1";
-            series1.Name = "Series1";
+            series1.Name = "Temp";
             series1.XValueMember = "tmptxt";
             this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(212, 150);
@@ -259,17 +276,25 @@
             // 
             // chart2
             // 
+            this.chart2.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Center;
+            this.chart2.BorderlineColor = System.Drawing.Color.Black;
+            this.chart2.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
             chartArea2.Name = "ChartArea1";
             this.chart2.ChartAreas.Add(chartArea2);
             this.chart2.Cursor = System.Windows.Forms.Cursors.Arrow;
+            legend2.BackColor = System.Drawing.Color.Yellow;
+            legend2.Enabled = false;
             legend2.Name = "Legend1";
             this.chart2.Legends.Add(legend2);
-            this.chart2.Location = new System.Drawing.Point(856, 342);
+            this.chart2.Location = new System.Drawing.Point(1114, 332);
             this.chart2.Name = "chart2";
+            series2.BorderWidth = 2;
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series2.Color = System.Drawing.Color.Red;
             series2.Legend = "Legend1";
-            series2.Name = "Series1";
+            series2.Name = "Pressure";
+            series2.ShadowColor = System.Drawing.Color.Red;
             series2.XValueMember = "tmptxt";
             this.chart2.Series.Add(series2);
             this.chart2.Size = new System.Drawing.Size(212, 150);
@@ -280,7 +305,7 @@
             // openGLControl1
             // 
             this.openGLControl1.DrawFPS = false;
-            this.openGLControl1.Location = new System.Drawing.Point(325, 367);
+            this.openGLControl1.Location = new System.Drawing.Point(318, 513);
             this.openGLControl1.Name = "openGLControl1";
             this.openGLControl1.OpenGLVersion = SharpGL.Version.OpenGLVersion.OpenGL2_1;
             this.openGLControl1.RenderContextType = SharpGL.RenderContextType.DIBSection;
@@ -561,7 +586,7 @@
             "COM5",
             "COM6",
             "COM7"});
-            this.ComboBox1.Location = new System.Drawing.Point(707, 38);
+            this.ComboBox1.Location = new System.Drawing.Point(493, 51);
             this.ComboBox1.Name = "ComboBox1";
             this.ComboBox1.Size = new System.Drawing.Size(121, 21);
             this.ComboBox1.TabIndex = 51;
@@ -569,8 +594,9 @@
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(727, 15);
+            this.label5.Location = new System.Drawing.Point(511, 29);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(86, 13);
             this.label5.TabIndex = 52;
@@ -598,16 +624,21 @@
             // 
             // chart3
             // 
+            this.chart3.BorderlineColor = System.Drawing.Color.Black;
+            this.chart3.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
             chartArea3.BackSecondaryColor = System.Drawing.Color.Transparent;
             chartArea3.Name = "ChartArea1";
             this.chart3.ChartAreas.Add(chartArea3);
             this.chart3.Cursor = System.Windows.Forms.Cursors.Arrow;
+            legend3.Enabled = false;
             legend3.Name = "Legend1";
             this.chart3.Legends.Add(legend3);
-            this.chart3.Location = new System.Drawing.Point(588, 173);
+            this.chart3.Location = new System.Drawing.Point(885, 332);
             this.chart3.Name = "chart3";
+            series3.BorderWidth = 2;
             series3.ChartArea = "ChartArea1";
-            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Radar;
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series3.Color = System.Drawing.Color.Red;
             series3.Legend = "Legend1";
             series3.Name = "Series1";
             series3.XValueMember = "halltxt";
@@ -615,6 +646,70 @@
             this.chart3.Size = new System.Drawing.Size(212, 150);
             this.chart3.TabIndex = 55;
             this.chart3.Text = "chart3";
+            this.chart3.Click += new System.EventHandler(this.chart3_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(1187, 119);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(95, 13);
+            this.label12.TabIndex = 56;
+            this.label12.Text = "Temperature Chart";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(1187, 306);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(76, 13);
+            this.label23.TabIndex = 57;
+            this.label23.Text = "Pressure Chart";
+            // 
+            // chart4
+            // 
+            this.chart4.BorderlineColor = System.Drawing.Color.Black;
+            this.chart4.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
+            chartArea4.BackSecondaryColor = System.Drawing.Color.Transparent;
+            chartArea4.Name = "ChartArea1";
+            this.chart4.ChartAreas.Add(chartArea4);
+            this.chart4.Cursor = System.Windows.Forms.Cursors.Arrow;
+            legend4.Enabled = false;
+            legend4.Name = "Legend1";
+            this.chart4.Legends.Add(legend4);
+            this.chart4.Location = new System.Drawing.Point(885, 143);
+            this.chart4.Name = "chart4";
+            series4.BorderWidth = 2;
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
+            series4.Color = System.Drawing.Color.Red;
+            series4.Legend = "Legend1";
+            series4.Name = "Temp";
+            series4.XValueMember = "tmptxt";
+            this.chart4.Series.Add(series4);
+            this.chart4.Size = new System.Drawing.Size(212, 150);
+            this.chart4.TabIndex = 58;
+            this.chart4.Text = "chart4";
+            this.chart4.Click += new System.EventHandler(this.chart4_Click);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(969, 119);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(42, 13);
+            this.label24.TabIndex = 59;
+            this.label24.Text = "Altitude";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(969, 306);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(66, 13);
+            this.label25.TabIndex = 60;
+            this.label25.Text = "Wind Speed";
             // 
             // Form1
             // 
@@ -625,6 +720,11 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1545, 852);
+            this.Controls.Add(this.label25);
+            this.Controls.Add(this.label24);
+            this.Controls.Add(this.chart4);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.chart3);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label13);
@@ -684,6 +784,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.openGLControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart4)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -741,6 +842,11 @@
         private System.Windows.Forms.Label label7;
         public System.Windows.Forms.ComboBox ComboBox1;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart4;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
     }
 
 }

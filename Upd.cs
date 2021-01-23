@@ -27,7 +27,7 @@ namespace CanSatGUI
 
         public static void UpdateTemperatureChart(Chart chart, double temperature, double secondsElapsed)
         {
-            int MaxChartWidth = 7;
+            int MaxChartWidth = 10;
 
             int pointsCount = chart.Series[0].Points.Count;
             Console.WriteLine(pointsCount);
@@ -43,7 +43,7 @@ namespace CanSatGUI
 
         public static void UpdatePressureChart(Chart chart, double pressure, double secondsElapsed)
         {
-            int MaxChartWidth = 7;
+            int MaxChartWidth = 10;
 
 
             int pointsCount = chart.Series[0].Points.Count;
@@ -59,5 +59,39 @@ namespace CanSatGUI
             chart.Update();
         }
 
+
+        public static void UpdateAltitudeChart(Chart chart, double Altitude, double secondsElapsed)
+        {
+            int MaxChartWidth = 10;
+
+
+            int pointsCount = chart.Series[0].Points.Count;
+            Console.WriteLine(pointsCount);
+            if (pointsCount >= MaxChartWidth)
+            {
+
+                chart.Series[0].Points.RemoveAt(0);
+                chart.ResetAutoValues();
+            }
+
+            chart.Series[0].Points.AddXY(secondsElapsed, Altitude);
+            chart.Update();
+        }
+
+        public static void UpdateHallChart(Chart chart, double Hall, double secondsElapsed)
+        {
+            int MaxChartWidth = 10;
+
+            int pointsCount = chart.Series[0].Points.Count;
+            Console.WriteLine(pointsCount);
+            if (pointsCount >= MaxChartWidth)
+            {
+                chart.Series[0].Points.RemoveAt(0);
+                chart.ResetAutoValues();
+            }
+
+            chart.Series[0].Points.AddXY(secondsElapsed, Hall);
+            chart.Update();
+        }
     }
 }

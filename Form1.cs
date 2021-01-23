@@ -93,7 +93,7 @@ namespace CanSatGUI
             coursetxt.Text = packetElems[17];
             timetxt.Text = packetElems[18];
             halltxt.Text = packetElems[19];
-            DataStream.Text = "...";
+            
 
             double time = Convert.ToInt32(timer.Elapsed.TotalSeconds);
 
@@ -102,6 +102,12 @@ namespace CanSatGUI
 
             double pressure = Convert.ToDouble(packetElems[2]);
             Upd.UpdatePressureChart(chart2, pressure, time);
+
+            double Altitude = Convert.ToDouble(packetElems[15]);
+            Upd.UpdateAltitudeChart(chart4, Altitude, time);
+
+            double Hall = Convert.ToDouble(packetElems[19]);
+            Upd.UpdateHallChart(chart3, Hall, time);
 
             double latitude = Convert.ToDouble(packetElems[5]);
             double longtitude = Convert.ToDouble(packetElems[6]);
@@ -184,10 +190,30 @@ namespace CanSatGUI
 
         private void DataStream_TextChanged(object sender, EventArgs e)
         {
-
+            DataStream.ScrollToCaret();
         }
 
         private void progressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chart3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chart4_Click(object sender, EventArgs e)
         {
 
         }
