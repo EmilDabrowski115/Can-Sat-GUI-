@@ -1,1 +1,11 @@
-﻿
+﻿Utils:
+
+public static String GetTimestamp(DateTime value)
+        {
+            return value.ToString("yyyyMMddHHmmssfff");
+        }
+
+
+// file writer
+            string date_time = Utils.GetTimestamp(DateTime.Now);
+            writer = new StreamWriter("output" + date_time + ".log");

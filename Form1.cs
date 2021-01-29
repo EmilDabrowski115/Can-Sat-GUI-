@@ -12,6 +12,7 @@ using System.IO.Ports;
 // using GMap.NET.WindowsForms; // GMapControl
 using SocketIOClient;
 using Newtonsoft.Json;
+using System.IO;
 
 
 
@@ -29,6 +30,7 @@ namespace CanSatGUI
         Stopwatch timer = new Stopwatch();
         string rxString;
         string ComPort;
+        StreamWriter writer;
 
         
 
@@ -46,12 +48,19 @@ namespace CanSatGUI
 
             // init timer
             timer.Start();
+
+            string date_time = Utils.GetTimestamp(DateTime.Now);
+            writer = new StreamWriter("output" + date_time + ".log");
         }
         
         // poczatek czesci wykonawczej serial port txt box v1.0
         private void myPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             rxString = SerialPort1.ReadLine();
+
+            writer.Write(rxString);
+            writer.Flush();
+
             Console.WriteLine(rxString);
             this.Invoke(new EventHandler(UpdateWidgets));
             //try

@@ -50,6 +50,11 @@ namespace CanSatGUI
             double radius = 0.018; // in meters
             return Math.PI * radius * hall;
         }
+
+        public static String GetTimestamp(DateTime value)
+        {
+            return value.ToString("yyyyMMddHHmmssfff");
+        }
     }
 }
 
