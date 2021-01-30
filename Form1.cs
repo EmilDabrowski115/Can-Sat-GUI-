@@ -2,9 +2,9 @@
 using System.Windows.Forms;
 // using GMap.NET;
 // using GMap.NET.MapProviders;
-//using SharpGL;
-//using SharpGL.WinForms;
-//using SharpGL.SceneGraph;
+using SharpGL;
+using SharpGL.WinForms;
+using SharpGL.SceneGraph;
 using System.Diagnostics;
 using System.Threading;
 using System.IO.Ports;
@@ -13,6 +13,7 @@ using System.IO.Ports;
 using SocketIOClient;
 using Newtonsoft.Json;
 using System.IO;
+using Assimp;
 
 
 
@@ -51,8 +52,13 @@ namespace CanSatGUI
 
             string date_time = Utils.GetTimestamp(DateTime.Now);
             writer = new StreamWriter("output" + date_time + ".log");
+
+            Assimp.Scene cansatModel = assimp_load_obj();
+            Console.Write("asdf");
+
+
         }
-        
+
         // poczatek czesci wykonawczej serial port txt box v1.0
         private void myPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
@@ -158,7 +164,66 @@ namespace CanSatGUI
 
         private void openGLControl1_Load(object sender, EventArgs e)
         {
+            OpenGL gl = openGLControl1.OpenGL;
 
+            string vertexshadersource= File.ReadAllText("shader.vs");
+            string fragmentshadersource= File.ReadAllText("shader.fs");
+
+            // load vertex shader
+            var vertexShader = gl.CreateShader(OpenGL.GL_VERTEX_SHADER);
+            gl.ShaderSource(vertexShader, vertexshadersource);
+            gl.CompileShader(vertexShader);
+
+            // load fragment shader
+            
+            var fragmentShader = gl.CreateShader(OpenGL.GL_FRAGMENT_SHADER);
+            gl.ShaderSource(fragmentShader,fragmentshadersource );
+            gl.CompileShader(fragmentShader);
+
+            // compile shaders
+            var shaderProgram = gl.CreateProgram();
+            gl.AttachShader(shaderProgram, vertexShader);
+            gl.AttachShader(shaderProgram, fragmentShader);
+
+            // link shaders
+            gl.LinkProgram(shaderProgram);
+            gl.DetachShader(shaderProgram, vertexShader);
+            gl.DetachShader(shaderProgram, fragmentShader);
+            gl.DeleteShader(vertexShader);
+            gl.DeleteShader(fragmentShader);
+
+            // triangle vertices
+            float[] vertices = {-0.5f, -0.5f, 1.0f , 0.5f, -0.5f, 1.0f , 0.0f, 0.5f, 1.0f };
+
+
+            // create VAO
+            uint[] VAO = { }; // vertex array object
+            uint[] VBO = { }; // vertex buffer object
+            gl.GenVertexArrays(1, VAO);
+            gl.GenBuffers(1, VBO);
+
+            // use this for object context (VAO) so we can configure it
+            gl.BindVertexArray(VAO[0]);
+
+            // bind buffer and static vertices data to current VAO
+           
+            gl.BindBuffer(OpenGL.GL_ARRAY_BUFFER, VBO[0]);
+
+            
+            unsafe
+            {
+                gl.BufferData(OpenGL.GL_ARRAY_BUFFER, 9*sizeof(float), vertices, OpenGL.GL_STATIC_DRAW);
+            }
+            
+
+            // IntPtr vertices_int_ptr = new IntPtr(vertices);
+            // linking vertex attributes to current VAO
+            gl.VertexAttribPointer(0, 3, OpenGL.GL_FLOAT, false, 3 * sizeof(float), IntPtr.Zero);
+            gl.EnableVertexAttribArray(0);
+
+            // now we can unbind vbo
+            gl.BindBuffer(OpenGL.GL_ARRAY_BUFFER, 0);
+            gl.BindVertexArray(0);
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -240,6 +305,16 @@ namespace CanSatGUI
         {
 
         }
+
+        private Assimp.Scene assimp_load_obj()
+        {
+            Assimp.Scene model;
+            Assimp.AssimpContext importer = new Assimp.AssimpContext();
+            // importer.SetConfig(new Assimp.Configs.NormalSmoothingAngleConfig(66.0f));
+            model = importer.ImportFile("cansat_bezspadochronu.obj"); // , Assimp.PostProcessPreset.TargetRealTimeMaximumQuality
+            return model;
+        }
+        
     }
 }
 
