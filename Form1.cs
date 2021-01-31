@@ -34,8 +34,10 @@ namespace CanSatGUI
         string rxString;
         //string ComPort;
         StreamWriter writer;
+        int VERTICES_LENGTH;
 
-        
+
+
 
 
         public Form1()  //definiowanie ustawienia oraz port szeregowy
@@ -56,9 +58,6 @@ namespace CanSatGUI
             string date_time = Utils.GetTimestamp(DateTime.Now);
             System.IO.Directory.CreateDirectory("output");
             writer = new StreamWriter("output/output" + date_time + ".log");
-
-            // setup OpenGL
-            Assimp.Scene cansatModel = assimp_load_obj();
         }
 
         // poczatek czesci wykonawczej serial port txt box v1.0
@@ -147,7 +146,7 @@ namespace CanSatGUI
             // catch (SocketIOClient.Exceptions.InvalidSocketStateException) { }
 
             // opengl
-            Upd.UpdateOpenGLControl(openGLControl1);
+            Upd.UpdateOpenGLControl(openGLControl1, VERTICES_LENGTH / 3);
         }
 
         private void psrtxt_TextChanged(object sender, EventArgs e)
@@ -209,15 +208,36 @@ namespace CanSatGUI
             // bind buffer and static vertices data to current VAO
             gl.BindBuffer(OpenGL.GL_ARRAY_BUFFER, VBO[0]);
 
+            // setup OpenGL
+            Assimp.Scene cansatModel = assimp_load_obj();
+
             // triangle vertices
-            int VERTICES_LENGTH = 9;
+            for (int j = 0; j < cansatModel.MeshCount; j++)
+            {
+                VERTICES_LENGTH += 3 * cansatModel.Meshes[j].VertexCount;
+            }
+            float[] vertices = new float[VERTICES_LENGTH];
+            int i = 0;
+            for (int m = 0; m < cansatModel.MeshCount; m++)
+            {
+                foreach (Assimp.Vector3D vertice in cansatModel.Meshes[m].Vertices)
+                {
+                    vertices[i] = vertice[0] / 3.0f;
+                    i++;
+                    vertices[i] = vertice[1] / 3.0f;
+                    i++;
+                    vertices[i] = vertice[2] / 3.0f;
+                    i++;
+                }
+            }
+            
             IntPtr verticesPtr = Marshal.AllocHGlobal(VERTICES_LENGTH * sizeof(float));
-            float[] vertices = { -0.5f, -0.5f, 1.0f, 0.5f, -0.5f, 1.0f, 0.0f, 0.5f, 1.0f };
+            //float[] vertices = { -0.5f, -0.5f, 1.0f, 0.5f, -0.5f, 1.0f, 0.0f, 0.5f, 1.0f };
             Marshal.Copy(vertices, 0, verticesPtr, VERTICES_LENGTH);
 
             // bind vetices data to current VAO
             //IntPtr verticesPtr = Utils.IntPtrFromFloatArray(vertices, VERTICES_SIZE);
-            gl.BufferData(OpenGL.GL_ARRAY_BUFFER, 9*sizeof(float), verticesPtr, OpenGL.GL_STATIC_DRAW);
+            gl.BufferData(OpenGL.GL_ARRAY_BUFFER, VERTICES_LENGTH*sizeof(float), verticesPtr, OpenGL.GL_STATIC_DRAW);
             Marshal.FreeHGlobal(verticesPtr);
 
             // linking vertex attributes to current VAO

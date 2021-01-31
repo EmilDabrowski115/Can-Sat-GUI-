@@ -40,7 +40,7 @@ namespace CanSatGUI
             chart.Update();
         }
 
-        public static void UpdateOpenGLControl(OpenGLControl control)
+        public static void UpdateOpenGLControl(OpenGLControl control, int triangleCount)
         {
             OpenGL gl = control.OpenGL;
             //processInput(window);
@@ -74,7 +74,8 @@ namespace CanSatGUI
 
 
             // draw triangles
-            gl.DrawArrays(OpenGL.GL_TRIANGLES, 0, 3);
+            gl.DrawArrays(OpenGL.GL_TRIANGLES, 0, triangleCount);
+            control.Refresh();
 
             // swap buffers
         }

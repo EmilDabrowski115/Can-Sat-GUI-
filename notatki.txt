@@ -1,26 +1,24 @@
-﻿char *fileToString(const char *filename)
-{
-    FILE *f = fopen(filename, "r");
-    if (f == NULL) {
-        printf("errno: %d, couldn't load file: %s\n", errno, filename);
-        exit(-1);
-    }
-    fseek(f, 0, SEEK_END);
-    long fsize = ftell(f);
-    fseek(f, 0, SEEK_SET);
+﻿for mesh in cansatModel.Meshes:
+	mesh.Faces
 
-    char *string = malloc(fsize + 1);
-    fread(string, 1, fsize, f);
-    fclose(f);
 
-    string[fsize] = 0;
-    
-        string readText = File.ReadAllText(shaders.fv);      
-        string readText = File.ReadAllText(shaders.vs); 
-
-        Console.WriteLine(readText);
-
-    return string;
-}
-
+cansatModel.Meshes[12].Faces[476].Indices[3]
+m = 12
+c = cansatModel.Meshes[m].Vertices[i].VertexCount
+cansatModel.Meshes[m].Vertices[i]
  
+Assimp.Vector3D - Vertices[]
+
+
+cansatModel.Meshes[m].Vertices[i]
+System.Collections.Generic.List<Assimp.Vector3D>
+
+
+int m = 12
+count = cansatModel.Meshes[m].Vertices[i].VertexCount
+float[] vertices = {}
+foreach( Assimp.Vector3D vertice in cansatModel.Meshes[m].Vertices )
+        {
+            vertice[0]
+            Console.WriteLine();
+        }

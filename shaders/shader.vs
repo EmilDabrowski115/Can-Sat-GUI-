@@ -10,6 +10,6 @@ void main()
 {
    //gl_Position = projection * view * model * vec4(aPos, 1.0f);
    gl_Position = vec4(aPos, 1.0f);
-   //color = vec4(inColor, 1.0);
-   color = vec4(aPos, 1.0);
+   color = vec4(0.5, 0.5, 0.5 , 1.0);
+   //color = vec4(aPos, 1.0);
 }
