@@ -106,7 +106,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="cansat.obj" />
+    <None Include="Assets\cansat.obj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Assets\cansat_bezspadochronu.obj">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
