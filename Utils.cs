@@ -1,6 +1,7 @@
 ﻿using System.IO.Ports;
 using System.Text.RegularExpressions;
 using System;
+using System.Runtime.InteropServices;
 
 namespace CanSatGUI
 {
@@ -55,6 +56,13 @@ namespace CanSatGUI
         {
             return value.ToString("yyyyMMddHHmmssfff");
         }
+
+/*        public unsafe static IntPtr IntPtrFromFloatArray(float [] f, int size)
+        {
+            IntPtr ptr = Marshal.AllocHGlobal(size);
+            Marshal.StructureToPtr(f, ptr, true);
+            return ptr;
+        }*/
     }
 }
 

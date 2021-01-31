@@ -14,6 +14,8 @@ using SocketIOClient;
 using Newtonsoft.Json;
 using System.IO;
 using Assimp;
+using System.Runtime.InteropServices;
+using System.Globalization;
 
 
 
@@ -30,7 +32,7 @@ namespace CanSatGUI
 
         Stopwatch timer = new Stopwatch();
         string rxString;
-        string ComPort;
+        //string ComPort;
         StreamWriter writer;
 
         
@@ -38,11 +40,11 @@ namespace CanSatGUI
 
         public Form1()  //definiowanie ustawienia oraz port szeregowy
         {
-
-             
+            if (Debugger.IsAttached)
+                CultureInfo.DefaultThreadCurrentUICulture = CultureInfo.GetCultureInfo("en-US");
 
             // sets double conversion separator to '.'
-            Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+            Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
 
             // init window
             InitializeComponent();
@@ -50,13 +52,13 @@ namespace CanSatGUI
             // init timer
             timer.Start();
 
+            // setup output file
             string date_time = Utils.GetTimestamp(DateTime.Now);
-            writer = new StreamWriter("output" + date_time + ".log");
+            System.IO.Directory.CreateDirectory("output");
+            writer = new StreamWriter("output/output" + date_time + ".log");
 
+            // setup OpenGL
             Assimp.Scene cansatModel = assimp_load_obj();
-            Console.Write("asdf");
-
-
         }
 
         // poczatek czesci wykonawczej serial port txt box v1.0
@@ -67,18 +69,14 @@ namespace CanSatGUI
             writer.Write(rxString);
             writer.Flush();
 
-            Console.WriteLine(rxString);
-            this.Invoke(new EventHandler(UpdateWidgets));
-            //try
-           // {
-            //    this.Invoke(new EventHandler(UpdateWidgets));
-           // }
-           // catch ()
-           // {
-           // }
+            //Console.WriteLine(rxString);
+            try
+            {
+                this.Invoke(new EventHandler(UpdateWidgets));
+            }
+            catch (System.IndexOutOfRangeException)
+            { }
         }
-
-        
 
         //private void UpdateWidgets(object sender, EventArgs e)
         private async void UpdateWidgets(object sender, EventArgs e)
@@ -87,8 +85,14 @@ namespace CanSatGUI
             // RSSI; framenr; xaccel; yaccel; zaccel; xtilt; ytilt; ztilt; xmag; ymag; zmag; pressure; temp; lat; long; alt; speed; course; h:m:s:ms; hall
             DataStream.AppendText(rxString);
             string[] packetElems = Utils.ParsePacket(rxString);
-            if (packetElems == null)
+            double time = Convert.ToInt32(timer.Elapsed.TotalSeconds);
+
+            if (packetElems == null || packetElems.Length != 20)
+            {
+                Console.WriteLine("Skipped corrupted packet");
                 return;
+            }
+
             rssitxt.Text = packetElems[0];
             framenrtxt.Text = packetElems[1];
             xacceltxt.Text = packetElems[2];
@@ -109,42 +113,41 @@ namespace CanSatGUI
             coursetxt.Text = packetElems[17];
             timetxt.Text = packetElems[18];
             halltxt.Text = packetElems[19];
-            
-
-            double time = Convert.ToInt32(timer.Elapsed.TotalSeconds);
 
             double temperature = Convert.ToDouble(packetElems[3]);
-            Upd.UpdateTemperatureChart(chart1, temperature, time);
+            Upd.UpdateChart(chart1, temperature, time);
 
             double pressure = Convert.ToDouble(packetElems[2]);
-            Upd.UpdatePressureChart(chart2, pressure, time);
+            Upd.UpdateChart(chart2, pressure, time);
 
             double Hall = Convert.ToDouble(packetElems[19]);
             double windSpeed = Utils.WindSpeed(Hall);
-            Upd.UpdateHallChart(chart3, windSpeed, time);
+            Upd.UpdateChart(chart3, windSpeed, time);
 
             double Altitude = Convert.ToDouble(packetElems[15]);
-            Upd.UpdateAltitudeChart(chart4, Altitude, time);
+            Upd.UpdateChart(chart4, Altitude, time);
 
             double signal = Convert.ToDouble(packetElems[0]);
-            Upd.UpdateSpeedChart(chart5, signal, time);
+            Upd.UpdateChart(chart5, signal, time);
 
             double speed = Convert.ToDouble(packetElems[16]);
-            Upd.UpdateSpeedChart(chart6, speed, time);
+            Upd.UpdateChart(chart6, speed, time);
             
             double latitude = Convert.ToDouble(packetElems[5]);
             double longtitude = Convert.ToDouble(packetElems[6]);
             Upd.UpdateMap(map, latitude, longtitude);
 
+            // socketio
             string json = JsonConvert.SerializeObject(new { psrtxt = psrtxt.Text, tmptxt = temptxt.Text, txtLat = lattxt.Text, txtLong = longtxt.Text, hghttext = alttxt.Text });
             try
             {
-                await client.EmitAsync("data", json);
+                _ = client.EmitAsync("data", json);
             }
-            catch (SocketIOClient.Exceptions.InvalidSocketStateException)
-            {
+            catch { }
+            // catch (SocketIOClient.Exceptions.InvalidSocketStateException) { }
 
-            }
+            // opengl
+            Upd.UpdateOpenGLControl(openGLControl1);
         }
 
         private void psrtxt_TextChanged(object sender, EventArgs e)
@@ -165,9 +168,12 @@ namespace CanSatGUI
         private void openGLControl1_Load(object sender, EventArgs e)
         {
             OpenGL gl = openGLControl1.OpenGL;
+            // OpenGL.IsExtensionFunctionSupported("glGenVertexArrays");
+            string glVersion = gl.GetString(OpenGL.GL_VERSION);
+            Console.WriteLine(glVersion);
 
-            string vertexshadersource= File.ReadAllText("shader.vs");
-            string fragmentshadersource= File.ReadAllText("shader.fs");
+            string vertexshadersource = File.ReadAllText("Shaders/shader.vs");
+            string fragmentshadersource = File.ReadAllText("Shaders/shader.fs");
 
             // load vertex shader
             var vertexShader = gl.CreateShader(OpenGL.GL_VERTEX_SHADER);
@@ -175,7 +181,6 @@ namespace CanSatGUI
             gl.CompileShader(vertexShader);
 
             // load fragment shader
-            
             var fragmentShader = gl.CreateShader(OpenGL.GL_FRAGMENT_SHADER);
             gl.ShaderSource(fragmentShader,fragmentshadersource );
             gl.CompileShader(fragmentShader);
@@ -192,13 +197,9 @@ namespace CanSatGUI
             gl.DeleteShader(vertexShader);
             gl.DeleteShader(fragmentShader);
 
-            // triangle vertices
-            float[] vertices = {-0.5f, -0.5f, 1.0f , 0.5f, -0.5f, 1.0f , 0.0f, 0.5f, 1.0f };
-
-
             // create VAO
-            uint[] VAO = { }; // vertex array object
-            uint[] VBO = { }; // vertex buffer object
+            uint[] VAO = new uint[1]; // vertex array object
+            uint[] VBO = new uint[1]; // vertex buffer object
             gl.GenVertexArrays(1, VAO);
             gl.GenBuffers(1, VBO);
 
@@ -206,25 +207,33 @@ namespace CanSatGUI
             gl.BindVertexArray(VAO[0]);
 
             // bind buffer and static vertices data to current VAO
-           
             gl.BindBuffer(OpenGL.GL_ARRAY_BUFFER, VBO[0]);
 
-            
-            unsafe
-            {
-                gl.BufferData(OpenGL.GL_ARRAY_BUFFER, 9*sizeof(float), vertices, OpenGL.GL_STATIC_DRAW);
-            }
-            
+            // triangle vertices
+            int VERTICES_LENGTH = 9;
+            IntPtr verticesPtr = Marshal.AllocHGlobal(VERTICES_LENGTH * sizeof(float));
+            float[] vertices = { -0.5f, -0.5f, 1.0f, 0.5f, -0.5f, 1.0f, 0.0f, 0.5f, 1.0f };
+            Marshal.Copy(vertices, 0, verticesPtr, VERTICES_LENGTH);
 
-            // IntPtr vertices_int_ptr = new IntPtr(vertices);
+            // bind vetices data to current VAO
+            //IntPtr verticesPtr = Utils.IntPtrFromFloatArray(vertices, VERTICES_SIZE);
+            gl.BufferData(OpenGL.GL_ARRAY_BUFFER, 9*sizeof(float), verticesPtr, OpenGL.GL_STATIC_DRAW);
+            Marshal.FreeHGlobal(verticesPtr);
+
             // linking vertex attributes to current VAO
             gl.VertexAttribPointer(0, 3, OpenGL.GL_FLOAT, false, 3 * sizeof(float), IntPtr.Zero);
             gl.EnableVertexAttribArray(0);
 
-            // now we can unbind vbo
+            // now we can unbind VBO
             gl.BindBuffer(OpenGL.GL_ARRAY_BUFFER, 0);
             gl.BindVertexArray(0);
+
+            gl.Enable(OpenGL.GL_DEPTH_TEST);
+            gl.UseProgram(shaderProgram);
+            gl.BindVertexArray(VAO[0]);
+
         }
+
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -253,7 +262,7 @@ namespace CanSatGUI
             string Dropdown;
             
             Dropdown = ComboBox1.GetItemText(ComboBox1.SelectedItem);
-            Console.WriteLine(Dropdown);
+            //Console.WriteLine(Dropdown);
 
             // init COM
             SerialPort1 = Utils.InitSerialPort(Dropdown);     
@@ -311,7 +320,7 @@ namespace CanSatGUI
             Assimp.Scene model;
             Assimp.AssimpContext importer = new Assimp.AssimpContext();
             // importer.SetConfig(new Assimp.Configs.NormalSmoothingAngleConfig(66.0f));
-            model = importer.ImportFile("cansat_bezspadochronu.obj"); // , Assimp.PostProcessPreset.TargetRealTimeMaximumQuality
+            model = importer.ImportFile("Assets/cansat_bezspadochronu.obj"); // , Assimp.PostProcessPreset.TargetRealTimeMaximumQuality
             return model;
         }
         
