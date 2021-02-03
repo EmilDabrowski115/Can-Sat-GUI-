@@ -16,6 +16,7 @@ using System.IO;
 using Assimp;
 using System.Runtime.InteropServices;
 using System.Globalization;
+using System.Drawing;
 
 
 
@@ -113,11 +114,17 @@ namespace CanSatGUI
             timetxt.Text = packetElems[18];
             halltxt.Text = packetElems[19];
 
+            double course = (Convert.ToDouble(packetElems[17]));
+            pictureBox1.Image = Compass.DrawCompass(course/100 , 0, 80, 0, 80, pictureBox1.Size);
+
             double temperature = Convert.ToDouble(packetElems[3]);
             Upd.UpdateChart(chart1, temperature, time);
 
             double pressure = Convert.ToDouble(packetElems[2]);
             Upd.UpdateChart(chart2, pressure, time);
+
+           // double course = (Convert.ToDouble(packetElems[17])/100);
+            //Upd.UpdateChart(chart7, course, time);
 
             double Hall = Convert.ToDouble(packetElems[19]);
             double windSpeed = Utils.WindSpeed(Hall);
@@ -135,6 +142,8 @@ namespace CanSatGUI
             double latitude = Convert.ToDouble(packetElems[5]);
             double longtitude = Convert.ToDouble(packetElems[6]);
             Upd.UpdateMap(map, latitude, longtitude);
+
+           
 
             // socketio
             string json = JsonConvert.SerializeObject(new { psrtxt = psrtxt.Text, tmptxt = temptxt.Text, txtLat = lattxt.Text, txtLong = longtxt.Text, hghttext = alttxt.Text });
@@ -343,7 +352,15 @@ namespace CanSatGUI
             model = importer.ImportFile("Assets/cansat_bezspadochronu.obj"); // , Assimp.PostProcessPreset.TargetRealTimeMaximumQuality
             return model;
         }
-        
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            
+
+        }
+
+
+       
     }
 }
 

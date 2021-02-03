@@ -38,6 +38,8 @@ namespace CanSatGUI
             }
             chart.Series[0].Points.AddXY(x, y);
             chart.Update();
+
+            
         }
 
         public static void UpdateOpenGLControl(OpenGLControl control, int triangleCount)
@@ -78,7 +80,23 @@ namespace CanSatGUI
             control.Refresh();
 
             // swap buffers
-        }
 
+
+            
+        }
+       /* public static void Updatewinddirection(Chart chart, double y, double x)
+        {
+            int MaxChartWidth = 50;
+
+            int pointsCount = chart.Series[0].Points.Count;
+            if (pointsCount >= MaxChartWidth)
+            {
+                chart.Series[0].Points.RemoveAt(0);
+                chart.ResetAutoValues();
+            }
+            chart.Series[0].Points.AddXY(x, y);
+            chart.Update();
+        }
+       */
     }
 }
