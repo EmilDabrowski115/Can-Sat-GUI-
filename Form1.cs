@@ -139,9 +139,12 @@ namespace CanSatGUI
             double speed = Convert.ToDouble(packetElems[16]);
             Upd.UpdateChart(chart6, speed, time);
             
-            double latitude = Convert.ToDouble(packetElems[5]);
-            double longtitude = Convert.ToDouble(packetElems[6]);
-            Upd.UpdateMap(map, latitude, longtitude);
+            double latitude = Convert.ToDouble(packetElems[13]);
+            double Longitude = Convert.ToDouble(packetElems[14]);
+            // double altitude, double fallingSpeed, double windSpeed, int course
+
+            double fallingSpeed = 9; ///////////
+            Upd.UpdateMap(map, latitude, Longitude, Altitude, fallingSpeed, speed, (int)course);
 
            
 

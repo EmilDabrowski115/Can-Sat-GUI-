@@ -10,20 +10,38 @@ using GMap.NET;
 using System.Windows.Forms.DataVisualization.Charting; // Chart
 using GMap.NET.WindowsForms; // GMapControl
 using SharpGL;
+using GMap.NET.WindowsForms.Markers;
+
 
 namespace CanSatGUI
 {
     class Upd
     {
-        public static void UpdateMap(GMapControl map, double latitude, double longtitude)
+        static GMarkerGoogle landingMarker = new GMarkerGoogle(new PointLatLng(0, 0), GMarkerGoogleType.green);
+
+        public static void UpdateMap(GMapControl map, double latitude, double Longitude, double altitude, double fallingSpeed, double windSpeed, int course)
         {
             GMapProviders.GoogleMap.ApiKey = @"AIzaSyAZouhXULQgPGPckADOmiHqfCc_YvD5QzQ";
             map.DragButton = MouseButtons.Left;
             map.MapProvider = GMapProviders.GoogleMap;
-            map.Position = new PointLatLng(latitude, longtitude);
+            map.Position = new PointLatLng(latitude, Longitude);
             map.MinZoom = 0;
             map.MaxZoom = 25;
-            map.Zoom = 10;
+            map.Zoom = 20;
+            GMapOverlay markersOverlay = new GMapOverlay("markers");
+            GMarkerGoogle marker = new GMarkerGoogle(new PointLatLng(latitude, Longitude), GMarkerGoogleType.green);
+            markersOverlay.Markers.Add(marker);
+
+            //double currentLatitude, double currentLongitude, double altitude, double fallingSpeed, double windSpeed, double course
+            PointLatLng landingLocation = CalculateLandingLocation(latitude, Longitude, altitude, fallingSpeed, windSpeed, course);
+            markersOverlay.Markers.Remove(landingMarker);
+            landingMarker = new GMarkerGoogle(landingLocation, GMarkerGoogleType.red);
+            markersOverlay.Markers.Add(landingMarker);
+
+            map.Overlays.Add(markersOverlay);
+
+            //GMapOverlay markersOverlay = new GMapOverlay("markers");
+            //GMarkerGoogleType.red);
         }
 
         public static void UpdateChart(Chart chart, double y, double x)
@@ -84,19 +102,42 @@ namespace CanSatGUI
 
             
         }
-       /* public static void Updatewinddirection(Chart chart, double y, double x)
-        {
-            int MaxChartWidth = 50;
+        /* public static void Updatewinddirection(Chart chart, double y, double x)
+         {
+             int MaxChartWidth = 50;
 
-            int pointsCount = chart.Series[0].Points.Count;
-            if (pointsCount >= MaxChartWidth)
-            {
-                chart.Series[0].Points.RemoveAt(0);
-                chart.ResetAutoValues();
-            }
-            chart.Series[0].Points.AddXY(x, y);
-            chart.Update();
+             int pointsCount = chart.Series[0].Points.Count;
+             if (pointsCount >= MaxChartWidth)
+             {
+                 chart.Series[0].Points.RemoveAt(0);
+                 chart.ResetAutoValues();
+             }
+             chart.Series[0].Points.AddXY(x, y);
+             chart.Update();
+         }
+        */
+        public static double ConvertToRadians(double angle)
+        {
+            return Math.PI / 180 * angle;
         }
-       */
+
+        public static PointLatLng CalculateLandingLocation(double currentLatitude, double currentLongitude, double altitude, double fallingSpeed, double windSpeed, int course)
+        {
+            int time = Convert.ToInt32(altitude / fallingSpeed);
+            double distance = time * windSpeed;
+            double angle = course / 100;
+            double valLong = Math.Sin(ConvertToRadians(angle)) * distance / 0.111 / 1000000;
+            double valLat = Math.Cos(ConvertToRadians(angle)) * distance / 0.111 / 1000000;
+            double ZoneLat = currentLatitude + valLat;
+            double ZoneLong = currentLongitude + valLong;
+
+            return new PointLatLng(ZoneLat, ZoneLong);
+        }
     }
 }
+
+
+
+
+
+
