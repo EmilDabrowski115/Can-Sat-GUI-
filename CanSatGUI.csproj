@@ -110,6 +110,9 @@
     <None Include="Assets\cansat.obj">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="Assets\cansat_3face.obj">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Assets\cansat_bezspadochronu.obj">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

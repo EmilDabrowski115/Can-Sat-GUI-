@@ -21,14 +21,7 @@ namespace CanSatGUI
 
         public static void UpdateMap(GMapControl map, double latitude, double Longitude, double altitude, double fallingSpeed, double windSpeed, int course)
         {
-            GMapProviders.GoogleMap.ApiKey = @"AIzaSyAZouhXULQgPGPckADOmiHqfCc_YvD5QzQ";
-            map.DragButton = MouseButtons.Left;
-            map.MapProvider = GMapProviders.GoogleMap;
-            map.Position = new PointLatLng(latitude, Longitude);
-            map.MinZoom = 0;
-            map.MaxZoom = 25;
-            map.Zoom = 20;
-            GMapOverlay markersOverlay = new GMapOverlay("markers");
+            GMapOverlay markersOverlay = map.Overlays[0];
             GMarkerGoogle marker = new GMarkerGoogle(new PointLatLng(latitude, Longitude), GMarkerGoogleType.green);
             markersOverlay.Markers.Add(marker);
 
@@ -38,7 +31,6 @@ namespace CanSatGUI
             landingMarker = new GMarkerGoogle(landingLocation, GMarkerGoogleType.red);
             markersOverlay.Markers.Add(landingMarker);
 
-            map.Overlays.Add(markersOverlay);
 
             //GMapOverlay markersOverlay = new GMapOverlay("markers");
             //GMarkerGoogleType.red);
@@ -126,7 +118,7 @@ namespace CanSatGUI
             int time = Convert.ToInt32(altitude / fallingSpeed);
             double distance = time * windSpeed;
             double angle = course / 100;
-            double valLong = Math.Sin(ConvertToRadians(angle)) * distance / 0.111 / 1000000;
+            double valLong = -Math.Sin(ConvertToRadians(angle)) * distance / 0.111 / 1000000;
             double valLat = Math.Cos(ConvertToRadians(angle)) * distance / 0.111 / 1000000;
             double ZoneLat = currentLatitude + valLat;
             double ZoneLong = currentLongitude + valLong;

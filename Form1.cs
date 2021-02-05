@@ -17,6 +17,10 @@ using Assimp;
 using System.Runtime.InteropServices;
 using System.Globalization;
 using System.Drawing;
+using GMap.NET.WindowsForms.Markers;
+using GMap.NET.WindowsForms;
+using GMap.NET.MapProviders;
+using GMap.NET;
 
 
 
@@ -36,10 +40,6 @@ namespace CanSatGUI
         //string ComPort;
         StreamWriter writer;
         int VERTICES_LENGTH;
-
-
-
-
 
         public Form1()  //definiowanie ustawienia oraz port szeregowy
         {
@@ -173,6 +173,17 @@ namespace CanSatGUI
 
         private void map_Load(object sender, EventArgs e)
         {
+            GMapProviders.GoogleMap.ApiKey = @"AIzaSyAZouhXULQgPGPckADOmiHqfCc_YvD5QzQ";
+            map.DragButton = MouseButtons.Left;
+            map.MapProvider = GMapProviders.GoogleMap;
+            map.Position = new PointLatLng(0, 0);
+            map.MinZoom = 0;
+            map.MaxZoom = 25;
+            map.Zoom = 5;
+
+            GMapOverlay markersOverlay = new GMapOverlay("markers");
+            map.Overlays.Add(markersOverlay);
+
 
         }
 
@@ -352,7 +363,8 @@ namespace CanSatGUI
             Assimp.Scene model;
             Assimp.AssimpContext importer = new Assimp.AssimpContext();
             // importer.SetConfig(new Assimp.Configs.NormalSmoothingAngleConfig(66.0f));
-            model = importer.ImportFile("Assets/cansat_bezspadochronu.obj"); // , Assimp.PostProcessPreset.TargetRealTimeMaximumQuality
+            //model = importer.ImportFile("Assets/cansat_bezspadochronu.obj"); // , Assimp.PostProcessPreset.TargetRealTimeMaximumQuality
+            model = importer.ImportFile("Assets/cansat_3face.obj"); // , Assimp.PostProcessPreset.TargetRealTimeMaximumQuality
             return model;
         }
 
