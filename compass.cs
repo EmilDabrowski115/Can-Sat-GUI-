@@ -40,9 +40,9 @@ namespace CanSatGUI
                 {
                     using (Font font1 = new Font("Arial", (float)(14 * sizeMultiplier)))
                     {
-                        using (Pen penblue = new Pen(Color.FromArgb(100, 0, 250, 255), ((int)(sizeMultiplier) < 4 ? 4 : (int)(sizeMultiplier))))
+                        using (Pen penblue = new Pen(Color.FromArgb(100, 100, 190, 200), ((int)(sizeMultiplier) < 4 ? 4 : (int)(sizeMultiplier))))
                         {
-                            using (Pen penorange = new Pen(Color.FromArgb(255, 150, 0), ((int)(sizeMultiplier) < 1 ? 1 : (int)(sizeMultiplier))))
+                            using (Pen penorange = new Pen(Color.FromArgb(255, 240, 100, 80), ((int)(sizeMultiplier) < 1 ? 1 : (int)(sizeMultiplier))))
                             {
                                 using (Pen penred = new Pen(Color.FromArgb(255, 0, 0), ((int)(sizeMultiplier) < 1 ? 1 : (int)(sizeMultiplier))))
                                 {

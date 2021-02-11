@@ -11,6 +11,20 @@ using System.Windows.Forms.DataVisualization.Charting; // Chart
 using GMap.NET.WindowsForms; // GMapControl
 using SharpGL;
 using GMap.NET.WindowsForms.Markers;
+using ILNumerics;
+using ILNumerics.Drawing;
+using static ILNumerics.ILMath;
+using ILNumerics.Drawing.Plotting;
+using GlmSharp;
+using ILNumerics.Toolboxes;
+using ILNEditor;
+using System.Windows;
+using System.Windows.Data;
+using System.Windows.Input;
+using System.Windows.Media;
+
+
+
 
 
 namespace CanSatGUI
@@ -52,7 +66,7 @@ namespace CanSatGUI
             
         }
 
-        public static void UpdateOpenGLControl(OpenGLControl control, int triangleCount)
+        public static void UpdateOpenGLControl(OpenGLControl control, uint shaderProgram, int triangleCount)
         {
             OpenGL gl = control.OpenGL;
             //processInput(window);
@@ -61,14 +75,16 @@ namespace CanSatGUI
             gl.ClearColor(11/255f, 18/255f, 34/255f, 1.0f);
             gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
 
-            /*// model
-            mat4 model = GLM_MAT4_IDENTITY_INIT;
-            float rads = glm_rad(-55.0f);
-            vec3 axis = { 1.0f, 0.0f, 0.0f };
-            glm_rotate(model, rads, axis);
-            int modelLoc = glGetUniformLocation(shaderProgram, "model");
-            glUniformMatrix4fv(modelLoc, 1, GL_FALSE, (const GLfloat*)model);
+            // model
+            mat4 model = mat4.Identity;
+            float rads = glm.Radians(-20.0f);
+            vec3 axis = new vec3(1.0f, 0.0f, 0.0f);
+            mat4 rotateM = mat4.Rotate(rads, axis);
+            model = rotateM * model;
+            int modelLoc = gl.GetUniformLocation(shaderProgram, "model");
+            gl.UniformMatrix4(modelLoc, 1, false, model.Values1D);
 
+            /*
             // view
             mat4 view = GLM_MAT4_IDENTITY_INIT;
             // note that we're translating the scene in the reverse direction of where we want to move
@@ -124,6 +140,52 @@ namespace CanSatGUI
             double ZoneLong = currentLongitude + valLong;
 
             return new PointLatLng(ZoneLat, ZoneLong);
+        }
+
+        public static void Update3DChart()
+        {
+            var colors = new[] { Color.Red, Color.Black, Color.Blue, Color.Green /*...*/ };
+
+            ILArray<float> data = ILMath.zeros<float>(
+              3,
+              colors.Length);
+
+            ILArray<float> colorData = ILMath.zeros<float>(
+              3,
+              colors.Length);
+
+            int index = 0;
+            foreach (var p in colors)
+            {
+                data[0, index] = p.GetHue();
+                data[1, index] = p.GetSaturation();
+                data[2, index] = p.GetBrightness();
+                colorData[0, index] = p.R / 255.0f;
+                colorData[1, index] = p.G / 255.0f;
+                colorData[2, index] = p.B / 255.0f;
+                index++;
+            }
+
+            var points = new ILPoints()
+            {
+                Positions = data,
+                Colors = colorData
+            };
+
+            points.Color = null;
+
+            var plot = new ILPlotCube(twoDMode: false)
+            {
+                Rotation = Matrix4.Rotation(new Vector3(1, 1, 0.1f), 0.4f),
+                Projection = Projection.Orthographic,
+                Children = { points }
+            };
+
+            plot.Axes[0].Label.Text = "Hue";
+            plot.Axes[1].Label.Text = "Saturation";
+            plot.Axes[2].Label.Text = "Brightness";
+
+            ilPanel1.Scene = new ILScene { plot };
         }
     }
 }
