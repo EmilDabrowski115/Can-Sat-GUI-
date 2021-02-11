@@ -40,6 +40,7 @@ namespace CanSatGUI
         //string ComPort;
         StreamWriter writer;
         int VERTICES_LENGTH;
+        uint shaderProgram;
 
         public Form1()  //definiowanie ustawienia oraz port szeregowy
         {
@@ -117,10 +118,10 @@ namespace CanSatGUI
             double course = (Convert.ToDouble(packetElems[17]));
             pictureBox1.Image = Compass.DrawCompass(course/100 , 0, 80, 0, 80, pictureBox1.Size);
 
-            double temperature = Convert.ToDouble(packetElems[3]);
+            double temperature = Convert.ToDouble(packetElems[12]);
             Upd.UpdateChart(chart1, temperature, time);
 
-            double pressure = Convert.ToDouble(packetElems[2]);
+            double pressure = Convert.ToDouble(packetElems[11]);
             Upd.UpdateChart(chart2, pressure, time);
 
            // double course = (Convert.ToDouble(packetElems[17])/100);
@@ -158,7 +159,7 @@ namespace CanSatGUI
             // catch (SocketIOClient.Exceptions.InvalidSocketStateException) { }
 
             // opengl
-            Upd.UpdateOpenGLControl(openGLControl1, VERTICES_LENGTH / 3);
+            Upd.UpdateOpenGLControl(openGLControl1, shaderProgram, VERTICES_LENGTH / 3);
         }
 
         private void psrtxt_TextChanged(object sender, EventArgs e)
@@ -180,11 +181,9 @@ namespace CanSatGUI
             map.MinZoom = 0;
             map.MaxZoom = 25;
             map.Zoom = 5;
-
+            
             GMapOverlay markersOverlay = new GMapOverlay("markers");
             map.Overlays.Add(markersOverlay);
-
-
         }
 
         private void openGLControl1_Load(object sender, EventArgs e)
@@ -208,7 +207,7 @@ namespace CanSatGUI
             gl.CompileShader(fragmentShader);
 
             // compile shaders
-            var shaderProgram = gl.CreateProgram();
+            shaderProgram = gl.CreateProgram();
             gl.AttachShader(shaderProgram, vertexShader);
             gl.AttachShader(shaderProgram, fragmentShader);
 
@@ -374,8 +373,15 @@ namespace CanSatGUI
 
         }
 
+        private void label26_Click(object sender, EventArgs e)
+        {
 
-       
+        }
+
+        private void groupBox5_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

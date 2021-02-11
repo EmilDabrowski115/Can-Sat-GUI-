@@ -30,24 +30,24 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea25 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend25 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series25 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea26 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend26 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series26 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea27 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend27 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series27 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea28 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend28 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series28 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea29 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend29 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series29 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea30 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend30 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series30 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea13 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend13 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series13 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea14 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend14 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series14 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea15 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend15 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea16 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend16 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea17 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend17 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series17 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea18 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend18 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series18 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.lattxt = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.longtxt = new System.Windows.Forms.TextBox();
@@ -55,7 +55,6 @@
             this.map = new GMap.NET.WindowsForms.GMapControl();
             this.SerialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.DataStream = new System.Windows.Forms.RichTextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.temptxt = new System.Windows.Forms.TextBox();
             this.psrtxt = new System.Windows.Forms.TextBox();
             this.alttxt = new System.Windows.Forms.TextBox();
@@ -63,7 +62,6 @@
             this.asdasdasda = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.openGLControl1 = new SharpGL.OpenGLControl();
             this.framenrtxt = new System.Windows.Forms.TextBox();
             this.zacceltxt = new System.Windows.Forms.TextBox();
@@ -98,57 +96,78 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label12 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
-            this.chart4 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
-            this.chart5 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.chart6 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.chart6 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chart5 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chart4 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chart3 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.label3 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.openGLControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
             this.SuspendLayout();
             // 
             // lattxt
             // 
-            this.lattxt.Location = new System.Drawing.Point(12, 316);
+            this.lattxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.lattxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lattxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.lattxt.Location = new System.Drawing.Point(18, 495);
             this.lattxt.Name = "lattxt";
-            this.lattxt.Size = new System.Drawing.Size(100, 20);
+            this.lattxt.Size = new System.Drawing.Size(211, 26);
             this.lattxt.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(115, 300);
+            this.label2.Location = new System.Drawing.Point(230, 468);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 13);
+            this.label2.Size = new System.Drawing.Size(98, 26);
             this.label2.TabIndex = 4;
             this.label2.Text = "Longitude";
             // 
             // longtxt
             // 
-            this.longtxt.Location = new System.Drawing.Point(118, 316);
+            this.longtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.longtxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.longtxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.longtxt.Location = new System.Drawing.Point(235, 495);
             this.longtxt.Name = "longtxt";
-            this.longtxt.Size = new System.Drawing.Size(100, 20);
+            this.longtxt.Size = new System.Drawing.Size(254, 26);
             this.longtxt.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 300);
+            this.label1.Location = new System.Drawing.Point(15, 468);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 13);
+            this.label1.Size = new System.Drawing.Size(83, 26);
             this.label1.TabIndex = 6;
             this.label1.Text = "Latitude";
             // 
@@ -164,7 +183,7 @@
             this.map.GrayScaleMode = false;
             this.map.HelperLineOption = GMap.NET.WindowsForms.HelperLineOptions.DontShow;
             this.map.LevelsKeepInMemmory = 5;
-            this.map.Location = new System.Drawing.Point(-3, 8);
+            this.map.Location = new System.Drawing.Point(30, 56);
             this.map.MarkersEnabled = true;
             this.map.MaxZoom = 2;
             this.map.MinZoom = 2;
@@ -178,7 +197,7 @@
             this.map.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.map.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.map.ShowTileGridLines = false;
-            this.map.Size = new System.Drawing.Size(341, 285);
+            this.map.Size = new System.Drawing.Size(471, 435);
             this.map.TabIndex = 7;
             this.map.Zoom = 0D;
             this.map.Load += new System.EventHandler(this.map_Load);
@@ -189,29 +208,26 @@
             // 
             // DataStream
             // 
-            this.DataStream.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.DataStream.Location = new System.Drawing.Point(344, 17);
+            this.DataStream.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.DataStream.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DataStream.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DataStream.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.DataStream.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.DataStream.Location = new System.Drawing.Point(3, 29);
             this.DataStream.Name = "DataStream";
-            this.DataStream.Size = new System.Drawing.Size(873, 68);
+            this.DataStream.Size = new System.Drawing.Size(857, 101);
             this.DataStream.TabIndex = 8;
             this.DataStream.Text = "";
             this.DataStream.TextChanged += new System.EventHandler(this.DataStream_TextChanged);
             // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(756, 1);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Data Stream";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
             // temptxt
             // 
             this.temptxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.temptxt.Location = new System.Drawing.Point(1572, 91);
+            this.temptxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.temptxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.temptxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.temptxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.temptxt.Location = new System.Drawing.Point(112, 101);
             this.temptxt.Name = "temptxt";
             this.temptxt.Size = new System.Drawing.Size(100, 20);
             this.temptxt.TabIndex = 10;
@@ -219,7 +235,11 @@
             // psrtxt
             // 
             this.psrtxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.psrtxt.Location = new System.Drawing.Point(1572, 143);
+            this.psrtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.psrtxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.psrtxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.psrtxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.psrtxt.Location = new System.Drawing.Point(112, 153);
             this.psrtxt.Name = "psrtxt";
             this.psrtxt.Size = new System.Drawing.Size(100, 20);
             this.psrtxt.TabIndex = 11;
@@ -228,7 +248,11 @@
             // alttxt
             // 
             this.alttxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.alttxt.Location = new System.Drawing.Point(1572, 117);
+            this.alttxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.alttxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.alttxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.alttxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.alttxt.Location = new System.Drawing.Point(112, 127);
             this.alttxt.Name = "alttxt";
             this.alttxt.Size = new System.Drawing.Size(100, 20);
             this.alttxt.TabIndex = 12;
@@ -237,9 +261,10 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(1487, 94);
+            this.label4.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.label4.Location = new System.Drawing.Point(8, 103);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 13);
+            this.label4.Size = new System.Drawing.Size(97, 19);
             this.label4.TabIndex = 13;
             this.label4.Text = "Temperature";
             // 
@@ -247,9 +272,10 @@
             // 
             this.asdasdasda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.asdasdasda.AutoSize = true;
-            this.asdasdasda.Location = new System.Drawing.Point(1487, 120);
+            this.asdasdasda.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.asdasdasda.Location = new System.Drawing.Point(8, 129);
             this.asdasdasda.Name = "asdasdasda";
-            this.asdasdasda.Size = new System.Drawing.Size(42, 13);
+            this.asdasdasda.Size = new System.Drawing.Size(64, 19);
             this.asdasdasda.TabIndex = 14;
             this.asdasdasda.Text = "Altitude";
             // 
@@ -257,84 +283,85 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(1487, 146);
+            this.label6.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.label6.Location = new System.Drawing.Point(8, 155);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(48, 13);
+            this.label6.Size = new System.Drawing.Size(67, 19);
             this.label6.TabIndex = 15;
             this.label6.Text = "Pressure";
             // 
             // chart1
             // 
             this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.chart1.BorderlineColor = System.Drawing.Color.Black;
-            this.chart1.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea25.BackSecondaryColor = System.Drawing.Color.Transparent;
-            chartArea25.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea25);
+            this.chart1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.chart1.BorderlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea13.AxisX.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea13.AxisX.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea13.AxisX.MajorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea13.AxisX.MajorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea13.AxisX.MinorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea13.AxisX.MinorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea13.AxisX.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea13.AxisX2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea13.AxisX2.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea13.AxisY.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea13.AxisY.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea13.AxisY.MajorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea13.AxisY.MajorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea13.AxisY.MinorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea13.AxisY.MinorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea13.AxisY.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea13.AxisY2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea13.AxisY2.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            chartArea13.BackSecondaryColor = System.Drawing.Color.Transparent;
+            chartArea13.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea13.CursorX.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(100)))), ((int)(((byte)(80)))));
+            chartArea13.CursorY.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(100)))), ((int)(((byte)(80)))));
+            chartArea13.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea13);
             this.chart1.Cursor = System.Windows.Forms.Cursors.Arrow;
-            legend25.Enabled = false;
-            legend25.Name = "Legend1";
-            this.chart1.Legends.Add(legend25);
-            this.chart1.Location = new System.Drawing.Point(1242, 143);
+            legend13.Enabled = false;
+            legend13.Name = "Legend1";
+            this.chart1.Legends.Add(legend13);
+            this.chart1.Location = new System.Drawing.Point(1147, 51);
             this.chart1.Name = "chart1";
-            series25.BorderWidth = 2;
-            series25.ChartArea = "ChartArea1";
-            series25.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series25.Color = System.Drawing.Color.Red;
-            series25.Legend = "Legend1";
-            series25.Name = "Temp";
-            series25.XValueMember = "tmptxt";
-            this.chart1.Series.Add(series25);
-            this.chart1.Size = new System.Drawing.Size(212, 150);
+            this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Grayscale;
+            series13.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
+            series13.BorderWidth = 2;
+            series13.ChartArea = "ChartArea1";
+            series13.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.SplineArea;
+            series13.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(100)))), ((int)(((byte)(80)))));
+            series13.Legend = "Legend1";
+            series13.Name = "Temp";
+            series13.XValueMember = "tmptxt";
+            this.chart1.Series.Add(series13);
+            this.chart1.Size = new System.Drawing.Size(470, 165);
             this.chart1.TabIndex = 16;
             this.chart1.Text = "chart1";
             this.chart1.Click += new System.EventHandler(this.chart1_Click);
             // 
-            // chart2
-            // 
-            this.chart2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.chart2.BackImageAlignment = System.Windows.Forms.DataVisualization.Charting.ChartImageAlignmentStyle.Center;
-            this.chart2.BorderlineColor = System.Drawing.Color.Black;
-            this.chart2.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea26.Name = "ChartArea1";
-            this.chart2.ChartAreas.Add(chartArea26);
-            this.chart2.Cursor = System.Windows.Forms.Cursors.Arrow;
-            legend26.BackColor = System.Drawing.Color.Yellow;
-            legend26.Enabled = false;
-            legend26.Name = "Legend1";
-            this.chart2.Legends.Add(legend26);
-            this.chart2.Location = new System.Drawing.Point(1242, 332);
-            this.chart2.Name = "chart2";
-            series26.BorderWidth = 2;
-            series26.ChartArea = "ChartArea1";
-            series26.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series26.Color = System.Drawing.Color.Red;
-            series26.Legend = "Legend1";
-            series26.Name = "Pressure";
-            series26.ShadowColor = System.Drawing.Color.Red;
-            series26.XValueMember = "tmptxt";
-            this.chart2.Series.Add(series26);
-            this.chart2.Size = new System.Drawing.Size(212, 150);
-            this.chart2.TabIndex = 17;
-            this.chart2.Text = "chart2";
-            this.chart2.Click += new System.EventHandler(this.chart2_Click);
-            // 
             // openGLControl1
             // 
             this.openGLControl1.DrawFPS = false;
-            this.openGLControl1.Location = new System.Drawing.Point(571, 502);
+            this.openGLControl1.Location = new System.Drawing.Point(29, 39);
+            this.openGLControl1.Margin = new System.Windows.Forms.Padding(6);
             this.openGLControl1.Name = "openGLControl1";
             this.openGLControl1.OpenGLVersion = SharpGL.Version.OpenGLVersion.OpenGL3_3;
             this.openGLControl1.RenderContextType = SharpGL.RenderContextType.FBO;
             this.openGLControl1.RenderTrigger = SharpGL.RenderTrigger.Manual;
-            this.openGLControl1.Size = new System.Drawing.Size(529, 529);
+            this.openGLControl1.Size = new System.Drawing.Size(371, 340);
             this.openGLControl1.TabIndex = 18;
             this.openGLControl1.Load += new System.EventHandler(this.openGLControl1_Load);
             // 
             // framenrtxt
             // 
             this.framenrtxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.framenrtxt.Location = new System.Drawing.Point(1572, 13);
+            this.framenrtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.framenrtxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.framenrtxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.framenrtxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.framenrtxt.Location = new System.Drawing.Point(112, 23);
             this.framenrtxt.Name = "framenrtxt";
             this.framenrtxt.Size = new System.Drawing.Size(100, 20);
             this.framenrtxt.TabIndex = 20;
@@ -342,7 +369,11 @@
             // zacceltxt
             // 
             this.zacceltxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.zacceltxt.Location = new System.Drawing.Point(1572, 250);
+            this.zacceltxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.zacceltxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.zacceltxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.zacceltxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.zacceltxt.Location = new System.Drawing.Point(112, 260);
             this.zacceltxt.Name = "zacceltxt";
             this.zacceltxt.Size = new System.Drawing.Size(100, 20);
             this.zacceltxt.TabIndex = 21;
@@ -350,7 +381,11 @@
             // yacceltxt
             // 
             this.yacceltxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.yacceltxt.Location = new System.Drawing.Point(1572, 224);
+            this.yacceltxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.yacceltxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.yacceltxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.yacceltxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.yacceltxt.Location = new System.Drawing.Point(112, 234);
             this.yacceltxt.Name = "yacceltxt";
             this.yacceltxt.Size = new System.Drawing.Size(100, 20);
             this.yacceltxt.TabIndex = 22;
@@ -358,7 +393,11 @@
             // xacceltxt
             // 
             this.xacceltxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.xacceltxt.Location = new System.Drawing.Point(1572, 198);
+            this.xacceltxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.xacceltxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.xacceltxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.xacceltxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.xacceltxt.Location = new System.Drawing.Point(112, 208);
             this.xacceltxt.Name = "xacceltxt";
             this.xacceltxt.Size = new System.Drawing.Size(100, 20);
             this.xacceltxt.TabIndex = 23;
@@ -366,7 +405,11 @@
             // ytilttxt
             // 
             this.ytilttxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ytilttxt.Location = new System.Drawing.Point(1572, 304);
+            this.ytilttxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.ytilttxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ytilttxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ytilttxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.ytilttxt.Location = new System.Drawing.Point(112, 314);
             this.ytilttxt.Name = "ytilttxt";
             this.ytilttxt.Size = new System.Drawing.Size(100, 20);
             this.ytilttxt.TabIndex = 27;
@@ -374,7 +417,11 @@
             // ztilttxt
             // 
             this.ztilttxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ztilttxt.Location = new System.Drawing.Point(1572, 330);
+            this.ztilttxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.ztilttxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ztilttxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ztilttxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.ztilttxt.Location = new System.Drawing.Point(112, 340);
             this.ztilttxt.Name = "ztilttxt";
             this.ztilttxt.Size = new System.Drawing.Size(100, 20);
             this.ztilttxt.TabIndex = 26;
@@ -382,7 +429,11 @@
             // xmagtxt
             // 
             this.xmagtxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.xmagtxt.Location = new System.Drawing.Point(1572, 356);
+            this.xmagtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.xmagtxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.xmagtxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.xmagtxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.xmagtxt.Location = new System.Drawing.Point(112, 366);
             this.xmagtxt.Name = "xmagtxt";
             this.xmagtxt.Size = new System.Drawing.Size(100, 20);
             this.xmagtxt.TabIndex = 25;
@@ -390,7 +441,11 @@
             // xtilttxt
             // 
             this.xtilttxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.xtilttxt.Location = new System.Drawing.Point(1572, 278);
+            this.xtilttxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.xtilttxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.xtilttxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.xtilttxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.xtilttxt.Location = new System.Drawing.Point(112, 288);
             this.xtilttxt.Name = "xtilttxt";
             this.xtilttxt.Size = new System.Drawing.Size(100, 20);
             this.xtilttxt.TabIndex = 24;
@@ -398,7 +453,11 @@
             // zmagtxt
             // 
             this.zmagtxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.zmagtxt.Location = new System.Drawing.Point(1572, 409);
+            this.zmagtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.zmagtxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.zmagtxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.zmagtxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.zmagtxt.Location = new System.Drawing.Point(112, 419);
             this.zmagtxt.Name = "zmagtxt";
             this.zmagtxt.Size = new System.Drawing.Size(100, 20);
             this.zmagtxt.TabIndex = 31;
@@ -406,7 +465,11 @@
             // rssitxt
             // 
             this.rssitxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.rssitxt.Location = new System.Drawing.Point(1572, 65);
+            this.rssitxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.rssitxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.rssitxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.rssitxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.rssitxt.Location = new System.Drawing.Point(112, 75);
             this.rssitxt.Name = "rssitxt";
             this.rssitxt.Size = new System.Drawing.Size(100, 20);
             this.rssitxt.TabIndex = 30;
@@ -414,7 +477,11 @@
             // speedtxt
             // 
             this.speedtxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.speedtxt.Location = new System.Drawing.Point(1572, 169);
+            this.speedtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.speedtxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.speedtxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.speedtxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.speedtxt.Location = new System.Drawing.Point(112, 179);
             this.speedtxt.Name = "speedtxt";
             this.speedtxt.Size = new System.Drawing.Size(100, 20);
             this.speedtxt.TabIndex = 29;
@@ -422,7 +489,11 @@
             // ymagtxt
             // 
             this.ymagtxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ymagtxt.Location = new System.Drawing.Point(1572, 383);
+            this.ymagtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.ymagtxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ymagtxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ymagtxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.ymagtxt.Location = new System.Drawing.Point(112, 393);
             this.ymagtxt.Name = "ymagtxt";
             this.ymagtxt.Size = new System.Drawing.Size(100, 20);
             this.ymagtxt.TabIndex = 28;
@@ -430,7 +501,11 @@
             // coursetxt
             // 
             this.coursetxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.coursetxt.Location = new System.Drawing.Point(1572, 435);
+            this.coursetxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.coursetxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.coursetxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.coursetxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.coursetxt.Location = new System.Drawing.Point(112, 445);
             this.coursetxt.Name = "coursetxt";
             this.coursetxt.Size = new System.Drawing.Size(100, 20);
             this.coursetxt.TabIndex = 34;
@@ -438,7 +513,11 @@
             // timetxt
             // 
             this.timetxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.timetxt.Location = new System.Drawing.Point(1572, 39);
+            this.timetxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.timetxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.timetxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.timetxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.timetxt.Location = new System.Drawing.Point(112, 49);
             this.timetxt.Name = "timetxt";
             this.timetxt.Size = new System.Drawing.Size(100, 20);
             this.timetxt.TabIndex = 33;
@@ -446,7 +525,11 @@
             // halltxt
             // 
             this.halltxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.halltxt.Location = new System.Drawing.Point(1572, 461);
+            this.halltxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.halltxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.halltxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.halltxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.halltxt.Location = new System.Drawing.Point(112, 471);
             this.halltxt.Name = "halltxt";
             this.halltxt.Size = new System.Drawing.Size(100, 20);
             this.halltxt.TabIndex = 32;
@@ -455,9 +538,10 @@
             // 
             this.frametxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.frametxt.AutoSize = true;
-            this.frametxt.Location = new System.Drawing.Point(1487, 16);
+            this.frametxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.frametxt.Location = new System.Drawing.Point(8, 25);
             this.frametxt.Name = "frametxt";
-            this.frametxt.Size = new System.Drawing.Size(50, 13);
+            this.frametxt.Size = new System.Drawing.Size(72, 19);
             this.frametxt.TabIndex = 35;
             this.frametxt.Text = "Frame Nr";
             // 
@@ -465,9 +549,10 @@
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(1487, 386);
+            this.label8.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.label8.Location = new System.Drawing.Point(8, 395);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(38, 13);
+            this.label8.Size = new System.Drawing.Size(51, 19);
             this.label8.TabIndex = 39;
             this.label8.Text = "Y-Mag";
             // 
@@ -475,9 +560,10 @@
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(1487, 359);
+            this.label9.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.label9.Location = new System.Drawing.Point(8, 368);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(38, 13);
+            this.label9.Size = new System.Drawing.Size(52, 19);
             this.label9.TabIndex = 38;
             this.label9.Text = "X-Mag";
             // 
@@ -485,9 +571,10 @@
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(1487, 333);
+            this.label10.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.label10.Location = new System.Drawing.Point(8, 342);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(31, 13);
+            this.label10.Size = new System.Drawing.Size(44, 19);
             this.label10.TabIndex = 37;
             this.label10.Text = "Z-Tilt";
             // 
@@ -495,9 +582,10 @@
             // 
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(1487, 307);
+            this.label11.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.label11.Location = new System.Drawing.Point(8, 316);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(31, 13);
+            this.label11.Size = new System.Drawing.Size(43, 19);
             this.label11.TabIndex = 36;
             this.label11.Text = "Y-Tilt";
             // 
@@ -505,9 +593,10 @@
             // 
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(1487, 227);
+            this.label14.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.label14.Location = new System.Drawing.Point(8, 236);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(44, 13);
+            this.label14.Size = new System.Drawing.Size(57, 19);
             this.label14.TabIndex = 41;
             this.label14.Text = "Y-Accel";
             // 
@@ -515,9 +604,10 @@
             // 
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(1487, 201);
+            this.label15.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.label15.Location = new System.Drawing.Point(8, 210);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(44, 13);
+            this.label15.Size = new System.Drawing.Size(58, 19);
             this.label15.TabIndex = 40;
             this.label15.Text = "X-Accel";
             // 
@@ -525,9 +615,10 @@
             // 
             this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(1487, 438);
+            this.label16.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.label16.Location = new System.Drawing.Point(8, 447);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(39, 13);
+            this.label16.Size = new System.Drawing.Size(54, 19);
             this.label16.TabIndex = 47;
             this.label16.Text = "course";
             // 
@@ -535,9 +626,10 @@
             // 
             this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(1487, 169);
+            this.label17.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.label17.Location = new System.Drawing.Point(8, 178);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(38, 13);
+            this.label17.Size = new System.Drawing.Size(51, 19);
             this.label17.TabIndex = 46;
             this.label17.Text = "Speed";
             // 
@@ -545,7 +637,7 @@
             // 
             this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(1471, 67);
+            this.label18.Location = new System.Drawing.Point(1642, 107);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(0, 13);
             this.label18.TabIndex = 45;
@@ -554,9 +646,10 @@
             // 
             this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(1487, 412);
+            this.label19.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.label19.Location = new System.Drawing.Point(8, 421);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(38, 13);
+            this.label19.Size = new System.Drawing.Size(52, 19);
             this.label19.TabIndex = 44;
             this.label19.Text = "Z-Mag";
             // 
@@ -564,9 +657,10 @@
             // 
             this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(1487, 464);
+            this.label20.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.label20.Location = new System.Drawing.Point(8, 473);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(47, 13);
+            this.label20.Size = new System.Drawing.Size(65, 19);
             this.label20.TabIndex = 49;
             this.label20.Text = "Hall (Hz)";
             // 
@@ -574,9 +668,10 @@
             // 
             this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(1487, 42);
+            this.label21.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.label21.Location = new System.Drawing.Point(8, 51);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(30, 13);
+            this.label21.Size = new System.Drawing.Size(42, 19);
             this.label21.TabIndex = 48;
             this.label21.Text = "Time";
             // 
@@ -584,9 +679,10 @@
             // 
             this.label22.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(1487, 68);
+            this.label22.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.label22.Location = new System.Drawing.Point(8, 77);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(79, 13);
+            this.label22.Size = new System.Drawing.Size(114, 19);
             this.label22.TabIndex = 50;
             this.label22.Text = "Signal Strength";
             // 
@@ -594,6 +690,9 @@
             // 
             this.ComboBox1.AllowDrop = true;
             this.ComboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ComboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.ComboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
             this.ComboBox1.FormattingEnabled = true;
             this.ComboBox1.Items.AddRange(new object[] {
             "COM1",
@@ -603,9 +702,9 @@
             "COM5",
             "COM6",
             "COM7"});
-            this.ComboBox1.Location = new System.Drawing.Point(1279, 51);
+            this.ComboBox1.Location = new System.Drawing.Point(114, 501);
             this.ComboBox1.Name = "ComboBox1";
-            this.ComboBox1.Size = new System.Drawing.Size(121, 21);
+            this.ComboBox1.Size = new System.Drawing.Size(100, 34);
             this.ComboBox1.TabIndex = 51;
             this.ComboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -613,9 +712,10 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1297, 29);
+            this.label5.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label5.Location = new System.Drawing.Point(8, 512);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 13);
+            this.label5.Size = new System.Drawing.Size(97, 15);
             this.label5.TabIndex = 52;
             this.label5.Text = "Select COM Port";
             // 
@@ -623,9 +723,10 @@
             // 
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(1487, 281);
+            this.label13.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.label13.Location = new System.Drawing.Point(8, 290);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(31, 13);
+            this.label13.Size = new System.Drawing.Size(44, 19);
             this.label13.TabIndex = 53;
             this.label13.Text = "X-Tilt";
             // 
@@ -633,46 +734,20 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1487, 253);
+            this.label7.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.label7.Location = new System.Drawing.Point(8, 262);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(44, 13);
+            this.label7.Size = new System.Drawing.Size(58, 19);
             this.label7.TabIndex = 54;
             this.label7.Text = "Z-Accel";
-            // 
-            // chart3
-            // 
-            this.chart3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.chart3.BorderlineColor = System.Drawing.Color.Black;
-            this.chart3.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea27.BackSecondaryColor = System.Drawing.Color.Transparent;
-            chartArea27.Name = "ChartArea1";
-            this.chart3.ChartAreas.Add(chartArea27);
-            this.chart3.Cursor = System.Windows.Forms.Cursors.Arrow;
-            legend27.Enabled = false;
-            legend27.Name = "Legend1";
-            this.chart3.Legends.Add(legend27);
-            this.chart3.Location = new System.Drawing.Point(1024, 332);
-            this.chart3.Name = "chart3";
-            series27.BorderWidth = 2;
-            series27.ChartArea = "ChartArea1";
-            series27.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series27.Color = System.Drawing.Color.Red;
-            series27.Legend = "Legend1";
-            series27.Name = "Series1";
-            series27.XValueMember = "halltxt";
-            this.chart3.Series.Add(series27);
-            this.chart3.Size = new System.Drawing.Size(212, 150);
-            this.chart3.TabIndex = 55;
-            this.chart3.Text = "chart3";
-            this.chart3.Click += new System.EventHandler(this.chart3_Click);
             // 
             // label12
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(1315, 119);
+            this.label12.Location = new System.Drawing.Point(1142, 25);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(95, 13);
+            this.label12.Size = new System.Drawing.Size(174, 26);
             this.label12.TabIndex = 56;
             this.label12.Text = "Temperature Chart";
             this.label12.Click += new System.EventHandler(this.label12_Click);
@@ -681,47 +756,19 @@
             // 
             this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(1315, 306);
+            this.label23.Location = new System.Drawing.Point(1142, 228);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(76, 13);
+            this.label23.Size = new System.Drawing.Size(137, 26);
             this.label23.TabIndex = 57;
             this.label23.Text = "Pressure Chart";
-            // 
-            // chart4
-            // 
-            this.chart4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.chart4.BorderlineColor = System.Drawing.Color.Black;
-            this.chart4.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea28.BackSecondaryColor = System.Drawing.Color.Transparent;
-            chartArea28.Name = "ChartArea1";
-            this.chart4.ChartAreas.Add(chartArea28);
-            this.chart4.Cursor = System.Windows.Forms.Cursors.Arrow;
-            legend28.Enabled = false;
-            legend28.Name = "Legend1";
-            this.chart4.Legends.Add(legend28);
-            this.chart4.Location = new System.Drawing.Point(1024, 143);
-            this.chart4.Name = "chart4";
-            series28.BorderWidth = 2;
-            series28.ChartArea = "ChartArea1";
-            series28.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series28.Color = System.Drawing.Color.Red;
-            series28.Legend = "Legend1";
-            series28.Name = "Temp";
-            series28.XValueMember = "tmptxt";
-            series28.YValuesPerPoint = 2;
-            this.chart4.Series.Add(series28);
-            this.chart4.Size = new System.Drawing.Size(212, 150);
-            this.chart4.TabIndex = 58;
-            this.chart4.Text = "chart4";
-            this.chart4.Click += new System.EventHandler(this.chart4_Click);
             // 
             // label24
             // 
             this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(1097, 119);
+            this.label24.Location = new System.Drawing.Point(580, 22);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(70, 13);
+            this.label24.Size = new System.Drawing.Size(133, 26);
             this.label24.TabIndex = 59;
             this.label24.Text = "Altitude Chart";
             // 
@@ -729,104 +776,446 @@
             // 
             this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(1097, 306);
+            this.label25.Location = new System.Drawing.Point(580, 228);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(66, 13);
+            this.label25.Size = new System.Drawing.Size(117, 26);
             this.label25.TabIndex = 60;
             this.label25.Text = "Wind Speed";
-            // 
-            // chart5
-            // 
-            this.chart5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.chart5.BorderlineColor = System.Drawing.Color.Black;
-            this.chart5.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea29.BackSecondaryColor = System.Drawing.Color.Transparent;
-            chartArea29.Name = "ChartArea1";
-            this.chart5.ChartAreas.Add(chartArea29);
-            this.chart5.Cursor = System.Windows.Forms.Cursors.Arrow;
-            legend29.Enabled = false;
-            legend29.Name = "Legend1";
-            this.chart5.Legends.Add(legend29);
-            this.chart5.Location = new System.Drawing.Point(806, 143);
-            this.chart5.Name = "chart5";
-            series29.BorderWidth = 2;
-            series29.ChartArea = "ChartArea1";
-            series29.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series29.Color = System.Drawing.Color.Red;
-            series29.Legend = "Legend1";
-            series29.Name = "Temp";
-            series29.XValueMember = "tmptxt";
-            this.chart5.Series.Add(series29);
-            this.chart5.Size = new System.Drawing.Size(212, 150);
-            this.chart5.TabIndex = 61;
-            this.chart5.Text = "chart5";
-            // 
-            // chart6
-            // 
-            this.chart6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.chart6.BorderlineColor = System.Drawing.Color.Black;
-            this.chart6.BorderlineDashStyle = System.Windows.Forms.DataVisualization.Charting.ChartDashStyle.Solid;
-            chartArea30.BackSecondaryColor = System.Drawing.Color.Transparent;
-            chartArea30.Name = "ChartArea1";
-            this.chart6.ChartAreas.Add(chartArea30);
-            this.chart6.Cursor = System.Windows.Forms.Cursors.Arrow;
-            legend30.Enabled = false;
-            legend30.Name = "Legend1";
-            this.chart6.Legends.Add(legend30);
-            this.chart6.Location = new System.Drawing.Point(806, 333);
-            this.chart6.Name = "chart6";
-            series30.BorderWidth = 2;
-            series30.ChartArea = "ChartArea1";
-            series30.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Spline;
-            series30.Color = System.Drawing.Color.Red;
-            series30.Legend = "Legend1";
-            series30.Name = "Temp";
-            series30.XValueMember = "tmptxt";
-            this.chart6.Series.Add(series30);
-            this.chart6.Size = new System.Drawing.Size(212, 150);
-            this.chart6.TabIndex = 62;
-            this.chart6.Text = "chart6";
-            this.chart6.Click += new System.EventHandler(this.chart6_Click);
             // 
             // label26
             // 
             this.label26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(886, 307);
+            this.label26.Location = new System.Drawing.Point(15, 228);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(66, 13);
+            this.label26.Size = new System.Drawing.Size(117, 26);
             this.label26.TabIndex = 63;
             this.label26.Text = "Speed Chart";
+            this.label26.Click += new System.EventHandler(this.label26_Click);
             // 
             // label27
             // 
             this.label27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(886, 119);
+            this.label27.Location = new System.Drawing.Point(15, 25);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(79, 13);
+            this.label27.Size = new System.Drawing.Size(142, 26);
             this.label27.TabIndex = 64;
             this.label27.Text = "Signal Strength";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.pictureBox1.Location = new System.Drawing.Point(439, 143);
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Location = new System.Drawing.Point(24, 39);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(361, 340);
             this.pictureBox1.TabIndex = 65;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.longtxt);
+            this.groupBox1.Controls.Add(this.lattxt);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold);
+            this.groupBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.groupBox1.Location = new System.Drawing.Point(12, 29);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(511, 546);
+            this.groupBox1.TabIndex = 67;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Map";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.pictureBox1);
+            this.groupBox2.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold);
+            this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.groupBox2.Location = new System.Drawing.Point(548, 29);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(411, 398);
+            this.groupBox2.TabIndex = 68;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Wind Direction";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.DataStream);
+            this.groupBox3.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold);
+            this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.groupBox3.Location = new System.Drawing.Point(548, 442);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(863, 133);
+            this.groupBox3.TabIndex = 69;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Data Stream";
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.openGLControl1);
+            this.groupBox4.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold);
+            this.groupBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.groupBox4.Location = new System.Drawing.Point(988, 29);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(423, 398);
+            this.groupBox4.TabIndex = 70;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Visualisation";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox5.Controls.Add(this.alttxt);
+            this.groupBox5.Controls.Add(this.temptxt);
+            this.groupBox5.Controls.Add(this.psrtxt);
+            this.groupBox5.Controls.Add(this.label4);
+            this.groupBox5.Controls.Add(this.asdasdasda);
+            this.groupBox5.Controls.Add(this.label6);
+            this.groupBox5.Controls.Add(this.framenrtxt);
+            this.groupBox5.Controls.Add(this.zacceltxt);
+            this.groupBox5.Controls.Add(this.yacceltxt);
+            this.groupBox5.Controls.Add(this.xacceltxt);
+            this.groupBox5.Controls.Add(this.xtilttxt);
+            this.groupBox5.Controls.Add(this.label5);
+            this.groupBox5.Controls.Add(this.ComboBox1);
+            this.groupBox5.Controls.Add(this.label7);
+            this.groupBox5.Controls.Add(this.xmagtxt);
+            this.groupBox5.Controls.Add(this.label13);
+            this.groupBox5.Controls.Add(this.ztilttxt);
+            this.groupBox5.Controls.Add(this.ytilttxt);
+            this.groupBox5.Controls.Add(this.ymagtxt);
+            this.groupBox5.Controls.Add(this.label22);
+            this.groupBox5.Controls.Add(this.speedtxt);
+            this.groupBox5.Controls.Add(this.label20);
+            this.groupBox5.Controls.Add(this.rssitxt);
+            this.groupBox5.Controls.Add(this.label21);
+            this.groupBox5.Controls.Add(this.zmagtxt);
+            this.groupBox5.Controls.Add(this.label16);
+            this.groupBox5.Controls.Add(this.halltxt);
+            this.groupBox5.Controls.Add(this.label17);
+            this.groupBox5.Controls.Add(this.timetxt);
+            this.groupBox5.Controls.Add(this.coursetxt);
+            this.groupBox5.Controls.Add(this.label19);
+            this.groupBox5.Controls.Add(this.frametxt);
+            this.groupBox5.Controls.Add(this.label14);
+            this.groupBox5.Controls.Add(this.label11);
+            this.groupBox5.Controls.Add(this.label15);
+            this.groupBox5.Controls.Add(this.label10);
+            this.groupBox5.Controls.Add(this.label8);
+            this.groupBox5.Controls.Add(this.label9);
+            this.groupBox5.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold);
+            this.groupBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.groupBox5.Location = new System.Drawing.Point(1667, 481);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(233, 546);
+            this.groupBox5.TabIndex = 71;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Data";
+            this.groupBox5.Enter += new System.EventHandler(this.groupBox5_Enter);
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.chart6);
+            this.groupBox6.Controls.Add(this.chart5);
+            this.groupBox6.Controls.Add(this.chart4);
+            this.groupBox6.Controls.Add(this.chart3);
+            this.groupBox6.Controls.Add(this.chart2);
+            this.groupBox6.Controls.Add(this.label23);
+            this.groupBox6.Controls.Add(this.label25);
+            this.groupBox6.Controls.Add(this.label12);
+            this.groupBox6.Controls.Add(this.label27);
+            this.groupBox6.Controls.Add(this.label24);
+            this.groupBox6.Controls.Add(this.label26);
+            this.groupBox6.Controls.Add(this.chart1);
+            this.groupBox6.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.groupBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.groupBox6.Location = new System.Drawing.Point(12, 581);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(1649, 446);
+            this.groupBox6.TabIndex = 72;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Charts";
+            // 
+            // chart6
+            // 
+            this.chart6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chart6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.chart6.BorderlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea14.AxisX.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea14.AxisX.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea14.AxisX.MajorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea14.AxisX.MajorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea14.AxisX.MinorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea14.AxisX.MinorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea14.AxisX.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea14.AxisX2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea14.AxisX2.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea14.AxisY.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea14.AxisY.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea14.AxisY.MajorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea14.AxisY.MajorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea14.AxisY.MinorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea14.AxisY.MinorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea14.AxisY.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea14.AxisY2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea14.AxisY2.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            chartArea14.BackSecondaryColor = System.Drawing.Color.Transparent;
+            chartArea14.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea14.CursorX.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(100)))), ((int)(((byte)(80)))));
+            chartArea14.CursorY.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(100)))), ((int)(((byte)(80)))));
+            chartArea14.Name = "ChartArea1";
+            this.chart6.ChartAreas.Add(chartArea14);
+            this.chart6.Cursor = System.Windows.Forms.Cursors.Arrow;
+            legend14.Enabled = false;
+            legend14.Name = "Legend1";
+            this.chart6.Legends.Add(legend14);
+            this.chart6.Location = new System.Drawing.Point(20, 257);
+            this.chart6.Name = "chart6";
+            this.chart6.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Grayscale;
+            series14.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
+            series14.BorderWidth = 2;
+            series14.ChartArea = "ChartArea1";
+            series14.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.SplineArea;
+            series14.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(100)))), ((int)(((byte)(80)))));
+            series14.Legend = "Legend1";
+            series14.Name = "Pressure";
+            series14.XValueMember = "tmptxt";
+            this.chart6.Series.Add(series14);
+            this.chart6.Size = new System.Drawing.Size(521, 165);
+            this.chart6.TabIndex = 69;
+            this.chart6.Text = "chart6";
+            // 
+            // chart5
+            // 
+            this.chart5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chart5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.chart5.BorderlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea15.AxisX.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea15.AxisX.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea15.AxisX.MajorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea15.AxisX.MajorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea15.AxisX.MinorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea15.AxisX.MinorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea15.AxisX.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea15.AxisX2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea15.AxisX2.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea15.AxisY.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea15.AxisY.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea15.AxisY.MajorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea15.AxisY.MajorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea15.AxisY.MinorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea15.AxisY.MinorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea15.AxisY.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea15.AxisY2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea15.AxisY2.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            chartArea15.BackSecondaryColor = System.Drawing.Color.Transparent;
+            chartArea15.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea15.CursorX.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(100)))), ((int)(((byte)(80)))));
+            chartArea15.CursorY.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(100)))), ((int)(((byte)(80)))));
+            chartArea15.Name = "ChartArea1";
+            this.chart5.ChartAreas.Add(chartArea15);
+            this.chart5.Cursor = System.Windows.Forms.Cursors.Arrow;
+            legend15.Enabled = false;
+            legend15.Name = "Legend1";
+            this.chart5.Legends.Add(legend15);
+            this.chart5.Location = new System.Drawing.Point(20, 51);
+            this.chart5.Name = "chart5";
+            this.chart5.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Grayscale;
+            series15.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
+            series15.BorderWidth = 2;
+            series15.ChartArea = "ChartArea1";
+            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.SplineArea;
+            series15.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(100)))), ((int)(((byte)(80)))));
+            series15.Legend = "Legend1";
+            series15.Name = "Pressure";
+            series15.XValueMember = "tmptxt";
+            this.chart5.Series.Add(series15);
+            this.chart5.Size = new System.Drawing.Size(521, 165);
+            this.chart5.TabIndex = 68;
+            this.chart5.Text = "chart5";
+            // 
+            // chart4
+            // 
+            this.chart4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chart4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.chart4.BorderlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea16.AxisX.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea16.AxisX.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea16.AxisX.MajorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea16.AxisX.MajorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea16.AxisX.MinorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea16.AxisX.MinorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea16.AxisX.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea16.AxisX2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea16.AxisX2.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea16.AxisY.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea16.AxisY.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea16.AxisY.MajorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea16.AxisY.MajorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea16.AxisY.MinorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea16.AxisY.MinorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea16.AxisY.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea16.AxisY2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea16.AxisY2.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            chartArea16.BackSecondaryColor = System.Drawing.Color.Transparent;
+            chartArea16.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea16.CursorX.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(100)))), ((int)(((byte)(80)))));
+            chartArea16.CursorY.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(100)))), ((int)(((byte)(80)))));
+            chartArea16.Name = "ChartArea1";
+            this.chart4.ChartAreas.Add(chartArea16);
+            this.chart4.Cursor = System.Windows.Forms.Cursors.Arrow;
+            legend16.Enabled = false;
+            legend16.Name = "Legend1";
+            this.chart4.Legends.Add(legend16);
+            this.chart4.Location = new System.Drawing.Point(585, 51);
+            this.chart4.Name = "chart4";
+            this.chart4.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Grayscale;
+            series16.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
+            series16.BorderWidth = 2;
+            series16.ChartArea = "ChartArea1";
+            series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.SplineArea;
+            series16.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(100)))), ((int)(((byte)(80)))));
+            series16.Legend = "Legend1";
+            series16.Name = "Pressure";
+            series16.XValueMember = "tmptxt";
+            this.chart4.Series.Add(series16);
+            this.chart4.Size = new System.Drawing.Size(516, 165);
+            this.chart4.TabIndex = 67;
+            this.chart4.Text = "chart4";
+            // 
+            // chart3
+            // 
+            this.chart3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chart3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.chart3.BorderlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea17.AxisX.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea17.AxisX.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea17.AxisX.MajorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea17.AxisX.MajorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea17.AxisX.MinorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea17.AxisX.MinorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea17.AxisX.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea17.AxisX2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea17.AxisX2.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea17.AxisY.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea17.AxisY.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea17.AxisY.MajorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea17.AxisY.MajorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea17.AxisY.MinorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea17.AxisY.MinorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea17.AxisY.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea17.AxisY2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea17.AxisY2.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            chartArea17.BackSecondaryColor = System.Drawing.Color.Transparent;
+            chartArea17.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea17.CursorX.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(100)))), ((int)(((byte)(80)))));
+            chartArea17.CursorY.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(100)))), ((int)(((byte)(80)))));
+            chartArea17.Name = "ChartArea1";
+            this.chart3.ChartAreas.Add(chartArea17);
+            this.chart3.Cursor = System.Windows.Forms.Cursors.Arrow;
+            legend17.Enabled = false;
+            legend17.Name = "Legend1";
+            this.chart3.Legends.Add(legend17);
+            this.chart3.Location = new System.Drawing.Point(585, 257);
+            this.chart3.Name = "chart3";
+            this.chart3.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Grayscale;
+            series17.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
+            series17.BorderWidth = 2;
+            series17.ChartArea = "ChartArea1";
+            series17.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.SplineArea;
+            series17.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(100)))), ((int)(((byte)(80)))));
+            series17.Legend = "Legend1";
+            series17.Name = "Pressure";
+            series17.XValueMember = "tmptxt";
+            this.chart3.Series.Add(series17);
+            this.chart3.Size = new System.Drawing.Size(516, 165);
+            this.chart3.TabIndex = 66;
+            this.chart3.Text = "chart3";
+            // 
+            // chart2
+            // 
+            this.chart2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chart2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.chart2.BorderlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea18.AxisX.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea18.AxisX.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea18.AxisX.MajorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea18.AxisX.MajorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea18.AxisX.MinorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea18.AxisX.MinorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea18.AxisX.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea18.AxisX2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea18.AxisX2.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea18.AxisY.LabelStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea18.AxisY.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea18.AxisY.MajorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea18.AxisY.MajorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea18.AxisY.MinorGrid.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea18.AxisY.MinorTickMark.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea18.AxisY.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea18.AxisY2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea18.AxisY2.TitleForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            chartArea18.BackSecondaryColor = System.Drawing.Color.Transparent;
+            chartArea18.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            chartArea18.CursorX.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(100)))), ((int)(((byte)(80)))));
+            chartArea18.CursorY.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(100)))), ((int)(((byte)(80)))));
+            chartArea18.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea18);
+            this.chart2.Cursor = System.Windows.Forms.Cursors.Arrow;
+            legend18.Enabled = false;
+            legend18.Name = "Legend1";
+            this.chart2.Legends.Add(legend18);
+            this.chart2.Location = new System.Drawing.Point(1147, 257);
+            this.chart2.Name = "chart2";
+            this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Grayscale;
+            series18.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
+            series18.BorderWidth = 2;
+            series18.ChartArea = "ChartArea1";
+            series18.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.SplineArea;
+            series18.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(100)))), ((int)(((byte)(80)))));
+            series18.Legend = "Legend1";
+            series18.Name = "Pressure";
+            series18.XValueMember = "tmptxt";
+            this.chart2.Series.Add(series18);
+            this.chart2.Size = new System.Drawing.Size(470, 165);
+            this.chart2.TabIndex = 65;
+            this.chart2.Text = "chart2";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(0, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 73;
+            this.label3.Text = "label3";
+            // 
             // label28
             // 
             this.label28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(584, 117);
+            this.label28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.label28.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.label28.Location = new System.Drawing.Point(950, 9);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(77, 13);
-            this.label28.TabIndex = 66;
-            this.label28.Text = "Wind Direction";
+            this.label28.Size = new System.Drawing.Size(203, 19);
+            this.label28.TabIndex = 74;
+            this.label28.Text = "ZSM-SAT GROUND CONTROL";
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(1436, 68);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(353, 340);
+            this.panel1.TabIndex = 75;
             // 
             // Form1
             // 
@@ -834,83 +1223,42 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1684, 1031);
+            this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label28);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label27);
-            this.Controls.Add(this.label26);
-            this.Controls.Add(this.chart6);
-            this.Controls.Add(this.chart5);
-            this.Controls.Add(this.label25);
-            this.Controls.Add(this.label24);
-            this.Controls.Add(this.chart4);
-            this.Controls.Add(this.label23);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.chart3);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.ComboBox1);
-            this.Controls.Add(this.label22);
-            this.Controls.Add(this.label20);
-            this.Controls.Add(this.label21);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.label18);
-            this.Controls.Add(this.label19);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.frametxt);
-            this.Controls.Add(this.coursetxt);
-            this.Controls.Add(this.timetxt);
-            this.Controls.Add(this.halltxt);
-            this.Controls.Add(this.zmagtxt);
-            this.Controls.Add(this.rssitxt);
-            this.Controls.Add(this.speedtxt);
-            this.Controls.Add(this.ymagtxt);
-            this.Controls.Add(this.ytilttxt);
-            this.Controls.Add(this.ztilttxt);
-            this.Controls.Add(this.xmagtxt);
-            this.Controls.Add(this.xtilttxt);
-            this.Controls.Add(this.xacceltxt);
-            this.Controls.Add(this.yacceltxt);
-            this.Controls.Add(this.zacceltxt);
-            this.Controls.Add(this.framenrtxt);
-            this.Controls.Add(this.openGLControl1);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.asdasdasda);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.alttxt);
-            this.Controls.Add(this.psrtxt);
-            this.Controls.Add(this.temptxt);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.DataStream);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.longtxt);
-            this.Controls.Add(this.lattxt);
+            this.Controls.Add(this.label18);
             this.Controls.Add(this.map);
-            this.Controls.Add(this.chart1);
-            this.Controls.Add(this.chart2);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.groupBox6);
             this.DoubleBuffered = true;
             this.Name = "Form1";
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.openGLControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -924,7 +1272,6 @@
         private GMap.NET.WindowsForms.GMapControl map;
         private System.IO.Ports.SerialPort SerialPort1;
         private System.Windows.Forms.RichTextBox DataStream;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox temptxt;
         private System.Windows.Forms.TextBox psrtxt;
         private System.Windows.Forms.TextBox alttxt;
@@ -932,7 +1279,6 @@
         private System.Windows.Forms.Label asdasdasda;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
         private SharpGL.OpenGLControl openGLControl1;
         private System.Windows.Forms.TextBox framenrtxt;
         private System.Windows.Forms.TextBox zacceltxt;
@@ -967,18 +1313,27 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label7;
         public System.Windows.Forms.ComboBox ComboBox1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart4;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart5;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart6;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart6;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart5;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart4;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Panel panel1;
     }
 
 }
