@@ -180,6 +180,7 @@ namespace CanSatGUI
             map.MinZoom = 0;
             map.MaxZoom = 25;
             map.Zoom = 5;
+            map.
 
             GMapOverlay markersOverlay = new GMapOverlay("markers");
             map.Overlays.Add(markersOverlay);
@@ -374,8 +375,10 @@ namespace CanSatGUI
 
         }
 
+        private void label26_Click(object sender, EventArgs e)
+        {
 
-       
+        }
     }
 }
 

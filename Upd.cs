@@ -58,7 +58,7 @@ namespace CanSatGUI
             //processInput(window);
 
             // clear background 
-            gl.ClearColor(0.7f, 0.2f, 0.1f, 1.0f);
+            gl.ClearColor(11/255f, 18/255f, 34/255f, 1.0f);
             gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
 
             /*// model
