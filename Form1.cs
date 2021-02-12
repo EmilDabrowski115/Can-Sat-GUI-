@@ -27,10 +27,6 @@ using GMap.NET;
 
 namespace CanSatGUI
 {
-  
-
-
-
     public partial class Form1 : Form
     {
         public SocketIO client = new SocketIO("http://77.55.213.87:3000");
@@ -63,20 +59,22 @@ namespace CanSatGUI
         }
 
         // poczatek czesci wykonawczej serial port txt box v1.0
-        private void myPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        private void myPort_DataReceived(object sender, SerialDataReceivedEventArgs _)
         {
-            rxString = SerialPort1.ReadLine();
-
-            writer.Write(rxString);
-            writer.Flush();
-
-            //Console.WriteLine(rxString);
             try
             {
+                rxString = SerialPort1.ReadLine();
+                writer.Write(rxString);
                 this.Invoke(new EventHandler(UpdateWidgets));
             }
-            catch (System.IndexOutOfRangeException)
-            { }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            finally
+            {
+                writer.Flush();
+            }
         }
 
         //private void UpdateWidgets(object sender, EventArgs e)
@@ -159,7 +157,10 @@ namespace CanSatGUI
             // catch (SocketIOClient.Exceptions.InvalidSocketStateException) { }
 
             // opengl
-            Upd.UpdateOpenGLControl(openGLControl1, shaderProgram, VERTICES_LENGTH / 3);
+            float pitch = -20.0f;
+            float yaw = -10.0f;
+            float roll = 30.0f;
+            Upd.UpdateOpenGLControl(openGLControl1, shaderProgram, VERTICES_LENGTH / 3, pitch, yaw, roll);
         }
 
         private void psrtxt_TextChanged(object sender, EventArgs e)
@@ -291,29 +292,25 @@ namespace CanSatGUI
             {
                 await client.ConnectAsync();
             }
-            catch (System.Net.WebSockets.WebSocketException)
-            {
-
-            }
+            catch
+            { }
         }
 
        
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs _)
         {
-            string Dropdown;
-            
-            Dropdown = ComboBox1.GetItemText(ComboBox1.SelectedItem);
-            //Console.WriteLine(Dropdown);
-
             // init COM
-            SerialPort1 = Utils.InitSerialPort(Dropdown);     
-            SerialPort1.DataReceived += myPort_DataReceived;
-
-            // ComPort = Dropdown;
-
-
-
+            string Dropdown = ComboBox1.GetItemText(ComboBox1.SelectedItem);
+            try
+            {
+                SerialPort1 = Utils.InitSerialPort(Dropdown);     
+                SerialPort1.DataReceived += myPort_DataReceived;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
 
         private void chart1_Click(object sender, EventArgs e)

@@ -62,53 +62,82 @@ namespace CanSatGUI
             }
             chart.Series[0].Points.AddXY(x, y);
             chart.Update();
-
-            
         }
 
-        public static void UpdateOpenGLControl(OpenGLControl control, uint shaderProgram, int triangleCount)
+        public static void UpdateOpenGLControl(OpenGLControl control, uint shaderProgram, 
+            int triangleCount, float pitch, float yaw, float roll)
         {
             OpenGL gl = control.OpenGL;
-            //processInput(window);
 
             // clear background 
-            gl.ClearColor(11/255f, 18/255f, 34/255f, 1.0f);
+            gl.ClearColor(11 / 255f, 18 / 255f, 34 / 255f, 1.0f);
             gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
 
             // model
             mat4 model = mat4.Identity;
-            float rads = glm.Radians(-20.0f);
-            vec3 axis = new vec3(1.0f, 0.0f, 0.0f);
-            mat4 rotateM = mat4.Rotate(rads, axis);
-            model = rotateM * model;
+
+            vec3 pitchAxis = new vec3(1.0f, 0.0f, 0.0f);
+            vec3 yawAxis = new vec3(0.0f, 1.0f, 0.0f);
+            vec3 rollAxis = new vec3(0.0f, 0.0f, 1.0f);
+
+            mat4 pitchMat = mat4.Rotate(glm.Radians(pitch), pitchAxis);
+            mat4 yawMat = mat4.Rotate(glm.Radians(yaw), yawAxis);
+            mat4 rollMat = mat4.Rotate(glm.Radians(roll), rollAxis);
+
+            mat4 scaleMat = mat4.Scale(2.0f, 2.0f, 2.0f);
+
+            model = pitchMat * yawMat * rollMat * scaleMat * model;
             int modelLoc = gl.GetUniformLocation(shaderProgram, "model");
             gl.UniformMatrix4(modelLoc, 1, false, model.Values1D);
 
-            /*
-            // view
-            mat4 view = GLM_MAT4_IDENTITY_INIT;
-            // note that we're translating the scene in the reverse direction of where we want to move
-            vec3 translate_vec = { 0.0f, 0.0f, -3.0f };
-            glm_translate(view, translate_vec);
-            int viewLoc = glGetUniformLocation(shaderProgram, "view");
-            glUniformMatrix4fv(viewLoc, 1, GL_FALSE, (const GLfloat*)view);
+
+            //// view
+            //mat4 view = mat4.Identity;
+            //// note that we're translating the scene in the reverse direction of where we want to move
+            //vec3 translate_vec = { 0.0f, 0.0f, -3.0f };
+            //glm_translate(view, translate_vec);
+            //int viewLoc = glGetUniformLocation(shaderProgram, "view");
+            //glUniformMatrix4fv(viewLoc, 1, GL_FALSE, (const GLfloat*)view);
+
 
             // projection
             // mat4 projection = GLM_MAT4_IDENTITY_INIT;
-            mat4 projection;
-            glm_perspective(glm_rad(45.0f), 800.0f / 600.0f, 0.1f, 100.0f, projection);
-            int projectionLoc = glGetUniformLocation(shaderProgram, "projection");
-            glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, (const GLfloat*)projection);*/
+            //mat4 projection;
+            //glm_perspective(glm_rad(45.0f), 800.0f / 600.0f, 0.1f, 100.0f, projection);
+            //int projectionLoc = glGetUniformLocation(shaderProgram, "projection");
+            //glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, (const GLfloat*)projection);
 
 
             // draw triangles
-            gl.DrawArrays(OpenGL.GL_TRIANGLES, 0, triangleCount);
+            int colorLoc = gl.GetUniformLocation(shaderProgram, "materialColor");
+
+            int[] part = { 1428, 5454, 6594, 7734, 8106, 9594, 9630, 10002, 10374, 10410, 10446, 10818 };
+
+            float[] colors = {
+                0.1f, 0.9f, 0.5f, 1.0f,
+                0.2f, 0.8f, 0.3f, 1.0f,
+                0.3f, 0.7f, 0.1f, 1.0f,
+                0.4f, 0.6f, 0.9f, 1.0f,
+                0.5f, 0.5f, 0.7f, 1.0f,
+                0.6f, 0.4f, 0.5f, 1.0f,
+                0.7f, 0.3f, 0.3f, 1.0f,
+                0.8f, 0.2f, 0.1f, 1.0f,
+                0.9f, 0.1f, 0.8f, 1.0f,
+                0.1f, 0.2f, 0.6f, 1.0f,
+                0.2f, 0.3f, 0.4f, 1.0f,
+                0.3f, 0.4f, 0.2f, 1.0f,
+            };
+
+            int prev = 0;
+            for (int i = 0; i < 12; i++)
+            {
+                int j = i * 4;
+                gl.Uniform4(colorLoc, colors[j], colors[j + 1], colors[j + 2], colors[j + 3]);
+                gl.DrawArrays(OpenGL.GL_TRIANGLES, prev, part[i]);
+                prev = part[i];
+            }
+
             control.Refresh();
-
-            // swap buffers
-
-
-            
         }
         /* public static void Updatewinddirection(Chart chart, double y, double x)
          {
@@ -142,9 +171,11 @@ namespace CanSatGUI
             return new PointLatLng(ZoneLat, ZoneLong);
         }
 
+        /*
+        
         public static void Update3DChart()
         {
-            var colors = new[] { Color.Red, Color.Black, Color.Blue, Color.Green /*...*/ };
+            var colors = new[] { Color.Red, Color.Black, Color.Blue, Color.Green};
 
             ILArray<float> data = ILMath.zeros<float>(
               3,
@@ -187,6 +218,7 @@ namespace CanSatGUI
 
             ilPanel1.Scene = new ILScene { plot };
         }
+        */
     }
 }
 

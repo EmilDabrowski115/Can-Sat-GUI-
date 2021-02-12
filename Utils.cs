@@ -24,10 +24,6 @@ namespace CanSatGUI
         
         public static SerialPort InitSerialPort(string defaultPortName)
         {
-
-            // init serial port
-            //System.IO.IOException: 
-
             SerialPort port = new SerialPort();
             port.PortName = defaultPortName;
             port.BaudRate = 9600;
@@ -35,14 +31,7 @@ namespace CanSatGUI
             port.DataBits = 8;
             port.StopBits = StopBits.One;
             port.NewLine = "\n";
-            try
-            {
-                port.Open();
-            }
-            catch (System.IO.IOException)
-            {
-                // DataStream.AppendText("");
-            }
+            port.Open();
             return port;
         }
 
