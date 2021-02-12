@@ -21,6 +21,7 @@ using GMap.NET.WindowsForms.Markers;
 using GMap.NET.WindowsForms;
 using GMap.NET.MapProviders;
 using GMap.NET;
+using GMap.NET.Internals;
 
 
 
@@ -178,10 +179,10 @@ namespace CanSatGUI
             GMapProviders.GoogleMap.ApiKey = @"AIzaSyAZouhXULQgPGPckADOmiHqfCc_YvD5QzQ";
             map.DragButton = MouseButtons.Left;
             map.MapProvider = GMapProviders.GoogleMap;
-            map.Position = new PointLatLng(0, 0);
+            // map.Position = new PointLatLng(0, 0);
             map.MinZoom = 0;
             map.MaxZoom = 25;
-            map.Zoom = 5;
+            map.Zoom = 20;
             
             GMapOverlay markersOverlay = new GMapOverlay("markers");
             map.Overlays.Add(markersOverlay);
@@ -378,6 +379,12 @@ namespace CanSatGUI
         private void groupBox5_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+           // var center = GMap.Position;
         }
     }
 }
