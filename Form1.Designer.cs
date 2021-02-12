@@ -104,6 +104,7 @@
             this.label27 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -116,8 +117,7 @@
             this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.label3 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ilPanel1 = new ILNumerics.Drawing.ILPanel();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.openGLControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -638,7 +638,7 @@
             // 
             this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(1642, 107);
+            this.label18.Location = new System.Drawing.Point(1422, 107);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(0, 13);
             this.label18.TabIndex = 45;
@@ -830,6 +830,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Map";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(398, 477);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(91, 45);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Center";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.pictureBox1);
@@ -909,7 +919,7 @@
             this.groupBox5.Controls.Add(this.label9);
             this.groupBox5.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold);
             this.groupBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
-            this.groupBox5.Location = new System.Drawing.Point(1667, 481);
+            this.groupBox5.Location = new System.Drawing.Point(1447, 471);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(233, 546);
             this.groupBox5.TabIndex = 71;
@@ -1205,28 +1215,24 @@
             this.label28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
             this.label28.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
-            this.label28.Location = new System.Drawing.Point(950, 9);
+            this.label28.Location = new System.Drawing.Point(730, 9);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(203, 19);
             this.label28.TabIndex = 74;
             this.label28.Text = "ZSM-SAT GROUND CONTROL";
             // 
-            // panel1
+            // ilPanel1
             // 
-            this.panel1.Location = new System.Drawing.Point(1436, 68);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(353, 340);
-            this.panel1.TabIndex = 75;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(398, 477);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(91, 45);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Center";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.ilPanel1.Driver = ILNumerics.Drawing.RendererTypes.OpenGL;
+            this.ilPanel1.Editor = null;
+            this.ilPanel1.Location = new System.Drawing.Point(1423, 107);
+            this.ilPanel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ilPanel1.Name = "ilPanel1";
+            this.ilPanel1.Rectangle = ((System.Drawing.RectangleF)(resources.GetObject("ilPanel1.Rectangle")));
+            this.ilPanel1.ShowUIControls = false;
+            this.ilPanel1.Size = new System.Drawing.Size(257, 244);
+            this.ilPanel1.TabIndex = 66;
+            this.ilPanel1.Timeout = ((uint)(0u));
             // 
             // Form1
             // 
@@ -1236,8 +1242,8 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(1684, 1031);
+            this.Controls.Add(this.ilPanel1);
             this.Controls.Add(this.label28);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label18);
@@ -1344,8 +1350,8 @@
         private System.Windows.Forms.DataVisualization.Charting.Chart chart3;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label28;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button1;
+        private ILNumerics.Drawing.ILPanel ilPanel1;
     }
 
 }
