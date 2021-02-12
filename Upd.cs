@@ -168,7 +168,7 @@ namespace CanSatGUI
 
         public static PointLatLng CalculateLandingLocation(double currentLatitude, double currentLongitude, double altitude, double fallingSpeed, double windSpeed, int course)
         {
-            int time = Convert.ToInt32(altitude / fallingSpeed);
+            int time = Convert.ToInt32(altitude / fallingSpeed); //Potencjalny blad dzielenia przez 0!!!
             double distance = time * windSpeed;
             double angle = course / 100;
             double valLong = -Math.Sin(ConvertToRadians(angle)) * distance / 0.111 / 1000000;

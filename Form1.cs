@@ -50,6 +50,9 @@ namespace CanSatGUI
             // init window
             InitializeComponent();
 
+            // init widgets
+            
+
             // init timer
             timer.Start();
 
@@ -81,7 +84,7 @@ namespace CanSatGUI
         //private void UpdateWidgets(object sender, EventArgs e)
         private async void UpdateWidgets(object sender, EventArgs e)
         {
-
+            
             // RSSI; framenr; xaccel; yaccel; zaccel; xtilt; ytilt; ztilt; xmag; ymag; zmag; pressure; temp; lat; long; alt; speed; course; h:m:s:ms; hall
             DataStream.AppendText(rxString);
             string[] packetElems = Utils.ParsePacket(rxString);
@@ -156,6 +159,22 @@ namespace CanSatGUI
             }
             catch { }
             // catch (SocketIOClient.Exceptions.InvalidSocketStateException) { }
+
+            // opengl
+            float pitch = -20.0f;
+            float yaw = -10.0f;
+            float roll = 30.0f;
+            Upd.UpdateOpenGLControl(openGLControl1, shaderProgram, VERTICES_LENGTH / 3, pitch, yaw, roll);
+        }
+
+        private void InitWidgets()
+        {
+
+            DataStream.AppendText("Initalize");
+            
+
+            Upd.UpdateMap(map, 1, 1, 1, 1, 1, 1);
+
 
             // opengl
             float pitch = -20.0f;
@@ -286,6 +305,7 @@ namespace CanSatGUI
 
         private async void Form1_Load(object sender, EventArgs e)
         {
+            InitWidgets();
             client.OnConnected += async (sender_socket, e_socket) => {
                 //await client.EmitAsync("data", ".net core");
             };
