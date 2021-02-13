@@ -220,7 +220,7 @@
             this.DataStream.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
             this.DataStream.Location = new System.Drawing.Point(6, 32);
             this.DataStream.Name = "DataStream";
-            this.DataStream.Size = new System.Drawing.Size(966, 101);
+            this.DataStream.Size = new System.Drawing.Size(905, 101);
             this.DataStream.TabIndex = 8;
             this.DataStream.Text = "";
             this.DataStream.TextChanged += new System.EventHandler(this.DataStream_TextChanged);
@@ -329,7 +329,7 @@
             legend1.Enabled = false;
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(1147, 51);
+            this.chart1.Location = new System.Drawing.Point(1128, 51);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Grayscale;
             series1.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
@@ -750,9 +750,10 @@
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(1142, 25);
+            this.label12.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Bold);
+            this.label12.Location = new System.Drawing.Point(1157, 29);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(174, 26);
+            this.label12.Size = new System.Drawing.Size(144, 21);
             this.label12.TabIndex = 56;
             this.label12.Text = "Temperature Chart";
             this.label12.Click += new System.EventHandler(this.label12_Click);
@@ -761,9 +762,10 @@
             // 
             this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(1142, 228);
+            this.label23.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Bold);
+            this.label23.Location = new System.Drawing.Point(1157, 232);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(137, 26);
+            this.label23.Size = new System.Drawing.Size(114, 21);
             this.label23.TabIndex = 57;
             this.label23.Text = "Pressure Chart";
             // 
@@ -771,9 +773,10 @@
             // 
             this.label24.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(580, 22);
+            this.label24.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Bold);
+            this.label24.Location = new System.Drawing.Point(606, 30);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(133, 26);
+            this.label24.Size = new System.Drawing.Size(109, 21);
             this.label24.TabIndex = 59;
             this.label24.Text = "Altitude Chart";
             // 
@@ -781,9 +784,10 @@
             // 
             this.label25.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(580, 228);
+            this.label25.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Bold);
+            this.label25.Location = new System.Drawing.Point(606, 232);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(117, 26);
+            this.label25.Size = new System.Drawing.Size(95, 21);
             this.label25.TabIndex = 60;
             this.label25.Text = "Wind Speed";
             // 
@@ -791,9 +795,10 @@
             // 
             this.label26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(15, 228);
+            this.label26.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Bold);
+            this.label26.Location = new System.Drawing.Point(41, 232);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(117, 26);
+            this.label26.Size = new System.Drawing.Size(96, 21);
             this.label26.TabIndex = 63;
             this.label26.Text = "Speed Chart";
             this.label26.Click += new System.EventHandler(this.label26_Click);
@@ -802,9 +807,10 @@
             // 
             this.label27.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(15, 25);
+            this.label27.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Bold);
+            this.label27.Location = new System.Drawing.Point(41, 30);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(142, 26);
+            this.label27.Size = new System.Drawing.Size(116, 21);
             this.label27.TabIndex = 64;
             this.label27.Text = "Signal Strength";
             // 
@@ -868,7 +874,7 @@
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
             this.groupBox3.Location = new System.Drawing.Point(548, 427);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1113, 148);
+            this.groupBox3.Size = new System.Drawing.Size(1094, 148);
             this.groupBox3.TabIndex = 69;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Data Stream";
@@ -877,7 +883,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(978, 32);
+            this.checkBox1.Location = new System.Drawing.Point(936, 32);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(125, 30);
             this.checkBox1.TabIndex = 9;
@@ -898,7 +904,6 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.groupBox5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBox5.Controls.Add(this.alttxt);
             this.groupBox5.Controls.Add(this.temptxt);
@@ -940,7 +945,7 @@
             this.groupBox5.Controls.Add(this.label9);
             this.groupBox5.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold);
             this.groupBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
-            this.groupBox5.Location = new System.Drawing.Point(1667, 427);
+            this.groupBox5.Location = new System.Drawing.Point(1658, 427);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(233, 600);
             this.groupBox5.TabIndex = 71;
@@ -966,7 +971,7 @@
             this.groupBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
             this.groupBox6.Location = new System.Drawing.Point(12, 581);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(1649, 446);
+            this.groupBox6.Size = new System.Drawing.Size(1630, 446);
             this.groupBox6.TabIndex = 72;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Charts";
@@ -1005,7 +1010,7 @@
             legend2.Enabled = false;
             legend2.Name = "Legend1";
             this.chart6.Legends.Add(legend2);
-            this.chart6.Location = new System.Drawing.Point(20, 257);
+            this.chart6.Location = new System.Drawing.Point(1, 257);
             this.chart6.Name = "chart6";
             this.chart6.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Grayscale;
             series2.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
@@ -1055,7 +1060,7 @@
             legend3.Enabled = false;
             legend3.Name = "Legend1";
             this.chart5.Legends.Add(legend3);
-            this.chart5.Location = new System.Drawing.Point(20, 51);
+            this.chart5.Location = new System.Drawing.Point(1, 51);
             this.chart5.Name = "chart5";
             this.chart5.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Grayscale;
             series3.BorderWidth = 2;
@@ -1104,7 +1109,7 @@
             legend4.Enabled = false;
             legend4.Name = "Legend1";
             this.chart4.Legends.Add(legend4);
-            this.chart4.Location = new System.Drawing.Point(585, 51);
+            this.chart4.Location = new System.Drawing.Point(566, 51);
             this.chart4.Name = "chart4";
             this.chart4.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Grayscale;
             series4.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
@@ -1154,7 +1159,7 @@
             legend5.Enabled = false;
             legend5.Name = "Legend1";
             this.chart3.Legends.Add(legend5);
-            this.chart3.Location = new System.Drawing.Point(585, 257);
+            this.chart3.Location = new System.Drawing.Point(566, 257);
             this.chart3.Name = "chart3";
             this.chart3.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Grayscale;
             series5.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
@@ -1204,7 +1209,7 @@
             legend6.Enabled = false;
             legend6.Name = "Legend1";
             this.chart2.Legends.Add(legend6);
-            this.chart2.Location = new System.Drawing.Point(1147, 257);
+            this.chart2.Location = new System.Drawing.Point(1128, 257);
             this.chart2.Name = "chart2";
             this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Grayscale;
             series6.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
