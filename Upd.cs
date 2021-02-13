@@ -24,12 +24,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 
 
-
-
-
-
-
-
 namespace CanSatGUI
 {
     class Upd
@@ -38,6 +32,10 @@ namespace CanSatGUI
         static bool isStartingPointSet = false;
         public static void UpdateMap(GMapControl map, double latitude, double Longitude, double altitude, double fallingSpeed, double windSpeed, int course)
         {
+            if (latitude == 0 && Longitude == 0)
+            {
+                return;
+            }
             if (!isStartingPointSet)
             {
                 map.Position = new PointLatLng(latitude, Longitude);
@@ -92,7 +90,7 @@ namespace CanSatGUI
             mat4 yawMat = mat4.Rotate(glm.Radians(yaw), yawAxis);
             mat4 rollMat = mat4.Rotate(glm.Radians(roll), rollAxis);
 
-            mat4 scaleMat = mat4.Scale(2.0f, 2.0f, 2.0f);
+            mat4 scaleMat = mat4.Scale(3.0f, 3.0f, 3.0f);
 
             model = pitchMat * yawMat * rollMat * scaleMat * model;
             int modelLoc = gl.GetUniformLocation(shaderProgram, "model");
@@ -122,18 +120,18 @@ namespace CanSatGUI
             int[] part = { 1428, 5454, 6594, 7734, 8106, 9594, 9630, 10002, 10374, 10410, 10446, 10818 };
 
             float[] colors = {
-                0.1f, 0.9f, 0.5f, 1.0f,
-                0.2f, 0.8f, 0.3f, 1.0f,
-                0.3f, 0.7f, 0.1f, 1.0f,
-                0.4f, 0.6f, 0.9f, 1.0f,
-                0.5f, 0.5f, 0.7f, 1.0f,
-                0.6f, 0.4f, 0.5f, 1.0f,
-                0.7f, 0.3f, 0.3f, 1.0f,
-                0.8f, 0.2f, 0.1f, 1.0f,
-                0.9f, 0.1f, 0.8f, 1.0f,
-                0.1f, 0.2f, 0.6f, 1.0f,
-                0.2f, 0.3f, 0.4f, 1.0f,
-                0.3f, 0.4f, 0.2f, 1.0f,
+                180/255f, 180/255f, 180/255f, 1.0f, //os wirnika
+                120/255f, 20/255f, 30/255f, 1.0f, // wirnik
+                240/255f, 100/255f, 50/255f, 1.0f, //gorna pokrywa
+                180/255f, 180/255f, 180/255f, 1.0f, // prawdopodobnie plytka
+                180/255f, 180/255f, 180/255f, 1.0f, // prawdopodobnie plytka
+                180/255f, 180/255f, 180/255f, 1.0f, // prety
+                240/255f, 100/255f, 50/255f, 1.0f, //reszta
+                240/255f, 100/255f, 50/255f, 1.0f,
+                240/255f, 100/255f, 50/255f, 1.0f,
+                240/255f, 100/255f, 50/255f, 1.0f,
+                240/255f, 100/255f, 50/255f, 1.0f,
+                240/255f, 100/255f, 50/255f, 1.0f,
             };
 
             int prev = 0;
@@ -147,19 +145,19 @@ namespace CanSatGUI
 
             control.Refresh();
         }
-         public static void Updatewinddirection(Chart chart, double y, double x)
-         {
-             int MaxChartWidth = 50;
+        public static void Updatewinddirection(Chart chart, double y, double x)
+        {
+            int MaxChartWidth = 50;
 
-             int pointsCount = chart.Series[0].Points.Count;
-             if (pointsCount >= MaxChartWidth)
-             {
-                 chart.Series[0].Points.RemoveAt(0);
-                 chart.ResetAutoValues();
-             }
-             chart.Series[0].Points.AddXY(x, y);
-             chart.Update();
-         }
+            int pointsCount = chart.Series[0].Points.Count;
+            if (pointsCount >= MaxChartWidth)
+            {
+                chart.Series[0].Points.RemoveAt(0);
+                chart.ResetAutoValues();
+            }
+            chart.Series[0].Points.AddXY(x, y);
+            chart.Update();
+        }
         
         public static double ConvertToRadians(double angle)
         {
@@ -181,51 +179,6 @@ namespace CanSatGUI
 
         
         
-        //public static void Update3DChart()
-        //{
-        //    var colors = new[] { Color.Red, Color.Black, Color.Blue, Color.Green};
-
-        //    ILArray<float> data = ILMath.zeros<float>(
-        //      3,
-        //      colors.Length);
-
-        //    ILArray<float> colorData = ILMath.zeros<float>(
-        //      3,
-        //      colors.Length);
-
-        //    int index = 0;
-        //    foreach (var p in colors)
-        //    {
-        //        data[0, index] = p.GetHue();
-        //        data[1, index] = p.GetSaturation();
-        //        data[2, index] = p.GetBrightness();
-        //        colorData[0, index] = p.R / 255.0f;
-        //        colorData[1, index] = p.G / 255.0f;
-        //        colorData[2, index] = p.B / 255.0f;
-        //        index++;
-        //    }
-
-        //    var points = new ILPoints()
-        //    {
-        //        Positions = data,
-        //        Colors = colorData
-        //    };
-
-        //    points.Color = null;
-
-        //    var plot = new ILPlotCube(twoDMode: false)
-        //    {
-        //        Rotation = Matrix4.Rotation(new Vector3(1, 1, 0.1f), 0.4f),
-        //        Projection = Projection.Orthographic,
-        //        Children = { points }
-        //    };
-
-        //    plot.Axes[0].Label.Text = "Hue";
-        //    plot.Axes[1].Label.Text = "Saturation";
-        //    plot.Axes[2].Label.Text = "Brightness";
-
-        //    ilPanel1.Scene = new ILScene { plot };
-        //}
         
     }
 }

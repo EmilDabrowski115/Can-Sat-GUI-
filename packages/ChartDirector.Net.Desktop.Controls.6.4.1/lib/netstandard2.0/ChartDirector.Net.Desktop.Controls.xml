@@ -1,0 +1,1358 @@
+<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>ChartDirector.Net.Desktop.Controls</name>
+</assembly>
+<members>
+<member name="T:ChartDirector.WinHotSpotEventArgs">
+<summary>
+WinHotSpotEventArgs is used in various hot spot events of the WinChartViewer control to represent attributes associated with the hot spot. These attributes come from query parameters in the image map that defines the hot spot.
+</summary>
+</member>
+<member name="T:ChartDirector.WPFHotSpotEventArgs">
+<summary>
+WPFHotSpotEventArgs is used in various hot spot events of the WPFChartViewer control to represent attributes associated with the hot spot. These attributes come from query parameters in the image map that defines the hot spot.
+</summary>
+</member>
+<member name="T:ChartDirector.WPFSelectionEventArgs">
+<summary>
+WPFSelectionEventArgs is a subclass of System.Windows.Input.MouseEventArgs. It provides information about the current selection rectangle on the chart during a drag to select operation.
+</summary>
+</member>
+<member name="T:ChartDirector.WinChartViewer">
+<summary>
+The WinChartViewer control is a Windows Forms control for viewing ChartDirector charts. It is a subclass of the .NET PictureBox control. Apart from displaying the charts, its main functions are to support advanced user interactions with the charts, including:
+</summary>
+</member>
+<member name="T:ChartDirector.WinViewPortEventArgs">
+<summary>
+WinViewPortEventArgs is a subclass of System.EventArgs. It provides information about viewport changed events.
+</summary>
+</member>
+<member name="T:ChartDirector.WPFViewPortControl">
+<summary>
+The WPFViewPortControl is a WPF control to let the user visualize and manipulate the viewport managed by the "WPFChartViewer". It is a subclass of the WPF Canvas.
+</summary>
+</member>
+<member name="T:ChartDirector.WPFViewPortEventArgs">
+<summary>
+WPFViewPortEventArgs is a subclass of System.EventArgs. It provides information about viewport changed events.
+</summary>
+</member>
+<member name="T:ChartDirector.WPFChartViewer">
+<summary>
+The WPFChartViewer control is a WPF control for viewing ChartDirector charts. It is a subclass of the WPF Canvas. Apart from displaying the charts, its main functions are to support advanced user interactions with the charts, including:
+</summary>
+</member>
+<member name="T:ChartDirector.WinViewPortControl">
+<summary>
+The WinViewPortControl is a Windows Forms control to let the user visualize and manipulate the viewport managed by the "WinChartViewer". It is a subclass of the .NET PictureBox control.
+</summary>
+</member>
+<member name="T:ChartDirector.WinSelectionEventArgs">
+<summary>
+WinSelectionEventArgs is a subclass of System.Windows.Forms.MouseEventArgs. It provides information about the current selection rectangle on the chart during a drag to select operation.
+</summary>
+</member>
+<member name="M:ChartDirector.WinChartViewer.setPlotAreaMouseMargin(System.Int32)">
+<summary>
+Sets all margins (left, right, top, and bottom) of the plot area mouse event region to the same value.
+</summary>
+<param name="m">
+The left, right, top and bottom margins in pixels.
+</param>
+</member>
+<member name="M:ChartDirector.WinChartViewer.setPlotAreaMouseMargin(System.Int32,System.Int32,System.Int32,System.Int32)">
+<summary>
+Sets the margins of the plot area mouse event region.
+</summary>
+<param name="leftMargin">
+The left margin in pixels.
+</param>
+<param name="rightMargin">
+The right margin in pixels.
+</param>
+<param name="topMargin">
+The top margin in pixels.
+</param>
+<param name="bottomMargin">
+The bottom margin in pixels.
+</param>
+</member>
+<member name="M:ChartDirector.WinChartViewer.setPlotAreaMouseMargin2(System.Int32,System.Int32,System.Int32,System.Int32)">
+<summary>
+Sets the margins of the plot area mouse event region.
+</summary>
+<param name="leftMargin">
+The left margin in pixels.
+</param>
+<param name="rightMargin">
+The right margin in pixels.
+</param>
+<param name="topMargin">
+The top margin in pixels.
+</param>
+<param name="bottomMargin">
+The bottom margin in pixels.
+</param>
+</member>
+<member name="M:ChartDirector.WinChartViewer.removeDynamicLayer(System.String)">
+<summary>
+Calls "BaseChart.removeDynamicLayer" when the specified event occurs.
+</summary>
+<param name="eventId">
+The event that causes BaseChart.removeDynamicLayer to be called.
+</param>
+</member>
+<member name="M:ChartDirector.WinChartViewer.updateDisplay">
+<summary>
+Updates the display.
+</summary>
+</member>
+<member name="M:ChartDirector.WinChartViewer.updateDisplay(System.Boolean)">
+<summary>
+Updates the display.
+</summary>
+<param name="repaintNow">
+A true value means the display is updated immediately or as soon as possible. A false value means that the GUI framework is notified that the display needs to be updated. The GUI framework may delay the update for a short time, which is usually unnoticeable, but may become noticeable if the system is very busy.
+</param>
+</member>
+<member name="M:ChartDirector.WinChartViewer.validateViewPort">
+<summary>
+Ensures the viewport left, top, width and height are within valid ranges and adjusts them if necessary.
+</summary>
+</member>
+<member name="M:ChartDirector.WinChartViewer.updateViewPort(System.Boolean,System.Boolean)">
+<summary>
+Triggers the ViewPortChanged event.
+</summary>
+<param name="needUpdateChart">
+A boolean value to indicate if the chart needs to be updated.
+</param>
+<param name="needUpdateImageMap">
+A boolean value to indicate if the image map needs to be updated.
+</param>
+</member>
+<member name="M:ChartDirector.WinChartViewer.setFullRange(System.String,System.Double,System.Double)">
+<summary>
+Defines the full range of a viewport data scale.
+</summary>
+<param name="id">
+The name of the data scale.
+</param>
+<param name="minValue">
+The minimum value of the data scale.
+</param>
+<param name="maxValue">
+The maximum value of the data scale.
+</param>
+</member>
+<member name="M:ChartDirector.WinChartViewer.setFullRange(System.String,System.DateTime,System.DateTime)">
+<summary>
+Defines the full range of a viewport data scale.
+</summary>
+<param name="id">
+The name of the data scale.
+</param>
+<param name="minValue">
+The minimum value of the data scale.
+</param>
+<param name="maxValue">
+The maximum value of the data scale.
+</param>
+</member>
+<member name="M:ChartDirector.WinChartViewer.updateFullRangeH(System.String,System.Double,System.Double,System.Int32)">
+<summary>
+Updates the full range of a horizontal viewport data scale.
+</summary>
+<param name="id">
+The name of the horizontal data scale.
+</param>
+<param name="minValue">
+The new minimum value of the data scale.
+</param>
+<param name="maxValue">
+The new maximum value of the data scale.
+</param>
+<param name="updateType">
+The method to update the viewport. Must be one of "ViewPortNoUpdate", "KeepVisibleRange", "ScrollWithMax" or "ScrollWithMin".
+</param>
+</member>
+<member name="M:ChartDirector.WinChartViewer.updateFullRangeH(System.String,System.DateTime,System.DateTime,System.Int32)">
+<summary>
+Updates the full range of a horizontal viewport data scale.
+</summary>
+<param name="id">
+The name of the horizontal data scale.
+</param>
+<param name="minValue">
+The new minimum value of the data scale.
+</param>
+<param name="maxValue">
+The new maximum value of the data scale.
+</param>
+<param name="updateType">
+The method to update the viewport. Must be one of "ViewPortNoUpdate", "KeepVisibleRange", "ScrollWithMax" or "ScrollWithMin".
+</param>
+</member>
+<member name="M:ChartDirector.WinChartViewer.updateFullRangeV(System.String,System.Double,System.Double,System.Int32)">
+<summary>
+Updates the full range of a vertical viewport data scale.
+</summary>
+<param name="id">
+The name of the vertical data scale.
+</param>
+<param name="minValue">
+The new minimum value of the data scale.
+</param>
+<param name="maxValue">
+The new maximum value of the data scale.
+</param>
+<param name="updateType">
+The method to update the viewport. Must be one of "ViewPortNoUpdate", "KeepVisibleRange", "ScrollWithMax" or "ScrollWithMin".
+</param>
+</member>
+<member name="M:ChartDirector.WinChartViewer.updateFullRangeV(System.String,System.DateTime,System.DateTime,System.Int32)">
+<summary>
+Updates the full range of a vertical viewport data scale.
+</summary>
+<param name="id">
+The name of the vertical data scale.
+</param>
+<param name="minValue">
+The new minimum value of the data scale.
+</param>
+<param name="maxValue">
+The new maximum value of the data scale.
+</param>
+<param name="updateType">
+The method to update the viewport. Must be one of "ViewPortNoUpdate", "KeepVisibleRange", "ScrollWithMax" or "ScrollWithMin".
+</param>
+</member>
+<member name="M:ChartDirector.WinChartViewer.getValueAtViewPort(System.String,System.Double)">
+<summary>
+Converts a viewport coordinate to a value of the specified data scale.
+</summary>
+<param name="id">
+The name of the data scale.
+</param>
+<param name="vpCoor">
+The viewport coordinate.
+</param>
+</member>
+<member name="M:ChartDirector.WinChartViewer.getValueAtViewPort(System.String,System.Double,System.Boolean)">
+<summary>
+Converts a viewport coordinate to a value of the specified data scale.
+</summary>
+<param name="id">
+The name of the data scale.
+</param>
+<param name="vpCoor">
+The viewport coordinate.
+</param>
+<param name="isLogScale">
+true if the conversion is based on a logarithmic scale. false if the conversion is based on a non-logarithmic scale.
+</param>
+</member>
+<member name="M:ChartDirector.WinChartViewer.getViewPortAtValue(System.String,System.Double)">
+<summary>
+Converts a value of the specified data scale to a viewport coordinate.
+</summary>
+<param name="id">
+The name of the data scale.
+</param>
+<param name="value">
+The value to be converted.
+</param>
+</member>
+<member name="M:ChartDirector.WinChartViewer.getViewPortAtValue(System.String,System.Double,System.Boolean)">
+<summary>
+Converts a value of the specified data scale to a viewport coordinate.
+</summary>
+<param name="id">
+The name of the data scale.
+</param>
+<param name="value">
+The value to be converted.
+</param>
+<param name="isLogScale">
+true if the conversion is based on a logarithmic scale. false if the conversion is based on a non-logarithmic scale.
+</param>
+</member>
+<member name="M:ChartDirector.WinChartViewer.syncLinearAxisWithViewPort(System.String,ChartDirector.Axis)">
+<summary>
+Synchronizes a linear "Axis" with the part of the data scale in viewport.
+</summary>
+<param name="id">
+The name of the data scale.
+</param>
+<param name="axis">
+The "Axis" object to synchronize with.
+</param>
+</member>
+<member name="M:ChartDirector.WinChartViewer.syncLogAxisWithViewPort(System.String,ChartDirector.Axis)">
+<summary>
+Synchronizes a logarithmic "Axis" with the part of the data scale in viewport.
+</summary>
+<param name="id">
+The name of the data scale.
+</param>
+<param name="axis">
+The "Axis" object to synchronize with.
+</param>
+</member>
+<member name="M:ChartDirector.WinChartViewer.syncDateAxisWithViewPort(System.String,ChartDirector.Axis)">
+<summary>
+Synchronizes a date/time "Axis" with the part of the data scale in viewport.
+</summary>
+<param name="id">
+The name of the data scale.
+</param>
+<param name="axis">
+The "Axis" object to synchronize with.
+</param>
+</member>
+<member name="M:ChartDirector.WinViewPortControl.setMouseMargin(System.Int32,System.Int32)">
+<summary>
+Sets the margin around the viewport border for mouse drag.
+</summary>
+<param name="mouseMargin">
+The margin around the viewport border within which dragging of the border can start. The margin is in pixel unit. The default is 4 pixels.
+</param>
+<param name="cornerMargin">
+The margin around the viewport corner within which dragging of the corner can start. The margin is in pixel unit. The default is 8 pixels.
+</param>
+</member>
+<member name="M:ChartDirector.WinViewPortControl.setCursor(System.Int32,System.Windows.Forms.Cursor)">
+<summary>
+Sets the mouse cursors to be used at various parts of the control.
+</summary>
+<param name="position">
+The mouse cursor position to be set, which must be one of "Left", "Right", "Top" and "Bottom" for the 4 borders, and "TopLeft", "TopRight", "BottomLeft", "BottomRight" for the 4 corners, "Center" for inside the viewport and 0 for outside the viewport.
+</param>
+<param name="cursor">
+The mouse cursor to use at the specified position.
+</param>
+</member>
+<member name="M:ChartDirector.WinViewPortControl.updateDisplay">
+<summary>
+Updates the display.
+</summary>
+</member>
+<member name="M:ChartDirector.WPFChartViewer.setPlotAreaMouseMargin(System.Int32)">
+<summary>
+Sets all margins (left, right, top, and bottom) of the plot area mouse event region to the same value.
+</summary>
+<param name="m">
+The left, right, top and bottom margins in pixels.
+</param>
+</member>
+<member name="M:ChartDirector.WPFChartViewer.setPlotAreaMouseMargin(System.Int32,System.Int32,System.Int32,System.Int32)">
+<summary>
+Sets the margins of the plot area mouse event region.
+</summary>
+<param name="leftMargin">
+The left margin in pixels.
+</param>
+<param name="rightMargin">
+The right margin in pixels.
+</param>
+<param name="topMargin">
+The top margin in pixels.
+</param>
+<param name="bottomMargin">
+The bottom margin in pixels.
+</param>
+</member>
+<member name="M:ChartDirector.WPFChartViewer.setPlotAreaMouseMargin2(System.Int32,System.Int32,System.Int32,System.Int32)">
+<summary>
+Sets the margins of the plot area mouse event region.
+</summary>
+<param name="leftMargin">
+The left margin in pixels.
+</param>
+<param name="rightMargin">
+The right margin in pixels.
+</param>
+<param name="topMargin">
+The top margin in pixels.
+</param>
+<param name="bottomMargin">
+The bottom margin in pixels.
+</param>
+</member>
+<member name="M:ChartDirector.WPFChartViewer.removeDynamicLayer(System.String)">
+<summary>
+Calls "BaseChart.removeDynamicLayer" when the specified event occurs.
+</summary>
+<param name="eventId">
+The event that causes BaseChart.removeDynamicLayer to be called.
+</param>
+</member>
+<member name="M:ChartDirector.WPFChartViewer.updateDisplay">
+<summary>
+Updates the display.
+</summary>
+</member>
+<member name="M:ChartDirector.WPFChartViewer.updateDisplay(System.Boolean)">
+<summary>
+Updates the display.
+</summary>
+<param name="repaintNow">
+A true value means the display is updated immediately or as soon as possible. A false value means that the GUI framework is notified that the display needs to be updated. The GUI framework may delay the update for a short time, which is usually unnoticeable, but may become noticeable if the system is very busy.
+</param>
+</member>
+<member name="M:ChartDirector.WPFChartViewer.validateViewPort">
+<summary>
+Ensures the viewport left, top, width and height are within valid ranges and adjusts them if necessary.
+</summary>
+</member>
+<member name="M:ChartDirector.WPFChartViewer.updateViewPort(System.Boolean,System.Boolean)">
+<summary>
+Triggers the ViewPortChanged event.
+</summary>
+<param name="needUpdateChart">
+A boolean value to indicate if the chart needs to be updated.
+</param>
+<param name="needUpdateImageMap">
+A boolean value to indicate if the image map needs to be updated.
+</param>
+</member>
+<member name="M:ChartDirector.WPFChartViewer.setFullRange(System.String,System.Double,System.Double)">
+<summary>
+Defines the full range of a viewport data scale.
+</summary>
+<param name="id">
+The name of the data scale.
+</param>
+<param name="minValue">
+The minimum value of the data scale.
+</param>
+<param name="maxValue">
+The maximum value of the data scale.
+</param>
+</member>
+<member name="M:ChartDirector.WPFChartViewer.setFullRange(System.String,System.DateTime,System.DateTime)">
+<summary>
+Defines the full range of a viewport data scale.
+</summary>
+<param name="id">
+The name of the data scale.
+</param>
+<param name="minValue">
+The minimum value of the data scale.
+</param>
+<param name="maxValue">
+The maximum value of the data scale.
+</param>
+</member>
+<member name="M:ChartDirector.WPFChartViewer.updateFullRangeH(System.String,System.Double,System.Double,System.Int32)">
+<summary>
+Updates the full range of a horizontal viewport data scale.
+</summary>
+<param name="id">
+The name of the horizontal data scale.
+</param>
+<param name="minValue">
+The new minimum value of the data scale.
+</param>
+<param name="maxValue">
+The new maximum value of the data scale.
+</param>
+<param name="updateType">
+The method to update the viewport. Must be one of "ViewPortNoUpdate", "KeepVisibleRange", "ScrollWithMax" or "ScrollWithMin".
+</param>
+</member>
+<member name="M:ChartDirector.WPFChartViewer.updateFullRangeH(System.String,System.DateTime,System.DateTime,System.Int32)">
+<summary>
+Updates the full range of a horizontal viewport data scale.
+</summary>
+<param name="id">
+The name of the horizontal data scale.
+</param>
+<param name="minValue">
+The new minimum value of the data scale.
+</param>
+<param name="maxValue">
+The new maximum value of the data scale.
+</param>
+<param name="updateType">
+The method to update the viewport. Must be one of "ViewPortNoUpdate", "KeepVisibleRange", "ScrollWithMax" or "ScrollWithMin".
+</param>
+</member>
+<member name="M:ChartDirector.WPFChartViewer.updateFullRangeV(System.String,System.Double,System.Double,System.Int32)">
+<summary>
+Updates the full range of a vertical viewport data scale.
+</summary>
+<param name="id">
+The name of the vertical data scale.
+</param>
+<param name="minValue">
+The new minimum value of the data scale.
+</param>
+<param name="maxValue">
+The new maximum value of the data scale.
+</param>
+<param name="updateType">
+The method to update the viewport. Must be one of "ViewPortNoUpdate", "KeepVisibleRange", "ScrollWithMax" or "ScrollWithMin".
+</param>
+</member>
+<member name="M:ChartDirector.WPFChartViewer.updateFullRangeV(System.String,System.DateTime,System.DateTime,System.Int32)">
+<summary>
+Updates the full range of a vertical viewport data scale.
+</summary>
+<param name="id">
+The name of the vertical data scale.
+</param>
+<param name="minValue">
+The new minimum value of the data scale.
+</param>
+<param name="maxValue">
+The new maximum value of the data scale.
+</param>
+<param name="updateType">
+The method to update the viewport. Must be one of "ViewPortNoUpdate", "KeepVisibleRange", "ScrollWithMax" or "ScrollWithMin".
+</param>
+</member>
+<member name="M:ChartDirector.WPFChartViewer.getValueAtViewPort(System.String,System.Double)">
+<summary>
+Converts a viewport coordinate to a value of the specified data scale.
+</summary>
+<param name="id">
+The name of the data scale.
+</param>
+<param name="vpCoor">
+The viewport coordinate.
+</param>
+</member>
+<member name="M:ChartDirector.WPFChartViewer.getValueAtViewPort(System.String,System.Double,System.Boolean)">
+<summary>
+Converts a viewport coordinate to a value of the specified data scale.
+</summary>
+<param name="id">
+The name of the data scale.
+</param>
+<param name="vpCoor">
+The viewport coordinate.
+</param>
+<param name="isLogScale">
+true if the conversion is based on a logarithmic scale. false if the conversion is based on a non-logarithmic scale.
+</param>
+</member>
+<member name="M:ChartDirector.WPFChartViewer.getViewPortAtValue(System.String,System.Double)">
+<summary>
+Converts a value of the specified data scale to a viewport coordinate.
+</summary>
+<param name="id">
+The name of the data scale.
+</param>
+<param name="value">
+The value to be converted.
+</param>
+</member>
+<member name="M:ChartDirector.WPFChartViewer.getViewPortAtValue(System.String,System.Double,System.Boolean)">
+<summary>
+Converts a value of the specified data scale to a viewport coordinate.
+</summary>
+<param name="id">
+The name of the data scale.
+</param>
+<param name="value">
+The value to be converted.
+</param>
+<param name="isLogScale">
+true if the conversion is based on a logarithmic scale. false if the conversion is based on a non-logarithmic scale.
+</param>
+</member>
+<member name="M:ChartDirector.WPFChartViewer.syncLinearAxisWithViewPort(System.String,ChartDirector.Axis)">
+<summary>
+Synchronizes a linear "Axis" with the part of the data scale in viewport.
+</summary>
+<param name="id">
+The name of the data scale.
+</param>
+<param name="axis">
+The "Axis" object to synchronize with.
+</param>
+</member>
+<member name="M:ChartDirector.WPFChartViewer.syncLogAxisWithViewPort(System.String,ChartDirector.Axis)">
+<summary>
+Synchronizes a logarithmic "Axis" with the part of the data scale in viewport.
+</summary>
+<param name="id">
+The name of the data scale.
+</param>
+<param name="axis">
+The "Axis" object to synchronize with.
+</param>
+</member>
+<member name="M:ChartDirector.WPFChartViewer.syncDateAxisWithViewPort(System.String,ChartDirector.Axis)">
+<summary>
+Synchronizes a date/time "Axis" with the part of the data scale in viewport.
+</summary>
+<param name="id">
+The name of the data scale.
+</param>
+<param name="axis">
+The "Axis" object to synchronize with.
+</param>
+</member>
+<member name="M:ChartDirector.WPFViewPortControl.setMouseMargin(System.Int32,System.Int32)">
+<summary>
+Sets the margin around the viewport border for mouse drag.
+</summary>
+<param name="mouseMargin">
+The margin around the viewport border within which dragging of the border can start. The margin is in pixel unit. The default is 4 pixels.
+</param>
+<param name="cornerMargin">
+The margin around the viewport corner within which dragging of the corner can start. The margin is in pixel unit. The default is 8 pixels.
+</param>
+</member>
+<member name="M:ChartDirector.WPFViewPortControl.setCursor(System.Int32,System.Windows.Forms.Cursor)">
+<summary>
+Sets the mouse cursors to be used at various parts of the control.
+</summary>
+<param name="position">
+The mouse cursor position to be set, which must be one of "Left", "Right", "Top" and "Bottom" for the 4 borders, and "TopLeft", "TopRight", "BottomLeft", "BottomRight" for the 4 corners, "Center" for inside the viewport and 0 for outside the viewport.
+</param>
+<param name="cursor">
+The mouse cursor to use at the specified position.
+</param>
+</member>
+<member name="M:ChartDirector.WPFViewPortControl.updateDisplay">
+<summary>
+Updates the display.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.Chart">
+<summary>
+Gets or sets a "BaseChart" object to be used with the WinChartViewer.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.Image">
+<summary>
+Gets or sets the chart image to view.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.ChartSizeMode">
+<summary>
+Determine the sizing method of the chart image.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.ImageMap">
+<summary>
+Gets or sets the image map that defines the hot spots on the chart image.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.DefaultToolTip">
+<summary>
+Gets or sets the tool tip to display when the mouse is over the WinChartViewer control but not over a hot spot. If the mouse cursor is over a hot spot, the tool tip specified in the image map will be displayed instead.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.AutomaticDelay">
+<summary>
+Gets or sets the automatic delay (in milliseconds) of the tool tip.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.AutoPopDelay">
+<summary>
+Gets or sets the period of time (in milliseconds) that the tool tip remains visible if the mouse cursor is stationary.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.InitialDelay">
+<summary>
+Gets or sets the period of time (in milliseconds) that passes before the tool tip appears.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.ReshowDelay">
+<summary>
+Gets or sets the length of time (in milliseconds) that must transpire before subsequent tool tip windows can appear as the mouse cursor moves from one tool tip location to another.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.ChartMouseX">
+<summary>
+Gets the mouse  x-coordinate in the chart pixel coordinate system.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.ChartMouseY">
+<summary>
+Gets the mouse  y-coordinate in the chart pixel coordinate system.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.PlotAreaMouseX">
+<summary>
+Gets the mouse  x-coordinate on the plot area in the chart pixel coordinate system.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.PlotAreaMouseY">
+<summary>
+Gets the mouse  y-coordinate on the plot area in the chart pixel coordinate system.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.ViewPortLeft">
+<summary>
+Gets or sets the position of the left side of the viewport.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.ViewPortTop">
+<summary>
+Gets or sets the position of the top side of the viewport.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.ViewPortWidth">
+<summary>
+Gets or sets the width of the viewport.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.ViewPortHeight">
+<summary>
+Gets or sets the height of the viewport.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.MouseUsage">
+<summary>
+Gets or sets the mouse usage mode.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.ZoomDirection">
+<summary>
+Gets or sets the zoom direction for mouse zoom in/out actions.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.ScrollDirection">
+<summary>
+Gets or sets the scroll direction for mouse scroll actions.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.ZoomInRatio">
+<summary>
+Gets or sets the magnification ratio for each zoom in click of the mouse.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.ZoomOutRatio">
+<summary>
+Gets or sets the magnification ratio for each zoom out click of the mouse.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.MouseWheelZoomRatio">
+<summary>
+Gets or sets the magnification ratio for each mouse wheel event.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.MouseWheelAutoFocus">
+<summary>
+Determines whether to automatically grab the focus to support mouse wheel zooming.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.ZoomInWidthLimit">
+<summary>
+Gets or sets the viewport width at maximum zoom in.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.ZoomOutWidthLimit">
+<summary>
+Gets or sets the viewport width at maximum zoom out.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.ZoomInHeightLimit">
+<summary>
+Gets or sets the viewport height at maximum zoom in.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.ZoomOutHeightLimit">
+<summary>
+Gets or sets the viewport height at maximum zoom out.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.MinimumDrag">
+<summary>
+Gets or sets the minimum mouse drag distance before it is considered as an intentional drag.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.SelectionBorderWidth">
+<summary>
+Gets or sets the border width of the zoom selection box.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.SelectionBorderColor">
+<summary>
+Gets or sets the border color of the zoom selection box as a System.Drawing.Color.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.Cursor">
+<summary>
+Gets or sets the cursor that is displayed when the mouse cursor is over the WinChartViewer control but not over a normal hot spot. If the mouse cursor is over a normal hot spot, the "WinChartViewer.HotSpotCursor" will be displayed instead.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.HotSpotCursor">
+<summary>
+Gets or sets the cursor that is displayed when the mouse cursor is over a normal hot spot.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.ZoomInCursor">
+<summary>
+Gets or sets the mouse cursor to be used when the mouse is used for zoom in.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.ZoomOutCursor">
+<summary>
+Gets or sets the mouse cursor to be used when the mouse is used for zoom out.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.NoZoomCursor">
+<summary>
+Gets or sets the mouse cursor to be used when the mouse is used for zoom in/out, but the zoom in/out limits has been reached.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.ScrollCursor">
+<summary>
+Gets or sets the mouse cursor to be used when the mouse is used for scrolling.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.UpdateInterval">
+<summary>
+Gets or sets the minimum gap interval between two ViewPortChanged events in milliseconds.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.IsMouseOnPlotArea">
+<summary>
+Checks if the mouse cursor is on the extended plot area.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.IsMouseDragging">
+<summary>
+Checks if the mouse is dragging on the plot area.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.IsInMouseMoveEvent">
+<summary>
+Checks if the current code is executing in a MouseMoveChart or MouseMovePlotArea event.
+</summary>
+</member>
+<member name="P:ChartDirector.WinChartViewer.IsInViewPortChangedEvent">
+<summary>
+Checks if the current code is executing in a ViewPortChanged event.
+</summary>
+</member>
+<member name="E:ChartDirector.WinChartViewer.MouseMoveChart">
+<summary>
+This event occurs when the mouse cursor moves over the chart.
+</summary>
+</member>
+<member name="E:ChartDirector.WinChartViewer.MouseLeaveChart">
+<summary>
+This event occurs when the mouse cursor leaves the chart.
+</summary>
+</member>
+<member name="E:ChartDirector.WinChartViewer.MouseMovePlotArea">
+<summary>
+This event occurs when the mouse cursor moves over the extended plot area.
+</summary>
+</member>
+<member name="E:ChartDirector.WinChartViewer.MouseLeavePlotArea">
+<summary>
+This event occurs when the mouse cursor leaves the extended plot area.
+</summary>
+</member>
+<member name="E:ChartDirector.WinChartViewer.ClickHotSpot">
+<summary>
+This event occurs when the mouse clicks on a hot spot on the chart image.
+</summary>
+</member>
+<member name="E:ChartDirector.WinChartViewer.DoubleClickHotSpot">
+<summary>
+This event occurs when the mouse double clicks on a hot spot on the chart image.
+</summary>
+</member>
+<member name="E:ChartDirector.WinChartViewer.MouseEnterHotSpot">
+<summary>
+This event occurs when the mouse cursor enters a hot spot on the chart image.
+</summary>
+</member>
+<member name="E:ChartDirector.WinChartViewer.MouseMoveHotSpot">
+<summary>
+This event occurs when the mouse cursor moves over a hot spot on the chart image.
+</summary>
+</member>
+<member name="E:ChartDirector.WinChartViewer.MouseHoverHotSpot">
+<summary>
+This event occurs when the mouse cursor hovers a hot spot on the chart image.
+</summary>
+</member>
+<member name="E:ChartDirector.WinChartViewer.MouseLeaveHotSpot">
+<summary>
+This event occurs when the mouse cursor leaves a hot spot on the chart image.
+</summary>
+</member>
+<member name="E:ChartDirector.WinChartViewer.MouseDownHotSpot">
+<summary>
+This event occurs when the mouse cursor is over a hot spot on the chart image and the mouse button is pressed.
+</summary>
+</member>
+<member name="E:ChartDirector.WinChartViewer.MouseUpHotSpot">
+<summary>
+This event occurs when the mouse cursor is over a hot spot on the chart image and the mouse button is released.
+</summary>
+</member>
+<member name="E:ChartDirector.WinChartViewer.ViewPortChanged">
+<summary>
+This event occurs when the viewport is changed through mouse actions, or when "WinChartViewer.updateViewPort" is called.
+</summary>
+</member>
+<member name="E:ChartDirector.WinChartViewer.SelectionChanged">
+<summary>
+This event occurs when the user is selecting a region on the chart using "drag to select" mouse actions.
+</summary>
+</member>
+<member name="P:ChartDirector.WinHotSpotEventArgs.Item">
+<summary>
+Gets or sets the value of the specified attribute. In C#, this property is the indexer of the class.
+</summary>
+</member>
+<member name="P:ChartDirector.WinHotSpotEventArgs.AttrValues">
+<summary>
+Gets a Hashtable containing all attributes and values associated with the hot spot.
+</summary>
+</member>
+<member name="P:ChartDirector.WinViewPortEventArgs.NeedUpdateChart">
+<summary>
+Determines if the chart needs to be updated.
+</summary>
+</member>
+<member name="P:ChartDirector.WinViewPortEventArgs.NeedUpdateImageMap">
+<summary>
+Determines if the image map needs to be updated.
+</summary>
+</member>
+<member name="P:ChartDirector.WinSelectionEventArgs.Visible">
+<summary>
+Determines if the selection rectangle is visible.
+</summary>
+</member>
+<member name="P:ChartDirector.WinSelectionEventArgs.ViewPortLeft">
+<summary>
+Gets the position of the left edge of the selection rectangle in viewport units.
+</summary>
+</member>
+<member name="P:ChartDirector.WinSelectionEventArgs.ViewPortTop">
+<summary>
+Gets the position of the top edge of the selection rectangle in viewport units.
+</summary>
+</member>
+<member name="P:ChartDirector.WinSelectionEventArgs.ViewPortWidth">
+<summary>
+Gets the width of the selection rectangle in viewport units.
+</summary>
+</member>
+<member name="P:ChartDirector.WinSelectionEventArgs.ViewPortHeight">
+<summary>
+Gets the height of the selection rectangle in viewport units.
+</summary>
+</member>
+<member name="P:ChartDirector.WinViewPortControl.DragInsideToMove">
+<summary>
+Enables or disables  dragging inside the viewport to move it.
+</summary>
+</member>
+<member name="P:ChartDirector.WinViewPortControl.DragBorderToResize">
+<summary>
+Enables or disables  dragging the viewport border to resize it.
+</summary>
+</member>
+<member name="P:ChartDirector.WinViewPortControl.DragOutsideToSelect">
+<summary>
+Enables or disables  dragging outside the viewport to select a new viewport.
+</summary>
+</member>
+<member name="P:ChartDirector.WinViewPortControl.ClickToCenter">
+<summary>
+Enables or disables  centering the viewport at the clicked point.
+</summary>
+</member>
+<member name="P:ChartDirector.WinViewPortControl.ViewPortExternalColor">
+<summary>
+Gets or sets the  fill color for the region outside the viewport.
+</summary>
+</member>
+<member name="P:ChartDirector.WinViewPortControl.ViewPortFillColor">
+<summary>
+Gets or sets the  fill color for the region inside the viewport.
+</summary>
+</member>
+<member name="P:ChartDirector.WinViewPortControl.ViewPortBorderColor">
+<summary>
+Gets or sets the  viewport border color.
+</summary>
+</member>
+<member name="P:ChartDirector.WinViewPortControl.ViewPortBorderWidth">
+<summary>
+Gets or sets the  viewport border width.
+</summary>
+</member>
+<member name="P:ChartDirector.WinViewPortControl.SelectionBorderColor">
+<summary>
+Gets or sets the  border color of the selection box.
+</summary>
+</member>
+<member name="P:ChartDirector.WinViewPortControl.SelectionBorderWidth">
+<summary>
+Gets or sets the  border width of the selection box.
+</summary>
+</member>
+<member name="P:ChartDirector.WinViewPortControl.ChartSizeMode">
+<summary>
+Determine the sizing method of the chart image.
+</summary>
+</member>
+<member name="P:ChartDirector.WinViewPortControl.Chart">
+<summary>
+Gets or sets the "BaseChart" object for displaying in the control. The chart usually is an overall chart that includes the full data range.
+</summary>
+</member>
+<member name="P:ChartDirector.WinViewPortControl.Viewer">
+<summary>
+Gets or Sets the "WinChartViewer" object to be associated with the WinViewPortControl.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.Chart">
+<summary>
+Gets or sets a "BaseChart" object to be used with the WPFChartViewer.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.ChartSizeMode">
+<summary>
+Determine the sizing method of the chart image.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.ImageMap">
+<summary>
+Gets or sets the image map that defines the hot spots on the chart image.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.ChartMouseX">
+<summary>
+Gets the mouse  x-coordinate in the chart pixel coordinate system.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.ChartMouseY">
+<summary>
+Gets the mouse  y-coordinate in the chart pixel coordinate system.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.PlotAreaMouseX">
+<summary>
+Gets the mouse  x-coordinate on the plot area in the chart pixel coordinate system.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.PlotAreaMouseY">
+<summary>
+Gets the mouse  y-coordinate on the plot area in the chart pixel coordinate system.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.ViewPortLeft">
+<summary>
+Gets or sets the position of the left side of the viewport.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.ViewPortTop">
+<summary>
+Gets or sets the position of the top side of the viewport.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.ViewPortWidth">
+<summary>
+Gets or sets the width of the viewport.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.ViewPortHeight">
+<summary>
+Gets or sets the height of the viewport.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.MouseUsage">
+<summary>
+Gets or sets the mouse usage mode.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.ZoomDirection">
+<summary>
+Gets or sets the zoom direction for mouse zoom in/out actions.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.ScrollDirection">
+<summary>
+Gets or sets the scroll direction for mouse scroll actions.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.ZoomInRatio">
+<summary>
+Gets or sets the magnification ratio for each zoom in click of the mouse.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.ZoomOutRatio">
+<summary>
+Gets or sets the magnification ratio for each zoom out click of the mouse.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.MouseWheelZoomRatio">
+<summary>
+Gets or sets the magnification ratio for each mouse wheel event.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.ZoomInWidthLimit">
+<summary>
+Gets or sets the viewport width at maximum zoom in.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.ZoomOutWidthLimit">
+<summary>
+Gets or sets the viewport width at maximum zoom out.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.ZoomInHeightLimit">
+<summary>
+Gets or sets the viewport height at maximum zoom in.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.ZoomOutHeightLimit">
+<summary>
+Gets or sets the viewport height at maximum zoom out.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.MinimumDrag">
+<summary>
+Gets or sets the minimum mouse drag distance before it is considered as an intentional drag.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.SelectionBorderWidth">
+<summary>
+Gets or sets the border width of the zoom selection box.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.SelectionBorderColor">
+<summary>
+Gets or sets the border color of the zoom selection box as a System.Windows.Media.Color.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.HotSpotCursor">
+<summary>
+Gets or sets the cursor that is displayed when the mouse cursor is over a normal hot spot.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.ZoomInCursor">
+<summary>
+Gets or sets the mouse cursor to be used when the mouse is used for zoom in.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.ZoomOutCursor">
+<summary>
+Gets or sets the mouse cursor to be used when the mouse is used for zoom out.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.NoZoomCursor">
+<summary>
+Gets or sets the mouse cursor to be used when the mouse is used for zoom in/out, but the zoom in/out limits has been reached.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.ScrollCursor">
+<summary>
+Gets or sets the mouse cursor to be used when the mouse is used for scrolling.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.UpdateInterval">
+<summary>
+Gets or sets the minimum gap interval between two ViewPortChanged events in milliseconds.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.IsMouseOnPlotArea">
+<summary>
+Checks if the mouse cursor is on the extended plot area.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.IsMouseDragging">
+<summary>
+Checks if the mouse is dragging on the plot area.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.IsInMouseMoveEvent">
+<summary>
+Checks if the current code is executing in a MouseMoveChart or MouseMovePlotArea event.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFChartViewer.IsInViewPortChangedEvent">
+<summary>
+Checks if the current code is executing in a ViewPortChanged event.
+</summary>
+</member>
+<member name="E:ChartDirector.WPFChartViewer.MouseMoveChart">
+<summary>
+This event occurs when the mouse cursor moves over the chart.
+</summary>
+</member>
+<member name="E:ChartDirector.WPFChartViewer.MouseLeaveChart">
+<summary>
+This event occurs when the mouse cursor leaves the chart.
+</summary>
+</member>
+<member name="E:ChartDirector.WPFChartViewer.MouseMovePlotArea">
+<summary>
+This event occurs when the mouse cursor moves over the extended plot area.
+</summary>
+</member>
+<member name="E:ChartDirector.WPFChartViewer.MouseLeavePlotArea">
+<summary>
+This event occurs when the mouse cursor leaves the extended plot area.
+</summary>
+</member>
+<member name="E:ChartDirector.WPFChartViewer.ClickHotSpot">
+<summary>
+This event occurs when the mouse clicks on a hot spot on the chart image.
+</summary>
+</member>
+<member name="E:ChartDirector.WPFChartViewer.MouseEnterHotSpot">
+<summary>
+This event occurs when the mouse cursor enters a hot spot on the chart image.
+</summary>
+</member>
+<member name="E:ChartDirector.WPFChartViewer.MouseMoveHotSpot">
+<summary>
+This event occurs when the mouse cursor moves over a hot spot on the chart image.
+</summary>
+</member>
+<member name="E:ChartDirector.WPFChartViewer.MouseLeaveHotSpot">
+<summary>
+This event occurs when the mouse cursor leaves a hot spot on the chart image.
+</summary>
+</member>
+<member name="E:ChartDirector.WPFChartViewer.MouseDownHotSpot">
+<summary>
+This event occurs when the mouse cursor is over a hot spot on the chart image and the mouse button is pressed.
+</summary>
+</member>
+<member name="E:ChartDirector.WPFChartViewer.MouseUpHotSpot">
+<summary>
+This event occurs when the mouse cursor is over a hot spot on the chart image and the mouse button is released.
+</summary>
+</member>
+<member name="E:ChartDirector.WPFChartViewer.ViewPortChanged">
+<summary>
+This event occurs when the viewport is changed through mouse actions, or when "WPFChartViewer.updateViewPort" is called.
+</summary>
+</member>
+<member name="E:ChartDirector.WPFChartViewer.SelectionChanged">
+<summary>
+This event occurs when the user is selecting a region on the chart using "drag to select" mouse actions.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFHotSpotEventArgs.Item">
+<summary>
+Gets or sets the value of the specified attribute. In C#, this property is the indexer of the class.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFHotSpotEventArgs.AttrValues">
+<summary>
+Gets a Hashtable containing all attributes and values associated with the hot spot.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFViewPortEventArgs.NeedUpdateChart">
+<summary>
+Determines if the chart needs to be updated.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFViewPortEventArgs.NeedUpdateImageMap">
+<summary>
+Determines if the image map needs to be updated.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFSelectionEventArgs.Visible">
+<summary>
+Determines if the selection rectangle is visible.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFSelectionEventArgs.ViewPortLeft">
+<summary>
+Gets the position of the left edge of the selection rectangle in viewport units.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFSelectionEventArgs.ViewPortTop">
+<summary>
+Gets the position of the top edge of the selection rectangle in viewport units.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFSelectionEventArgs.ViewPortWidth">
+<summary>
+Gets the width of the selection rectangle in viewport units.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFSelectionEventArgs.ViewPortHeight">
+<summary>
+Gets the height of the selection rectangle in viewport units.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFViewPortControl.DragInsideToMove">
+<summary>
+Enables or disables  dragging inside the viewport to move it.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFViewPortControl.DragBorderToResize">
+<summary>
+Enables or disables  dragging the viewport border to resize it.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFViewPortControl.DragOutsideToSelect">
+<summary>
+Enables or disables  dragging outside the viewport to select a new viewport.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFViewPortControl.ClickToCenter">
+<summary>
+Enables or disables  centering the viewport at the clicked point.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFViewPortControl.ViewPortExternalColor">
+<summary>
+Gets or sets the  fill color for the region outside the viewport.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFViewPortControl.ViewPortFillColor">
+<summary>
+Gets or sets the  fill color for the region inside the viewport.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFViewPortControl.ViewPortBorderColor">
+<summary>
+Gets or sets the  viewport border color.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFViewPortControl.ViewPortBorderWidth">
+<summary>
+Gets or sets the  viewport border width.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFViewPortControl.SelectionBorderColor">
+<summary>
+Gets or sets the  border color of the selection box.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFViewPortControl.SelectionBorderWidth">
+<summary>
+Gets or sets the  border width of the selection box.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFViewPortControl.ChartSizeMode">
+<summary>
+Determine the sizing method of the chart image.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFViewPortControl.Chart">
+<summary>
+Gets or sets the "BaseChart" object for displaying in the control. The chart usually is an overall chart that includes the full data range.
+</summary>
+</member>
+<member name="P:ChartDirector.WPFViewPortControl.Viewer">
+<summary>
+Gets or Sets the "WinChartViewer" object to be associated with the WinViewPortControl.
+</summary>
+</member>
+</members>
+</doc>

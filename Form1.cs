@@ -38,6 +38,8 @@ namespace CanSatGUI
         StreamWriter writer;
         int VERTICES_LENGTH;
         uint shaderProgram;
+        PointLatLng lastPoint = new PointLatLng(0, 0);
+        threedscatter chart3D;
 
         public Form1()  //definiowanie ustawienia oraz port szeregowy
         {
@@ -60,6 +62,10 @@ namespace CanSatGUI
             string date_time = Utils.GetTimestamp(DateTime.Now);
             System.IO.Directory.CreateDirectory("output");
             writer = new StreamWriter("output/output" + date_time + ".log");
+
+            // 
+            chart3D = new threedscatter();
+            chart3D.createChart(winChartViewer1);
         }
 
         // poczatek czesci wykonawczej serial port txt box v1.0
@@ -148,8 +154,11 @@ namespace CanSatGUI
 
             double fallingSpeed = 9; ///////////
             Upd.UpdateMap(map, latitude, Longitude, Altitude, fallingSpeed, speed, (int)course);
+            lastPoint = new PointLatLng(latitude, Longitude);
 
-           
+            chart3D.Update(latitude, Longitude, Altitude);
+
+
 
             // socketio
             string json = JsonConvert.SerializeObject(new { psrtxt = psrtxt.Text, tmptxt = temptxt.Text, txtLat = lattxt.Text, txtLong = longtxt.Text, hghttext = alttxt.Text });
@@ -159,7 +168,7 @@ namespace CanSatGUI
             }
             catch { }
             // catch (SocketIOClient.Exceptions.InvalidSocketStateException) { }
-
+           
             // opengl
             float pitch = -20.0f;
             float yaw = -10.0f;
@@ -171,15 +180,11 @@ namespace CanSatGUI
         {
 
             DataStream.AppendText("Initalize");
-            
-
-            Upd.UpdateMap(map, 1, 1, 1, 1, 1, 1);
-
 
             // opengl
             float pitch = -20.0f;
             float yaw = -10.0f;
-            float roll = 30.0f;
+            float roll = 20.0f;
             Upd.UpdateOpenGLControl(openGLControl1, shaderProgram, VERTICES_LENGTH / 3, pitch, yaw, roll);
         }
 
@@ -315,6 +320,11 @@ namespace CanSatGUI
             }
             catch
             { }
+            //starts app in fullscreen
+
+            WindowState = FormWindowState.Normal;
+            FormBorderStyle = FormBorderStyle.None;
+            WindowState = FormWindowState.Maximized;
         }
 
        
@@ -341,9 +351,14 @@ namespace CanSatGUI
 
         private void DataStream_TextChanged(object sender, EventArgs e)
         {
-            DataStream.ScrollToCaret();
-          
+            if (checkBox1.Checked)
+            {
+                DataStream.ScrollToCaret();
+            }
+
         }
+        
+
 
         private void progressBar1_Click(object sender, EventArgs e)
         {
@@ -403,8 +418,17 @@ namespace CanSatGUI
 
         private void button1_Click(object sender, EventArgs e)
         {
+            map.Position = lastPoint;
+        }
 
-           // var center = GMap.Position;
+        private void winChartViewer1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

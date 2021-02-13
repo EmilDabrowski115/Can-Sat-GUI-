@@ -1,0 +1,12 @@
+<FileList>
+<File Reference="ChartDirector.Net.Desktop.Controls.dll">
+	<ToolboxItems UIFramework="WPF" VSCategory="ChartDirector WPF Controls" BlendCategory="ChartDirector  WPF Controls">
+		<Item Type="ChartDirector.WPFChartViewer"/>
+		<Item Type="ChartDirector.WPFViewPortControl"/>
+	</ToolboxItems>
+	<ToolboxItems UIFramework="WinForms" VSCategory="ChartDirector WinForms Controls" BlendCategory="ChartDirector WinForms Controls">	
+		<Item Type="ChartDirector.WinChartViewer"/>
+		<Item Type="ChartDirector.WinViewPortControl"/>
+	</ToolboxItems>
+</File>
+</FileList>
