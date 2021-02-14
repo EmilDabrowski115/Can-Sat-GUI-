@@ -143,7 +143,7 @@ namespace CanSatGUI
                 prev = part[i];
             }
 
-            control.Refresh();
+            //control.Refresh();
         }
         public static void Updatewinddirection(Chart chart, double y, double x)
         {

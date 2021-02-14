@@ -1,19 +1,20 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
 using System.Windows.Forms;
-// using GMap.NET;
-// using GMap.NET.MapProviders;
 using SharpGL;
 using SharpGL.WinForms;
 using SharpGL.SceneGraph;
+using SharpGL.SceneGraph.Effects;
+using SharpGL.SceneGraph.Primitives;
+using SharpGL.Serialization.Wavefront;
+using SharpGL.SceneGraph.Lighting;
+using SharpGL.SceneGraph.Cameras;
 using System.Diagnostics;
 using System.Threading;
 using System.IO.Ports;
-// using System.Windows.Forms.DataVisualization.Charting; // Chart
-// using GMap.NET.WindowsForms; // GMapControl
 using SocketIOClient;
 using Newtonsoft.Json;
-using System.IO;
-using Assimp;
 using System.Runtime.InteropServices;
 using System.Globalization;
 using System.Drawing;
@@ -22,9 +23,7 @@ using GMap.NET.WindowsForms;
 using GMap.NET.MapProviders;
 using GMap.NET;
 using GMap.NET.Internals;
-
-
-
+using System.Collections.Generic;
 
 namespace CanSatGUI
 {
@@ -32,14 +31,17 @@ namespace CanSatGUI
     {
         public SocketIO client = new SocketIO("http://77.55.213.87:3000");
 
+        //private readonly ArcBallEffect arcBallEffect = new ArcBallEffect(); //DEBUG Mouse 3d object
+
         Stopwatch timer = new Stopwatch();
         string rxString;
-        //string ComPort;
         StreamWriter writer;
-        int VERTICES_LENGTH;
-        uint shaderProgram;
         PointLatLng lastPoint = new PointLatLng(0, 0);
         threedscatter chart3D;
+        float pitch = 30.0f;
+        float yaw = 0.0f;
+        float roll = 50.0f;
+
 
         public Form1()  //definiowanie ustawienia oraz port szeregowy
         {
@@ -87,7 +89,7 @@ namespace CanSatGUI
             }
         }
 
-        //private void UpdateWidgets(object sender, EventArgs e)
+        
         private async void UpdateWidgets(object sender, EventArgs e)
         {
             
@@ -167,13 +169,8 @@ namespace CanSatGUI
                 _ = client.EmitAsync("data", json);
             }
             catch { }
-            // catch (SocketIOClient.Exceptions.InvalidSocketStateException) { }
-           
-            // opengl
-            float pitch = -20.0f;
-            float yaw = -10.0f;
-            float roll = 30.0f;
-            Upd.UpdateOpenGLControl(openGLControl1, shaderProgram, VERTICES_LENGTH / 3, pitch, yaw, roll);
+            
+
         }
 
         private void InitWidgets()
@@ -181,11 +178,7 @@ namespace CanSatGUI
 
             DataStream.AppendText("Initalize");
 
-            // opengl
-            float pitch = -20.0f;
-            float yaw = -10.0f;
-            float roll = 20.0f;
-            Upd.UpdateOpenGLControl(openGLControl1, shaderProgram, VERTICES_LENGTH / 3, pitch, yaw, roll);
+            
         }
 
         private void psrtxt_TextChanged(object sender, EventArgs e)
@@ -202,7 +195,8 @@ namespace CanSatGUI
         {
             GMapProviders.GoogleMap.ApiKey = @"AIzaSyAZouhXULQgPGPckADOmiHqfCc_YvD5QzQ";
             map.DragButton = MouseButtons.Left;
-            map.MapProvider = GMapProviders.GoogleMap;
+            map.MapProvider = GMapProviders.GoogleHybridMap;
+            
             // map.Position = new PointLatLng(0, 0);
             map.MinZoom = 0;
             map.MaxZoom = 25;
@@ -212,95 +206,6 @@ namespace CanSatGUI
             map.Overlays.Add(markersOverlay);
         }
 
-        private void openGLControl1_Load(object sender, EventArgs e)
-        {
-            OpenGL gl = openGLControl1.OpenGL;
-            // OpenGL.IsExtensionFunctionSupported("glGenVertexArrays");
-            string glVersion = gl.GetString(OpenGL.GL_VERSION);
-            Console.WriteLine(glVersion);
-
-            string vertexshadersource = File.ReadAllText("Shaders/shader.vs");
-            string fragmentshadersource = File.ReadAllText("Shaders/shader.fs");
-
-            // load vertex shader
-            var vertexShader = gl.CreateShader(OpenGL.GL_VERTEX_SHADER);
-            gl.ShaderSource(vertexShader, vertexshadersource);
-            gl.CompileShader(vertexShader);
-
-            // load fragment shader
-            var fragmentShader = gl.CreateShader(OpenGL.GL_FRAGMENT_SHADER);
-            gl.ShaderSource(fragmentShader,fragmentshadersource );
-            gl.CompileShader(fragmentShader);
-
-            // compile shaders
-            shaderProgram = gl.CreateProgram();
-            gl.AttachShader(shaderProgram, vertexShader);
-            gl.AttachShader(shaderProgram, fragmentShader);
-
-            // link shaders
-            gl.LinkProgram(shaderProgram);
-            gl.DetachShader(shaderProgram, vertexShader);
-            gl.DetachShader(shaderProgram, fragmentShader);
-            gl.DeleteShader(vertexShader);
-            gl.DeleteShader(fragmentShader);
-
-            // create VAO
-            uint[] VAO = new uint[1]; // vertex array object
-            uint[] VBO = new uint[1]; // vertex buffer object
-            gl.GenVertexArrays(1, VAO);
-            gl.GenBuffers(1, VBO);
-
-            // use this for object context (VAO) so we can configure it
-            gl.BindVertexArray(VAO[0]);
-
-            // bind buffer and static vertices data to current VAO
-            gl.BindBuffer(OpenGL.GL_ARRAY_BUFFER, VBO[0]);
-
-            // setup OpenGL
-            Assimp.Scene cansatModel = assimp_load_obj();
-
-            // triangle vertices
-            for (int j = 0; j < cansatModel.MeshCount; j++)
-            {
-                VERTICES_LENGTH += 3 * cansatModel.Meshes[j].VertexCount;
-            }
-            float[] vertices = new float[VERTICES_LENGTH];
-            int i = 0;
-            for (int m = 0; m < cansatModel.MeshCount; m++)
-            {
-                foreach (Assimp.Vector3D vertice in cansatModel.Meshes[m].Vertices)
-                {
-                    vertices[i] = vertice[0] / 3.0f;
-                    i++;
-                    vertices[i] = vertice[1] / 3.0f;
-                    i++;
-                    vertices[i] = vertice[2] / 3.0f;
-                    i++;
-                }
-            }
-            
-            IntPtr verticesPtr = Marshal.AllocHGlobal(VERTICES_LENGTH * sizeof(float));
-            //float[] vertices = { -0.5f, -0.5f, 1.0f, 0.5f, -0.5f, 1.0f, 0.0f, 0.5f, 1.0f };
-            Marshal.Copy(vertices, 0, verticesPtr, VERTICES_LENGTH);
-
-            // bind vetices data to current VAO
-            //IntPtr verticesPtr = Utils.IntPtrFromFloatArray(vertices, VERTICES_SIZE);
-            gl.BufferData(OpenGL.GL_ARRAY_BUFFER, VERTICES_LENGTH*sizeof(float), verticesPtr, OpenGL.GL_STATIC_DRAW);
-            Marshal.FreeHGlobal(verticesPtr);
-
-            // linking vertex attributes to current VAO
-            gl.VertexAttribPointer(0, 3, OpenGL.GL_FLOAT, false, 3 * sizeof(float), IntPtr.Zero);
-            gl.EnableVertexAttribArray(0);
-
-            // now we can unbind VBO
-            gl.BindBuffer(OpenGL.GL_ARRAY_BUFFER, 0);
-            gl.BindVertexArray(0);
-
-            gl.Enable(OpenGL.GL_DEPTH_TEST);
-            gl.UseProgram(shaderProgram);
-            gl.BindVertexArray(VAO[0]);
-
-        }
 
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -390,15 +295,6 @@ namespace CanSatGUI
 
         }
 
-        private Assimp.Scene assimp_load_obj()
-        {
-            Assimp.Scene model;
-            Assimp.AssimpContext importer = new Assimp.AssimpContext();
-            // importer.SetConfig(new Assimp.Configs.NormalSmoothingAngleConfig(66.0f));
-            //model = importer.ImportFile("Assets/cansat_bezspadochronu.obj"); // , Assimp.PostProcessPreset.TargetRealTimeMaximumQuality
-            model = importer.ImportFile("Assets/cansat_3face.obj"); // , Assimp.PostProcessPreset.TargetRealTimeMaximumQuality
-            return model;
-        }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -433,6 +329,135 @@ namespace CanSatGUI
 
         private void groupBox3_Enter(object sender, EventArgs e)
         {
+
+        }
+        /* //DEBUG Mouse 3d object
+        private void openGLControl1_MouseDown(object sender, MouseEventArgs e)
+        {
+            arcBallEffect.ArcBall.SetBounds(openGLControl1.Width, openGLControl1.Height);
+            arcBallEffect.ArcBall.MouseDown(e.X, e.Y);
+        }
+
+        private void openGLControl1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+                arcBallEffect.ArcBall.MouseMove(e.X, e.Y);
+        }
+
+        private void openGLControl1_MouseUp(object sender, MouseEventArgs e)
+        {
+            arcBallEffect.ArcBall.MouseUp(e.X, e.Y);
+        } */
+
+
+        private void openGLControl1_Load(object sender, EventArgs e)
+        {
+
+            var gl = this.openGLControl1.OpenGL;
+
+
+            //openGLControl1.MouseDown += new MouseEventHandler(openGLControl1_MouseDown); //DEBUG Mouse 3d object
+            //openGLControl1.MouseMove += new MouseEventHandler(openGLControl1_MouseMove); //DEBUG Mouse 3d object
+            //openGLControl1.MouseUp += new MouseEventHandler(openGLControl1_MouseUp); //DEBUG Mouse 3d object
+
+            var obj = new ObjFileFormat();
+            var objScene = obj.LoadData("Assets/cansat_gotowy.obj");
+
+            foreach (var asset in objScene.Assets)
+            {
+                openGLControl1.Scene.Assets.Add(asset);
+            }
+
+            openGLControl1.Scene.RenderBoundingVolumes = false;
+
+            var polygons = objScene.SceneContainer.Traverse<Polygon>().ToList();
+
+
+            foreach (Polygon polygon in polygons)
+            {
+
+                polygon.Transformation.RotateX = 90f; // rotate to right direction
+
+                polygon.Parent.RemoveChild(polygon);
+                polygon.Transformation.ScaleX = 8f;
+                polygon.Transformation.ScaleY = 8f;
+                polygon.Transformation.ScaleZ = 8f;
+
+                polygon.Freeze(openGLControl1.OpenGL);
+
+                openGLControl1.Scene.SceneContainer.AddChild(polygon);
+
+                // Add effects.
+                polygon.AddEffect(new OpenGLAttributesEffect());
+                //polygon.AddEffect(arcBallEffect); //DEBUG Mouse 3d object
+
+            }
+
+        }
+
+        private void openGLControl1_OpenGLDraw(object sender, RenderEventArgs e)
+        {
+
+            var gl = this.openGLControl1.OpenGL;
+            //Reset position
+            gl.LoadIdentity();
+            gl.Rotate(pitch, roll, yaw);
+
+
+
+        }
+
+
+        private void openGLControl1_OpenGLInitialized(object sender, EventArgs e)
+        {
+
+
+            //clear grid and axis
+            openGLControl1.Scene.SceneContainer.Children.Clear();
+            //set background color
+            GLColor background = new GLColor(11/255f, 18/255f, 34/255f, 1);
+            openGLControl1.Scene.ClearColour = background;
+
+            //  Create some lights.
+            Light light1 = new Light()
+            {
+                Name = "Light 1",
+                On = true,
+                Position = new Vertex(-9, -9, 11),
+                GLCode = OpenGL.GL_LIGHT0
+            };
+            Light light2 = new Light()
+            {
+                Name = "Light 2",
+                On = true,
+                Position = new Vertex(9, -9, 11),
+                GLCode = OpenGL.GL_LIGHT1
+            };
+            Light light3 = new Light()
+            {
+                Name = "Light 3",
+                On = true,
+                Position = new Vertex(0, 15, 15),
+                GLCode = OpenGL.GL_LIGHT2
+            };
+
+            //  Add the lights.
+            var folder = new Folder() { Name = "Lights" };
+            folder.AddChild(light1);
+            folder.AddChild(light2);
+            folder.AddChild(light3);
+            openGLControl1.Scene.SceneContainer.AddChild(folder);
+
+                        
+            var lookAtCamera = new LookAtCamera()
+            {
+                Position = new Vertex(0f, -20f, 2f),
+                Target = new Vertex(0f, 0f, 0f),
+                UpVector = new Vertex(0f, 0f, 1f)
+            };
+
+            //  Set the look at camera as the current camera.
+            openGLControl1.Scene.CurrentCamera = lookAtCamera;
 
         }
     }

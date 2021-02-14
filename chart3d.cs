@@ -17,6 +17,7 @@ namespace CanSatGUI
         double[] xData = new double[100000];
         double[] yData = new double[100000];
         double[] zData = new double[100000];
+
         //List<double> xData;
         //List<double> yData;
         //List<double> zData;
@@ -32,11 +33,11 @@ namespace CanSatGUI
             c = new ThreeDScatterChart(424,352);
 
             c.setBackground(725538, 725538, 0);//7913160 jasny niebieski 725538 ciemny
-
+            
             c.xAxis().setLabelStyle("Arial Bold", 10, 7913160); 
             c.yAxis().setLabelStyle("Arial Bold", 10, 7913160);
             c.zAxis().setLabelStyle("Arial Bold", 10, 7913160);
-
+            
             // Add a title to the chart using 20 points Times New Roman Italic font
             c.addTitle("3D Scatter Chart ", "Calibri", 20, 7913160);
 
@@ -72,6 +73,7 @@ namespace CanSatGUI
             
             //set gradient to true and the color palette for the color axis,
             c.colorAxis().setColorGradient(true, color_palette);
+  
 
 
             // Set the x, y and z axis titles using 10 points Arial Bold font

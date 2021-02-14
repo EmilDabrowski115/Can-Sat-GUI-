@@ -62,7 +62,7 @@
             this.asdasdasda = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.openGLControl1 = new SharpGL.OpenGLControl();
+            this.openGLControl1 = new SharpGL.SceneControl();
             this.framenrtxt = new System.Windows.Forms.TextBox();
             this.zacceltxt = new System.Windows.Forms.TextBox();
             this.yacceltxt = new System.Windows.Forms.TextBox();
@@ -352,11 +352,13 @@
             this.openGLControl1.Location = new System.Drawing.Point(25, 35);
             this.openGLControl1.Margin = new System.Windows.Forms.Padding(6);
             this.openGLControl1.Name = "openGLControl1";
-            this.openGLControl1.OpenGLVersion = SharpGL.Version.OpenGLVersion.OpenGL3_3;
+            this.openGLControl1.OpenGLVersion = SharpGL.Version.OpenGLVersion.OpenGL2_1;
             this.openGLControl1.RenderContextType = SharpGL.RenderContextType.FBO;
-            this.openGLControl1.RenderTrigger = SharpGL.RenderTrigger.Manual;
+            this.openGLControl1.RenderTrigger = SharpGL.RenderTrigger.TimerBased;
             this.openGLControl1.Size = new System.Drawing.Size(371, 340);
             this.openGLControl1.TabIndex = 18;
+            this.openGLControl1.OpenGLInitialized += new System.EventHandler(this.openGLControl1_OpenGLInitialized);
+            this.openGLControl1.OpenGLDraw += new SharpGL.RenderEventHandler(this.openGLControl1_OpenGLDraw);
             this.openGLControl1.Load += new System.EventHandler(this.openGLControl1_Load);
             // 
             // framenrtxt
@@ -1351,7 +1353,7 @@
         private System.Windows.Forms.Label asdasdasda;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
-        private SharpGL.OpenGLControl openGLControl1;
+        private SharpGL.SceneControl openGLControl1;
         private System.Windows.Forms.TextBox framenrtxt;
         private System.Windows.Forms.TextBox zacceltxt;
         private System.Windows.Forms.TextBox yacceltxt;
