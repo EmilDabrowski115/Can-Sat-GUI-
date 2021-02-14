@@ -45,11 +45,14 @@ namespace CanSatGUI
             GMarkerGoogle marker = new GMarkerGoogle(new PointLatLng(latitude, Longitude), GMarkerGoogleType.green);
             markersOverlay.Markers.Add(marker);
 
-            //double currentLatitude, double currentLongitude, double altitude, double fallingSpeed, double windSpeed, double course
-            PointLatLng landingLocation = CalculateLandingLocation(latitude, Longitude, altitude, fallingSpeed, windSpeed, course);
-            markersOverlay.Markers.Remove(landingMarker);
-            landingMarker = new GMarkerGoogle(landingLocation, GMarkerGoogleType.red);
-            markersOverlay.Markers.Add(landingMarker);
+            // landing location prediction
+            if (altitude > 10)
+            {
+                markersOverlay.Markers.Remove(landingMarker);
+                PointLatLng landingLocation = CalculateLandingLocation(latitude, Longitude, altitude, fallingSpeed, windSpeed, course);
+                landingMarker = new GMarkerGoogle(landingLocation, GMarkerGoogleType.red);
+                markersOverlay.Markers.Add(landingMarker);
+            }
 
 
             //GMapOverlay markersOverlay = new GMapOverlay("markers");
@@ -166,7 +169,7 @@ namespace CanSatGUI
 
         public static PointLatLng CalculateLandingLocation(double currentLatitude, double currentLongitude, double altitude, double fallingSpeed, double windSpeed, int course)
         {
-            int time = Convert.ToInt32(altitude / fallingSpeed); //Potencjalny blad dzielenia przez 0!!!
+            double time = Convert.ToDouble(altitude / fallingSpeed); //Potencjalny blad dzielenia przez 0!!!
             double distance = time * windSpeed;
             double angle = course / 100;
             double valLong = -Math.Sin(ConvertToRadians(angle)) * distance / 0.111 / 1000000;

@@ -14,22 +14,22 @@ namespace CanSatGUI
     {
         ThreeDScatterChart c;
         WinChartViewer viewer;
-        double[] xData = new double[100000];
-        double[] yData = new double[100000];
-        double[] zData = new double[100000];
-
-        //List<double> xData;
-        //List<double> yData;
-        //List<double> zData;
+        List<double> xData_list = new List<double>();
+        List<double> yData_list = new List<double>();
+        List<double> zData_list = new List<double>();
+        double[] xData = new double[] { };
+        double[] yData = new double[] { };
+        double[] zData = new double[] { };
 
         //Main code for creating chart.
         //Note: the argument chartIndex is unused because this demo only has 1 chart.
         public void createChart(WinChartViewer viewer)
         {
+
             this.viewer = viewer;
             // The XYZ data for the 3D scatter chart as 3 random data series
             
-            // Create a ThreeDScatterChart object of size 720 x 600 pixels
+            // Create a ThreeDScatterChart object
             c = new ThreeDScatterChart(424,352);
 
             c.setBackground(725538, 725538, 0);//7913160 jasny niebieski 725538 ciemny
@@ -47,13 +47,13 @@ namespace CanSatGUI
 
             // Color palette for the legend
             //int[] color_palette = new int[] { 15754320, 14643553, 13532786, 12422019, 11245461, 10134694, 9023927, 7913160 }; //inverted
-            int[] color_palette = new int[] { 7913160, 9023927, 10134694, 11245461, 12422019, 13532786, 14643553, 15754320 };
+            int[] color_palette = new int[] { 2461197, 9029689, 16638029, 16621366, 16736768 };
 
 
             // Add a scatter group to the chart using 11 pixels glass sphere symbols, in which the
             // color depends on the z value of the symbol
-                        
-            c.addScatterGroup(xData, yData, zData, "", Chart.GlassSphere2Shape, 4, Chart.SameAsMainColor);
+
+            c.addScatterGroup(xData, yData, zData, "", Chart.GlassSphere2Shape, 16, Chart.SameAsMainColor);
 
             //TODO:
             //Set the point color by the wind speed
@@ -82,7 +82,7 @@ namespace CanSatGUI
             c.zAxis().setTitle("Altitude", "Calibri", 10, 7913160);
 
             // Output the chart
-            this.viewer.Chart = c;
+            viewer.Chart = c;
 
             //include tool tip for the chart
             viewer.ImageMap = c.getHTMLImageMap("clickable", "",
@@ -95,13 +95,21 @@ namespace CanSatGUI
         {
             // Output the chart
             //include tool tip for the chart
-            int len = xData.Length;
-            xData[len] = latitude;
-            yData[len] = longitude;
-            zData[len] = altitude;
-            viewer.ImageMap = c.getHTMLImageMap("clickable", "",
-                "title='(x={x|p}, y={y|p}, z={z|p}'");
+            xData_list.Add(latitude);
+            yData_list.Add(longitude);
+            zData_list.Add(altitude);
+
+            xData = xData_list.ToArray();
+            yData = yData_list.ToArray();
+            zData = zData_list.ToArray();
+
+            createChart(viewer);
+            // ///viewer.ImageMap = c.getHTMLImageMap("clickable", "",
+            ///   "title='(x={x|p}, y={y|p}, z={z|p}'");
         }
+
+        
+
     }
 
    

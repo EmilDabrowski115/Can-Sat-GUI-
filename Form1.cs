@@ -38,9 +38,10 @@ namespace CanSatGUI
         StreamWriter writer;
         PointLatLng lastPoint = new PointLatLng(0, 0);
         threedscatter chart3D;
-        float pitch = 30.0f;
-        float yaw = 0.0f;
-        float roll = 50.0f;
+        double previousAltitude = -1;
+        float pitch = 00.0f;
+        float yaw = 00.0f;
+        float roll = 00.0f;
 
 
         public Form1()  //definiowanie ustawienia oraz port szeregowy
@@ -54,8 +55,8 @@ namespace CanSatGUI
             // init window
             InitializeComponent();
 
-            // init widgets
-            
+            // enable keyboard input
+            this.KeyPreview = true;
 
             // init timer
             timer.Start();
@@ -98,7 +99,7 @@ namespace CanSatGUI
             string[] packetElems = Utils.ParsePacket(rxString);
             double time = Convert.ToInt32(timer.Elapsed.TotalSeconds);
 
-            if (packetElems == null || packetElems.Length != 20)
+            if (packetElems == null || packetElems.Length != 23)
             {
                 Console.WriteLine("Skipped corrupted packet");
                 return;
@@ -124,7 +125,15 @@ namespace CanSatGUI
             coursetxt.Text = packetElems[17];
             timetxt.Text = packetElems[18];
             halltxt.Text = packetElems[19];
+            pitchtxt.Text = packetElems[20];
+            rolltxt.Text = packetElems[21];
+            yawtxt.Text = packetElems[22];
 
+
+            pitch = float.Parse(packetElems[20], CultureInfo.InvariantCulture.NumberFormat);
+            roll = float.Parse(packetElems[21], CultureInfo.InvariantCulture.NumberFormat);
+            yaw = float.Parse(packetElems[22], CultureInfo.InvariantCulture.NumberFormat);
+            
             double course = (Convert.ToDouble(packetElems[17]));
             pictureBox1.Image = Compass.DrawCompass(course/100 , 0, 80, 0, 80, pictureBox1.Size);
 
@@ -142,6 +151,7 @@ namespace CanSatGUI
             Upd.UpdateChart(chart3, windSpeed, time);
 
             double Altitude = Convert.ToDouble(packetElems[15]);
+            previousAltitude = Altitude;
             Upd.UpdateChart(chart4, Altitude, time);
 
             double signal = Convert.ToDouble(packetElems[0]);
@@ -154,13 +164,25 @@ namespace CanSatGUI
             double Longitude = Convert.ToDouble(packetElems[14]);
             // double altitude, double fallingSpeed, double windSpeed, int course
 
-            double fallingSpeed = 9; ///////////
+            double fallingSpeed;
+            if (previousAltitude == -1)
+            {
+                fallingSpeed = 0;
+            }
+            else
+            {
+                fallingSpeed = previousAltitude - Altitude;
+                int i = 0;
+            }
+
+            Upd.UpdateChart(chart7, fallingSpeed, time);
+
             Upd.UpdateMap(map, latitude, Longitude, Altitude, fallingSpeed, speed, (int)course);
             lastPoint = new PointLatLng(latitude, Longitude);
 
             chart3D.Update(latitude, Longitude, Altitude);
 
-
+            //openGLControl1.DoRender();
 
             // socketio
             string json = JsonConvert.SerializeObject(new { psrtxt = psrtxt.Text, tmptxt = temptxt.Text, txtLat = lattxt.Text, txtLong = longtxt.Text, hghttext = alttxt.Text });
@@ -458,6 +480,148 @@ namespace CanSatGUI
 
             //  Set the look at camera as the current camera.
             openGLControl1.Scene.CurrentCamera = lookAtCamera;
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void label30_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label19_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label31_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void speedtxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void alttxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void framenrtxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label13_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label29_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rssitxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void xacceltxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void zacceltxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void xmagtxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void coursetxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F11)
+            {
+                WindowState = FormWindowState.Normal;
+                FormBorderStyle = FormBorderStyle.None;
+                WindowState = FormWindowState.Maximized;
+            }
+            else if (e.KeyCode == Keys.Escape)
+            {
+                WindowState = FormWindowState.Normal;
+                FormBorderStyle = FormBorderStyle.Sizable;
+            }
 
         }
     }
