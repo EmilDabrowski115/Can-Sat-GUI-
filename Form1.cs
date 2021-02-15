@@ -24,6 +24,9 @@ using GMap.NET.MapProviders;
 using GMap.NET;
 using GMap.NET.Internals;
 using System.Collections.Generic;
+using System.Windows.Forms.DataVisualization.Charting;
+using System.Drawing.Drawing2D;
+
 
 namespace CanSatGUI
 {
@@ -42,6 +45,8 @@ namespace CanSatGUI
         float pitch = 00.0f;
         float yaw = 00.0f;
         float roll = 00.0f;
+        GaugeChart gauge1;
+        GaugeChart gauge2;
 
 
         public Form1()  //definiowanie ustawienia oraz port szeregowy
@@ -69,6 +74,10 @@ namespace CanSatGUI
             // 
             chart3D = new threedscatter();
             chart3D.createChart(winChartViewer1);
+
+            // setupChartGauge(40.0, 0.0, 100.0, 90.0f);
+            gauge1 = new GaugeChart(chart7, veltxt, "{0} m/s");
+            gauge2 = new GaugeChart(chart5, textBox3, "{0}%");
         }
 
         // poczatek czesci wykonawczej serial port txt box v1.0
@@ -90,10 +99,10 @@ namespace CanSatGUI
             }
         }
 
-        
+
         private async void UpdateWidgets(object sender, EventArgs e)
         {
-            
+
             // RSSI; framenr; xaccel; yaccel; zaccel; xtilt; ytilt; ztilt; xmag; ymag; zmag; pressure; temp; lat; long; alt; speed; course; h:m:s:ms; hall
             DataStream.AppendText(rxString);
             string[] packetElems = Utils.ParsePacket(rxString);
@@ -133,9 +142,9 @@ namespace CanSatGUI
             pitch = float.Parse(packetElems[20], CultureInfo.InvariantCulture.NumberFormat);
             roll = float.Parse(packetElems[21], CultureInfo.InvariantCulture.NumberFormat);
             yaw = float.Parse(packetElems[22], CultureInfo.InvariantCulture.NumberFormat);
-            
+
             double course = (Convert.ToDouble(packetElems[17]));
-            pictureBox1.Image = Compass.DrawCompass(course/100 , 0, 80, 0, 80, pictureBox1.Size);
+            pictureBox1.Image = Compass.DrawCompass(course / 100, 0, 80, 0, 80, pictureBox1.Size);
 
             double temperature = Convert.ToDouble(packetElems[12]);
             Upd.UpdateChart(chart1, temperature, time);
@@ -143,26 +152,26 @@ namespace CanSatGUI
             double pressure = Convert.ToDouble(packetElems[11]);
             Upd.UpdateChart(chart2, pressure, time);
 
-           // double course = (Convert.ToDouble(packetElems[17])/100);
+            // double course = (Convert.ToDouble(packetElems[17])/100);
             //Upd.UpdateChart(chart7, course, time);
 
             double Hall = Convert.ToDouble(packetElems[19]);
             double windSpeed = Utils.WindSpeed(Hall);
             Upd.UpdateChart(chart3, windSpeed, time);
 
-            double Altitude = Convert.ToDouble(packetElems[15]);
-            previousAltitude = Altitude;
-            Upd.UpdateChart(chart4, Altitude, time);
-
             double signal = Convert.ToDouble(packetElems[0]);
-            Upd.UpdateChart(chart5, signal, time);
+            //gauge2.Update(chart5, signal, time);
+            double signalPercent = Utils.SignalStrengthInPercent(signal);
+            gauge2.Update(signalPercent);
 
             double speed = Convert.ToDouble(packetElems[16]);
             Upd.UpdateChart(chart6, speed, time);
-            
+
             double latitude = Convert.ToDouble(packetElems[13]);
             double Longitude = Convert.ToDouble(packetElems[14]);
             // double altitude, double fallingSpeed, double windSpeed, int course
+
+            double Altitude = Convert.ToDouble(packetElems[15]);
 
             double fallingSpeed;
             if (previousAltitude == -1)
@@ -172,10 +181,20 @@ namespace CanSatGUI
             else
             {
                 fallingSpeed = previousAltitude - Altitude;
-                int i = 0;
             }
+            //Console.WriteLine(previousAltitude);
+            //Console.WriteLine(Altitude);
+            //Console.WriteLine(fallingSpeed);
 
-            Upd.UpdateChart(chart7, fallingSpeed, time);
+            previousAltitude = Altitude;
+            Upd.UpdateChart(chart4, Altitude, time);
+
+            // Upd.UpdateChartGauge(chart7, veltxt, fallingSpeed);
+
+
+            // Upd.UpdateChart(chart7, fallingSpeed, time);
+            gauge1.Update(fallingSpeed);
+
 
             Upd.UpdateMap(map, latitude, Longitude, Altitude, fallingSpeed, speed, (int)course);
             lastPoint = new PointLatLng(latitude, Longitude);
@@ -191,7 +210,7 @@ namespace CanSatGUI
                 _ = client.EmitAsync("data", json);
             }
             catch { }
-            
+
 
         }
 
@@ -200,45 +219,35 @@ namespace CanSatGUI
 
             DataStream.AppendText("Initalize");
 
-            
-        }
-
-        private void psrtxt_TextChanged(object sender, EventArgs e)
-        {
 
         }
 
-        private void chart2_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void map_Load(object sender, EventArgs e)
         {
             GMapProviders.GoogleMap.ApiKey = @"AIzaSyAZouhXULQgPGPckADOmiHqfCc_YvD5QzQ";
             map.DragButton = MouseButtons.Left;
             map.MapProvider = GMapProviders.GoogleHybridMap;
-            
+
             // map.Position = new PointLatLng(0, 0);
             map.MinZoom = 0;
             map.MaxZoom = 25;
             map.Zoom = 20;
-            
+
             GMapOverlay markersOverlay = new GMapOverlay("markers");
             map.Overlays.Add(markersOverlay);
         }
 
 
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private async void Form1_Load(object sender, EventArgs e)
         {
             InitWidgets();
-            client.OnConnected += async (sender_socket, e_socket) => {
+            client.OnConnected += async (sender_socket, e_socket) =>
+            {
                 //await client.EmitAsync("data", ".net core");
             };
             try
@@ -254,7 +263,7 @@ namespace CanSatGUI
             WindowState = FormWindowState.Maximized;
         }
 
-       
+
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs _)
         {
@@ -262,7 +271,7 @@ namespace CanSatGUI
             string Dropdown = ComboBox1.GetItemText(ComboBox1.SelectedItem);
             try
             {
-                SerialPort1 = Utils.InitSerialPort(Dropdown);     
+                SerialPort1 = Utils.InitSerialPort(Dropdown);
                 SerialPort1.DataReceived += myPort_DataReceived;
             }
             catch (Exception e)
@@ -271,10 +280,7 @@ namespace CanSatGUI
             }
         }
 
-        private void chart1_Click(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void DataStream_TextChanged(object sender, EventArgs e)
         {
@@ -284,75 +290,17 @@ namespace CanSatGUI
             }
 
         }
-        
 
 
-        private void progressBar1_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void chart3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void chart4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void chart6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            
-
-        }
-
-        private void label26_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox5_Enter(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void button1_Click(object sender, EventArgs e)
         {
             map.Position = lastPoint;
         }
 
-        private void winChartViewer1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox3_Enter(object sender, EventArgs e)
-        {
-
-        }
+        
         /* //DEBUG Mouse 3d object
         private void openGLControl1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -437,7 +385,7 @@ namespace CanSatGUI
             //clear grid and axis
             openGLControl1.Scene.SceneContainer.Children.Clear();
             //set background color
-            GLColor background = new GLColor(11/255f, 18/255f, 34/255f, 1);
+            GLColor background = new GLColor(11 / 255f, 18 / 255f, 34 / 255f, 1);
             openGLControl1.Scene.ClearColour = background;
 
             //  Create some lights.
@@ -470,7 +418,7 @@ namespace CanSatGUI
             folder.AddChild(light3);
             openGLControl1.Scene.SceneContainer.AddChild(folder);
 
-                        
+
             var lookAtCamera = new LookAtCamera()
             {
                 Position = new Vertex(0f, -20f, 2f),
@@ -488,126 +436,7 @@ namespace CanSatGUI
             Environment.Exit(0);
         }
 
-        private void label30_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label20_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label15_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label14_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label19_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label16_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label31_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void speedtxt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void alttxt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void framenrtxt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Form1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label13_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label29_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void rssitxt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void xacceltxt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void zacceltxt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void xmagtxt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void coursetxt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+      
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -624,6 +453,41 @@ namespace CanSatGUI
             }
 
         }
+
+       
+
+        private void chart7_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chart7_Load(object sender, PaintEventArgs e)
+        {
+            //e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+            //Rectangle r = chart1.ClientRectangle;
+            //r.Inflate(-10, -10);
+            //using (SolidBrush brush = new SolidBrush(Color.FromArgb(55, Color.Beige)))
+            //e.Graphics.FillEllipse(brush, r);
+        }
+
+        private void setupChartGauge(Chart chart, double val, double vMin, double vMax, float a)
+        {
+            Series s = chart.Series[0];
+            // s.ChartType = SeriesChartType.Doughnut;
+            //s.SetCustomProperty("PieStartAngle", (90 - angle / 2) + "");
+            s.SetCustomProperty("PieStartAngle", 0 + "");
+            s.SetCustomProperty("DoughnutRadius", "30");
+            //s.Points.Clear();
+            //s.Points.AddY(90);
+            //s.Points.AddY(0);
+            //s.Points.AddY(0);
+            ////setChartGauge(0);
+            //s.Points[0].Color = Color.Transparent;
+            //s.Points[1].Color = Color.Chartreuse;
+            //s.Points[2].Color = Color.Tomato;
+        }
+
+       
     }
 }
 

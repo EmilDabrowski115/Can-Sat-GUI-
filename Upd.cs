@@ -11,18 +11,19 @@ using System.Windows.Forms.DataVisualization.Charting; // Chart
 using GMap.NET.WindowsForms; // GMapControl
 using SharpGL;
 using GMap.NET.WindowsForms.Markers;
-using ILNumerics;
-using ILNumerics.Drawing;
-using static ILNumerics.ILMath;
-using ILNumerics.Drawing.Plotting;
 using GlmSharp;
-using ILNumerics.Toolboxes;
-using ILNEditor;
 using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
-using System.Windows.Media;
-
+using System.Drawing;
+// using System.Windows.Media;
+using GMap.NET.WindowsForms;
+using GMap.NET.MapProviders;
+using GMap.NET;
+using GMap.NET.Internals;
+using System.Collections.Generic;
+using System.Windows.Forms.DataVisualization.Charting;
+using System.Drawing.Drawing2D;
 
 namespace CanSatGUI
 {
@@ -53,10 +54,6 @@ namespace CanSatGUI
                 landingMarker = new GMarkerGoogle(landingLocation, GMarkerGoogleType.red);
                 markersOverlay.Markers.Add(landingMarker);
             }
-
-
-            //GMapOverlay markersOverlay = new GMapOverlay("markers");
-            //GMarkerGoogleType.red);
         }
 
         public static void UpdateChart(Chart chart, double y, double x)
@@ -180,9 +177,53 @@ namespace CanSatGUI
             return new PointLatLng(ZoneLat, ZoneLong);
         }
 
-        
-        
-        
+        //public static void UpdateChartGauge(Chart chart, TextBox textbox, double val)
+        //{
+        //    Series s = chart.Series[0];
+        //    s.Points.Clear();
+        //    s.Points.AddY(90);
+        //    s.Points.AddY(0);
+        //    s.Points.AddY(0);
+        //    s.Points[0].Color = Color.Transparent;
+        //    double range;
+        //    if (val < 0)
+        //    {
+        //        range = 500;
+        //        val = val * -1;
+        //        s.Points[1].Color = Color.FromArgb(0, 179, 0);
+        //    }
+        //    else
+        //    {
+        //        range = 100;
+        //        s.Points[1].Color = Color.FromArgb(240, 100, 80); // pomaranczowy (łososiowy)
+        //    }
+        //    s.Points[2].Color = Color.FromArgb(120, 190, 200); // j.niebieski
+
+        //    //double range = valMax - valMin;
+        //    //double aRange = 360 - angle;
+        //    double aRange = 360 - 90; // 270
+        //    double f = aRange / range;
+
+
+        //    double v1 = val * f;
+        //    double v2 = (range - val) * f;
+
+        //    s.Points[1].YValues[0] = v1;
+        //    s.Points[2].YValues[0] = v2;
+
+        //    Console.WriteLine(s.Points[0].YValues[0]);
+        //    Console.WriteLine(s.Points[1].YValues[0]);
+        //    Console.WriteLine(s.Points[2].YValues[0]);
+        //    Console.WriteLine("");
+
+        //    textbox.Text = String.Format("{0} m/s", val);
+        //    chart.Refresh();
+        //}
+
+
+
+
+
     }
 }
 
