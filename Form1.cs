@@ -114,29 +114,30 @@ namespace CanSatGUI
                 return;
             }
 
-            rssitxt.Text = packetElems[0];
+            rssitxt.Text = packetElems[0] + " Db";
             framenrtxt.Text = packetElems[1];
-            xacceltxt.Text = packetElems[2];
-            yacceltxt.Text = packetElems[3];
-            zacceltxt.Text = packetElems[4];
-            xtilttxt.Text = packetElems[5];
-            ytilttxt.Text = packetElems[6];
-            ztilttxt.Text = packetElems[7];
-            xmagtxt.Text = packetElems[8];
-            ymagtxt.Text = packetElems[9];
-            zmagtxt.Text = packetElems[10];
-            psrtxt.Text = packetElems[11];
-            temptxt.Text = packetElems[12];
+            xacceltxt.Text = packetElems[2]+ " G";
+            yacceltxt.Text = packetElems[3] + " G";
+            zacceltxt.Text = packetElems[4] + " G";
+            xtilttxt.Text = packetElems[5]+ " °/s";
+            ytilttxt.Text = packetElems[6] + " °/s";
+            ztilttxt.Text = packetElems[7] + " °/s";
+            xmagtxt.Text = packetElems[8] + " µT";
+            ymagtxt.Text = packetElems[9] + " µT";
+            zmagtxt.Text = packetElems[10] + " µT";
+            psrtxt.Text = packetElems[11]+ " hPa";
+            temptxt.Text = packetElems[12]+" C";
             lattxt.Text = packetElems[13];
             longtxt.Text = packetElems[14];
-            alttxt.Text = packetElems[15];
-            speedtxt.Text = packetElems[16];
-            coursetxt.Text = packetElems[17];
+            alttxt.Text = packetElems[15] + " m";
+            speedtxt.Text = packetElems[16] + "m/s";
+            coursetxt.Text = packetElems[17]+ " °";
             timetxt.Text = packetElems[18];
-            halltxt.Text = packetElems[19];
-            pitchtxt.Text = packetElems[20];
-            rolltxt.Text = packetElems[21];
-            yawtxt.Text = packetElems[22];
+            halltxt.Text = packetElems[19]+ " Hz";
+            pitchtxt.Text = packetElems[20] + " °";
+            rolltxt.Text = packetElems[21] + " °";
+            yawtxt.Text = packetElems[22] + " °";
+            
 
 
             pitch = float.Parse(packetElems[20], CultureInfo.InvariantCulture.NumberFormat);
@@ -185,6 +186,7 @@ namespace CanSatGUI
             //Console.WriteLine(previousAltitude);
             //Console.WriteLine(Altitude);
             //Console.WriteLine(fallingSpeed);
+            vertveltxt.Text = fallingSpeed.ToString() + " m/s";
 
             previousAltitude = Altitude;
             Upd.UpdateChart(chart4, Altitude, time);
@@ -487,7 +489,20 @@ namespace CanSatGUI
             //s.Points[2].Color = Color.Tomato;
         }
 
-       
+        private void rssitxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void vertveltxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void psrtxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

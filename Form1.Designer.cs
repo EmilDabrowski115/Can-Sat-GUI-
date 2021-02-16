@@ -120,6 +120,7 @@
             this.label30 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.veltxt = new System.Windows.Forms.TextBox();
             this.label32 = new System.Windows.Forms.Label();
@@ -135,7 +136,8 @@
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.box2 = new System.Windows.Forms.Label();
+            this.vertveltxt = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.openGLControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -248,9 +250,9 @@
             this.temptxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.temptxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.temptxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
-            this.temptxt.Location = new System.Drawing.Point(112, 91);
+            this.temptxt.Location = new System.Drawing.Point(136, 91);
             this.temptxt.Name = "temptxt";
-            this.temptxt.Size = new System.Drawing.Size(100, 20);
+            this.temptxt.Size = new System.Drawing.Size(75, 20);
             this.temptxt.TabIndex = 10;
             // 
             // psrtxt
@@ -260,10 +262,11 @@
             this.psrtxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.psrtxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.psrtxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
-            this.psrtxt.Location = new System.Drawing.Point(112, 137);
+            this.psrtxt.Location = new System.Drawing.Point(112, 136);
             this.psrtxt.Name = "psrtxt";
             this.psrtxt.Size = new System.Drawing.Size(100, 20);
             this.psrtxt.TabIndex = 11;
+            this.psrtxt.TextChanged += new System.EventHandler(this.psrtxt_TextChanged);
             // 
             // alttxt
             // 
@@ -272,9 +275,9 @@
             this.alttxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.alttxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.alttxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
-            this.alttxt.Location = new System.Drawing.Point(112, 114);
+            this.alttxt.Location = new System.Drawing.Point(136, 114);
             this.alttxt.Name = "alttxt";
-            this.alttxt.Size = new System.Drawing.Size(100, 20);
+            this.alttxt.Size = new System.Drawing.Size(75, 20);
             this.alttxt.TabIndex = 12;
             // 
             // label4
@@ -388,9 +391,9 @@
             this.framenrtxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.framenrtxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.framenrtxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
-            this.framenrtxt.Location = new System.Drawing.Point(111, 27);
+            this.framenrtxt.Location = new System.Drawing.Point(136, 27);
             this.framenrtxt.Name = "framenrtxt";
-            this.framenrtxt.Size = new System.Drawing.Size(100, 20);
+            this.framenrtxt.Size = new System.Drawing.Size(75, 20);
             this.framenrtxt.TabIndex = 20;
             // 
             // zacceltxt
@@ -400,9 +403,9 @@
             this.zacceltxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.zacceltxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.zacceltxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
-            this.zacceltxt.Location = new System.Drawing.Point(112, 229);
+            this.zacceltxt.Location = new System.Drawing.Point(112, 207);
             this.zacceltxt.Name = "zacceltxt";
-            this.zacceltxt.Size = new System.Drawing.Size(100, 20);
+            this.zacceltxt.Size = new System.Drawing.Size(112, 20);
             this.zacceltxt.TabIndex = 21;
             // 
             // yacceltxt
@@ -412,9 +415,9 @@
             this.yacceltxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.yacceltxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.yacceltxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
-            this.yacceltxt.Location = new System.Drawing.Point(111, 206);
+            this.yacceltxt.Location = new System.Drawing.Point(111, 184);
             this.yacceltxt.Name = "yacceltxt";
-            this.yacceltxt.Size = new System.Drawing.Size(100, 20);
+            this.yacceltxt.Size = new System.Drawing.Size(112, 20);
             this.yacceltxt.TabIndex = 22;
             // 
             // xacceltxt
@@ -424,9 +427,9 @@
             this.xacceltxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.xacceltxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.xacceltxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
-            this.xacceltxt.Location = new System.Drawing.Point(111, 184);
+            this.xacceltxt.Location = new System.Drawing.Point(111, 162);
             this.xacceltxt.Name = "xacceltxt";
-            this.xacceltxt.Size = new System.Drawing.Size(100, 20);
+            this.xacceltxt.Size = new System.Drawing.Size(112, 20);
             this.xacceltxt.TabIndex = 23;
             // 
             // ytilttxt
@@ -436,9 +439,9 @@
             this.ytilttxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ytilttxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ytilttxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
-            this.ytilttxt.Location = new System.Drawing.Point(111, 275);
+            this.ytilttxt.Location = new System.Drawing.Point(111, 253);
             this.ytilttxt.Name = "ytilttxt";
-            this.ytilttxt.Size = new System.Drawing.Size(100, 20);
+            this.ytilttxt.Size = new System.Drawing.Size(112, 20);
             this.ytilttxt.TabIndex = 27;
             // 
             // ztilttxt
@@ -448,9 +451,9 @@
             this.ztilttxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ztilttxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ztilttxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
-            this.ztilttxt.Location = new System.Drawing.Point(112, 298);
+            this.ztilttxt.Location = new System.Drawing.Point(112, 276);
             this.ztilttxt.Name = "ztilttxt";
-            this.ztilttxt.Size = new System.Drawing.Size(100, 20);
+            this.ztilttxt.Size = new System.Drawing.Size(112, 20);
             this.ztilttxt.TabIndex = 26;
             // 
             // xmagtxt
@@ -460,9 +463,9 @@
             this.xmagtxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.xmagtxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.xmagtxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
-            this.xmagtxt.Location = new System.Drawing.Point(112, 321);
+            this.xmagtxt.Location = new System.Drawing.Point(112, 299);
             this.xmagtxt.Name = "xmagtxt";
-            this.xmagtxt.Size = new System.Drawing.Size(100, 20);
+            this.xmagtxt.Size = new System.Drawing.Size(112, 20);
             this.xmagtxt.TabIndex = 25;
             // 
             // xtilttxt
@@ -472,9 +475,9 @@
             this.xtilttxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.xtilttxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.xtilttxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
-            this.xtilttxt.Location = new System.Drawing.Point(111, 252);
+            this.xtilttxt.Location = new System.Drawing.Point(111, 230);
             this.xtilttxt.Name = "xtilttxt";
-            this.xtilttxt.Size = new System.Drawing.Size(100, 20);
+            this.xtilttxt.Size = new System.Drawing.Size(112, 20);
             this.xtilttxt.TabIndex = 24;
             // 
             // zmagtxt
@@ -484,9 +487,9 @@
             this.zmagtxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.zmagtxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.zmagtxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
-            this.zmagtxt.Location = new System.Drawing.Point(111, 367);
+            this.zmagtxt.Location = new System.Drawing.Point(111, 345);
             this.zmagtxt.Name = "zmagtxt";
-            this.zmagtxt.Size = new System.Drawing.Size(100, 20);
+            this.zmagtxt.Size = new System.Drawing.Size(112, 20);
             this.zmagtxt.TabIndex = 31;
             // 
             // rssitxt
@@ -498,8 +501,9 @@
             this.rssitxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
             this.rssitxt.Location = new System.Drawing.Point(127, 68);
             this.rssitxt.Name = "rssitxt";
-            this.rssitxt.Size = new System.Drawing.Size(100, 20);
+            this.rssitxt.Size = new System.Drawing.Size(75, 20);
             this.rssitxt.TabIndex = 30;
+            this.rssitxt.TextChanged += new System.EventHandler(this.rssitxt_TextChanged);
             // 
             // speedtxt
             // 
@@ -508,9 +512,9 @@
             this.speedtxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.speedtxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.speedtxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
-            this.speedtxt.Location = new System.Drawing.Point(112, 160);
+            this.speedtxt.Location = new System.Drawing.Point(148, 507);
             this.speedtxt.Name = "speedtxt";
-            this.speedtxt.Size = new System.Drawing.Size(100, 20);
+            this.speedtxt.Size = new System.Drawing.Size(75, 20);
             this.speedtxt.TabIndex = 29;
             // 
             // ymagtxt
@@ -520,9 +524,9 @@
             this.ymagtxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ymagtxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ymagtxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
-            this.ymagtxt.Location = new System.Drawing.Point(111, 344);
+            this.ymagtxt.Location = new System.Drawing.Point(111, 322);
             this.ymagtxt.Name = "ymagtxt";
-            this.ymagtxt.Size = new System.Drawing.Size(100, 20);
+            this.ymagtxt.Size = new System.Drawing.Size(112, 20);
             this.ymagtxt.TabIndex = 28;
             // 
             // coursetxt
@@ -532,9 +536,9 @@
             this.coursetxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.coursetxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.coursetxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
-            this.coursetxt.Location = new System.Drawing.Point(111, 390);
+            this.coursetxt.Location = new System.Drawing.Point(111, 368);
             this.coursetxt.Name = "coursetxt";
-            this.coursetxt.Size = new System.Drawing.Size(100, 20);
+            this.coursetxt.Size = new System.Drawing.Size(112, 20);
             this.coursetxt.TabIndex = 34;
             // 
             // timetxt
@@ -544,9 +548,9 @@
             this.timetxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.timetxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.timetxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
-            this.timetxt.Location = new System.Drawing.Point(112, 45);
+            this.timetxt.Location = new System.Drawing.Point(137, 45);
             this.timetxt.Name = "timetxt";
-            this.timetxt.Size = new System.Drawing.Size(100, 20);
+            this.timetxt.Size = new System.Drawing.Size(75, 20);
             this.timetxt.TabIndex = 33;
             // 
             // halltxt
@@ -556,9 +560,9 @@
             this.halltxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.halltxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.halltxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
-            this.halltxt.Location = new System.Drawing.Point(111, 413);
+            this.halltxt.Location = new System.Drawing.Point(111, 391);
             this.halltxt.Name = "halltxt";
-            this.halltxt.Size = new System.Drawing.Size(100, 20);
+            this.halltxt.Size = new System.Drawing.Size(75, 20);
             this.halltxt.TabIndex = 32;
             // 
             // frametxt
@@ -579,7 +583,7 @@
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.label8.Location = new System.Drawing.Point(8, 344);
+            this.label8.Location = new System.Drawing.Point(8, 323);
             this.label8.Margin = new System.Windows.Forms.Padding(2);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(51, 19);
@@ -592,7 +596,7 @@
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.label9.Location = new System.Drawing.Point(8, 321);
+            this.label9.Location = new System.Drawing.Point(8, 300);
             this.label9.Margin = new System.Windows.Forms.Padding(2);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(52, 19);
@@ -605,7 +609,7 @@
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.label10.Location = new System.Drawing.Point(8, 298);
+            this.label10.Location = new System.Drawing.Point(8, 277);
             this.label10.Margin = new System.Windows.Forms.Padding(2);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(44, 19);
@@ -618,7 +622,7 @@
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.label11.Location = new System.Drawing.Point(8, 275);
+            this.label11.Location = new System.Drawing.Point(8, 254);
             this.label11.Margin = new System.Windows.Forms.Padding(2);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(43, 19);
@@ -631,7 +635,7 @@
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.label14.Location = new System.Drawing.Point(8, 206);
+            this.label14.Location = new System.Drawing.Point(8, 185);
             this.label14.Margin = new System.Windows.Forms.Padding(2);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(57, 19);
@@ -644,7 +648,7 @@
             this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.label15.Location = new System.Drawing.Point(8, 183);
+            this.label15.Location = new System.Drawing.Point(8, 162);
             this.label15.Margin = new System.Windows.Forms.Padding(2);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(58, 19);
@@ -657,7 +661,7 @@
             this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.label16.Location = new System.Drawing.Point(8, 390);
+            this.label16.Location = new System.Drawing.Point(8, 369);
             this.label16.Margin = new System.Windows.Forms.Padding(2);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(54, 19);
@@ -670,12 +674,12 @@
             this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.label17.Location = new System.Drawing.Point(8, 160);
+            this.label17.Location = new System.Drawing.Point(8, 507);
             this.label17.Margin = new System.Windows.Forms.Padding(2);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(51, 19);
+            this.label17.Size = new System.Drawing.Size(138, 19);
             this.label17.TabIndex = 46;
-            this.label17.Text = "Speed";
+            this.label17.Text = "Horizontal Velocity";
             this.label17.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // label18
@@ -692,7 +696,7 @@
             this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.label19.Location = new System.Drawing.Point(8, 367);
+            this.label19.Location = new System.Drawing.Point(8, 346);
             this.label19.Margin = new System.Windows.Forms.Padding(2);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(52, 19);
@@ -705,12 +709,12 @@
             this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.label20.Location = new System.Drawing.Point(8, 413);
+            this.label20.Location = new System.Drawing.Point(8, 392);
             this.label20.Margin = new System.Windows.Forms.Padding(2);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(65, 19);
+            this.label20.Size = new System.Drawing.Size(35, 19);
             this.label20.TabIndex = 49;
-            this.label20.Text = "Hall (Hz)";
+            this.label20.Text = "Hall";
             this.label20.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // label21
@@ -777,7 +781,7 @@
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.label13.Location = new System.Drawing.Point(8, 252);
+            this.label13.Location = new System.Drawing.Point(8, 231);
             this.label13.Margin = new System.Windows.Forms.Padding(2);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(44, 19);
@@ -790,7 +794,7 @@
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(8, 229);
+            this.label7.Location = new System.Drawing.Point(8, 208);
             this.label7.Margin = new System.Windows.Forms.Padding(2);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(58, 19);
@@ -956,6 +960,9 @@
             // 
             this.groupBox5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.groupBox5.Controls.Add(this.vertveltxt);
+            this.groupBox5.Controls.Add(this.box2);
+            this.groupBox5.Controls.Add(this.label17);
             this.groupBox5.Controls.Add(this.pitchtxt);
             this.groupBox5.Controls.Add(this.rolltxt);
             this.groupBox5.Controls.Add(this.yawtxt);
@@ -989,7 +996,6 @@
             this.groupBox5.Controls.Add(this.zmagtxt);
             this.groupBox5.Controls.Add(this.label16);
             this.groupBox5.Controls.Add(this.halltxt);
-            this.groupBox5.Controls.Add(this.label17);
             this.groupBox5.Controls.Add(this.timetxt);
             this.groupBox5.Controls.Add(this.coursetxt);
             this.groupBox5.Controls.Add(this.label19);
@@ -1016,9 +1022,9 @@
             this.pitchtxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.pitchtxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.pitchtxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
-            this.pitchtxt.Location = new System.Drawing.Point(111, 436);
+            this.pitchtxt.Location = new System.Drawing.Point(111, 414);
             this.pitchtxt.Name = "pitchtxt";
-            this.pitchtxt.Size = new System.Drawing.Size(100, 20);
+            this.pitchtxt.Size = new System.Drawing.Size(75, 20);
             this.pitchtxt.TabIndex = 60;
             // 
             // rolltxt
@@ -1028,9 +1034,9 @@
             this.rolltxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rolltxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.rolltxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
-            this.rolltxt.Location = new System.Drawing.Point(112, 459);
+            this.rolltxt.Location = new System.Drawing.Point(112, 437);
             this.rolltxt.Name = "rolltxt";
-            this.rolltxt.Size = new System.Drawing.Size(100, 20);
+            this.rolltxt.Size = new System.Drawing.Size(75, 20);
             this.rolltxt.TabIndex = 59;
             // 
             // yawtxt
@@ -1040,9 +1046,9 @@
             this.yawtxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.yawtxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.yawtxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
-            this.yawtxt.Location = new System.Drawing.Point(111, 482);
+            this.yawtxt.Location = new System.Drawing.Point(111, 460);
             this.yawtxt.Name = "yawtxt";
-            this.yawtxt.Size = new System.Drawing.Size(100, 20);
+            this.yawtxt.Size = new System.Drawing.Size(75, 20);
             this.yawtxt.TabIndex = 58;
             // 
             // label31
@@ -1050,7 +1056,7 @@
             this.label31.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label31.AutoSize = true;
             this.label31.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.label31.Location = new System.Drawing.Point(8, 436);
+            this.label31.Location = new System.Drawing.Point(8, 415);
             this.label31.Margin = new System.Windows.Forms.Padding(2);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(44, 19);
@@ -1063,7 +1069,7 @@
             this.label30.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label30.AutoSize = true;
             this.label30.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.label30.Location = new System.Drawing.Point(8, 459);
+            this.label30.Location = new System.Drawing.Point(8, 438);
             this.label30.Margin = new System.Windows.Forms.Padding(2);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(35, 19);
@@ -1076,7 +1082,7 @@
             this.label29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label29.AutoSize = true;
             this.label29.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.label29.Location = new System.Drawing.Point(8, 482);
+            this.label29.Location = new System.Drawing.Point(8, 461);
             this.label29.Margin = new System.Windows.Forms.Padding(2);
             this.label29.Name = "label29";
             this.label29.Size = new System.Drawing.Size(36, 19);
@@ -1112,6 +1118,18 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Charts";
             // 
+            // textBox3
+            // 
+            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox3.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.textBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.textBox3.Location = new System.Drawing.Point(146, 134);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 26);
+            this.textBox3.TabIndex = 74;
+            // 
             // textBox2
             // 
             this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1141,11 +1159,11 @@
             this.label32.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label32.AutoSize = true;
             this.label32.Font = new System.Drawing.Font("Calibri", 12.75F, System.Drawing.FontStyle.Bold);
-            this.label32.Location = new System.Drawing.Point(1333, 36);
+            this.label32.Location = new System.Drawing.Point(1301, 36);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(66, 21);
+            this.label32.Size = new System.Drawing.Size(123, 21);
             this.label32.TabIndex = 71;
-            this.label32.Text = "Velocity";
+            this.label32.Text = "Vertical Velocity";
             // 
             // chart7
             // 
@@ -1185,7 +1203,7 @@
             this.chart7.Location = new System.Drawing.Point(1238, 52);
             this.chart7.Name = "chart7";
             this.chart7.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series2.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.DiagonalRight;
+            series2.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
             series2.BorderWidth = 2;
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
@@ -1286,6 +1304,7 @@
             this.chart5.Location = new System.Drawing.Point(70, 52);
             this.chart5.Name = "chart5";
             this.chart5.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
+            series4.BackGradientStyle = System.Windows.Forms.DataVisualization.Charting.GradientStyle.TopBottom;
             series4.BorderWidth = 2;
             series4.ChartArea = "ChartArea1";
             series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
@@ -1520,17 +1539,31 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // textBox3
+            // box2
             // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
-            this.textBox3.Location = new System.Drawing.Point(146, 134);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 26);
-            this.textBox3.TabIndex = 74;
+            this.box2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.box2.AutoSize = true;
+            this.box2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.box2.Location = new System.Drawing.Point(8, 484);
+            this.box2.Margin = new System.Windows.Forms.Padding(2);
+            this.box2.Name = "box2";
+            this.box2.Size = new System.Drawing.Size(117, 19);
+            this.box2.TabIndex = 61;
+            this.box2.Text = "Vertical Velocity";
+            this.box2.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // vertveltxt
+            // 
+            this.vertveltxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.vertveltxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.vertveltxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.vertveltxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.vertveltxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.vertveltxt.Location = new System.Drawing.Point(136, 483);
+            this.vertveltxt.Name = "vertveltxt";
+            this.vertveltxt.Size = new System.Drawing.Size(75, 20);
+            this.vertveltxt.TabIndex = 62;
+            this.vertveltxt.TextChanged += new System.EventHandler(this.vertveltxt_TextChanged);
             // 
             // Form1
             // 
@@ -1672,6 +1705,8 @@
         private System.Windows.Forms.TextBox veltxt;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox vertveltxt;
+        private System.Windows.Forms.Label box2;
     }
 
 }
