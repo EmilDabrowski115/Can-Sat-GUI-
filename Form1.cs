@@ -114,7 +114,7 @@ namespace CanSatGUI
                 return;
             }
 
-            rssitxt.Text = packetElems[0] + " Db";
+            rssitxt.Text = packetElems[0] + " dBm";
             framenrtxt.Text = packetElems[1];
             xacceltxt.Text = packetElems[2]+ " G";
             yacceltxt.Text = packetElems[3] + " G";

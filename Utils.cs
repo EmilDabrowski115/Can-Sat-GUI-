@@ -73,10 +73,10 @@ namespace CanSatGUI
         
         public static double SignalStrengthInPercent(double db)
         {
-            double min = -111;
-            double max = -53;
+            double min = -120;
+            double max = -30;
             db += -min;
-            return db / (-53 - min) * 100;
+            return db / (max - min) * 100;
         }
     }
 
