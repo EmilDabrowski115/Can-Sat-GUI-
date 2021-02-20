@@ -71,10 +71,6 @@ namespace CanSatGUI
             System.IO.Directory.CreateDirectory("output");
             writer = new StreamWriter("output/output" + date_time + ".log");
 
-            // 
-            chart3D = new threedscatter();
-            chart3D.createChart(winChartViewer1);
-
             // setupChartGauge(40.0, 0.0, 100.0, 90.0f);
             gauge1 = new GaugeChart(chart7, veltxt, "{0} m/s");
             gauge2 = new GaugeChart(chart5, textBox3, "{0}%");
@@ -218,13 +214,9 @@ namespace CanSatGUI
 
         private void InitWidgets()
         {
-
-            DataStream.AppendText("Initalize");
-
-
+            // DataStream.AppendText("Initalize");
         }
 
-        
 
         private void map_Load(object sender, EventArgs e)
         {
@@ -242,9 +234,6 @@ namespace CanSatGUI
         }
 
 
-
-       
-
         private async void Form1_Load(object sender, EventArgs e)
         {
             InitWidgets();
@@ -260,11 +249,30 @@ namespace CanSatGUI
             { }
             //starts app in fullscreen
 
+            float widthRatio = Screen.PrimaryScreen.Bounds.Width / 1920f;
+            float heightRatio = Screen.PrimaryScreen.Bounds.Height / 1080f;
+            //this.Size = new Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+            SizeF scale = new SizeF(widthRatio, heightRatio);
+            this.Scale(scale);
+
+            foreach (Control control in Utils.GetAllControls(this))
+            {
+                //control.Font = new Font("Calibri", control.Font.SizeInPoints * ((heightRatio + widthRatio) / 5));
+                control.Font = new Font("Calibri", control.Font.SizeInPoints * heightRatio);
+                Console.WriteLine(control.ToString());
+            }
+
+            /////// heree
+            ///// Set the center of the plot region at (350, 280), and set width x depth x height to
+            // 360 x 360 x 270 pixels
+            //chart3D.scale(scale);
+            chart3D = new threedscatter();
+            chart3D.createChart(winChartViewer1, scale);
+
             WindowState = FormWindowState.Normal;
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
         }
-
 
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs _)
@@ -283,7 +291,6 @@ namespace CanSatGUI
         }
 
       
-
         private void DataStream_TextChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
@@ -293,9 +300,6 @@ namespace CanSatGUI
 
         }
 
-
-
-       
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -324,10 +328,6 @@ namespace CanSatGUI
 
         private void openGLControl1_Load(object sender, EventArgs e)
         {
-
-            var gl = this.openGLControl1.OpenGL;
-
-
             //openGLControl1.MouseDown += new MouseEventHandler(openGLControl1_MouseDown); //DEBUG Mouse 3d object
             //openGLControl1.MouseMove += new MouseEventHandler(openGLControl1_MouseMove); //DEBUG Mouse 3d object
             //openGLControl1.MouseUp += new MouseEventHandler(openGLControl1_MouseUp); //DEBUG Mouse 3d object
@@ -347,7 +347,6 @@ namespace CanSatGUI
 
             foreach (Polygon polygon in polygons)
             {
-
                 polygon.Transformation.RotateX = 90f; // rotate to right direction
 
                 polygon.Parent.RemoveChild(polygon);
@@ -362,21 +361,16 @@ namespace CanSatGUI
                 // Add effects.
                 polygon.AddEffect(new OpenGLAttributesEffect());
                 //polygon.AddEffect(arcBallEffect); //DEBUG Mouse 3d object
-
             }
 
         }
 
         private void openGLControl1_OpenGLDraw(object sender, RenderEventArgs e)
         {
-
             var gl = this.openGLControl1.OpenGL;
             //Reset position
             gl.LoadIdentity();
             gl.Rotate(pitch, roll, yaw);
-
-
-
         }
 
 
@@ -430,7 +424,6 @@ namespace CanSatGUI
 
             //  Set the look at camera as the current camera.
             openGLControl1.Scene.CurrentCamera = lookAtCamera;
-
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -452,6 +445,7 @@ namespace CanSatGUI
             {
                 WindowState = FormWindowState.Normal;
                 FormBorderStyle = FormBorderStyle.Sizable;
+                this.Size = new Size(1280, 800);
             }
 
         }
@@ -472,22 +466,22 @@ namespace CanSatGUI
             //e.Graphics.FillEllipse(brush, r);
         }
 
-        private void setupChartGauge(Chart chart, double val, double vMin, double vMax, float a)
-        {
-            Series s = chart.Series[0];
-            // s.ChartType = SeriesChartType.Doughnut;
-            //s.SetCustomProperty("PieStartAngle", (90 - angle / 2) + "");
-            s.SetCustomProperty("PieStartAngle", 0 + "");
-            s.SetCustomProperty("DoughnutRadius", "30");
-            //s.Points.Clear();
-            //s.Points.AddY(90);
-            //s.Points.AddY(0);
-            //s.Points.AddY(0);
-            ////setChartGauge(0);
-            //s.Points[0].Color = Color.Transparent;
-            //s.Points[1].Color = Color.Chartreuse;
-            //s.Points[2].Color = Color.Tomato;
-        }
+        //private void setupChartGauge(Chart chart, double val, double vMin, double vMax, float a)
+        //{
+        //    Series s = chart.Series[0];
+        //    // s.ChartType = SeriesChartType.Doughnut;
+        //    //s.SetCustomProperty("PieStartAngle", (90 - angle / 2) + "");
+        //    s.SetCustomProperty("PieStartAngle", 0 + "");
+        //    s.SetCustomProperty("DoughnutRadius", "30");
+        //    //s.Points.Clear();
+        //    //s.Points.AddY(90);
+        //    //s.Points.AddY(0);
+        //    //s.Points.AddY(0);
+        //    ////setChartGauge(0);
+        //    //s.Points[0].Color = Color.Transparent;
+        //    //s.Points[1].Color = Color.Chartreuse;
+        //    //s.Points[2].Color = Color.Tomato;
+        //}
 
         private void rssitxt_TextChanged(object sender, EventArgs e)
         {
@@ -503,6 +497,52 @@ namespace CanSatGUI
         {
 
         }
+
+        private void veltxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label28_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void longtxt_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        //private void Form1_Resize(object sender, EventArgs e)
+        //{
+
+        //    //float widthRatio = this.Width / Screen.PrimaryScreen.Bounds.Width;
+        //    //float heightRatio = this.Height / Screen.PrimaryScreen.Bounds.Height;
+        //    //SizeF scale = new SizeF(widthRatio, heightRatio);
+        //    //this.Scale(scale);
+        //    //foreach (Control control in this.Controls)
+        //    //{
+        //    //Screen.PrimaryScreen.Bounds.Height;
+
+        //    //    control.Font = new Font("Verdana", control.Font.SizeInPoints * heightRatio * widthRatio);
+        //    //}
+        //}
+
+        //private void Form1_ResizeEnd(object sender, EventArgs e)
+        //{
+        //    float widthRatio = Screen.PrimaryScreen.Bounds.Width / this.Size.Width;
+        //    float heightRatio = Screen.PrimaryScreen.Bounds.Height / this.Size.Height;
+        //    //this.Size = new Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+
+        //    SizeF scale_ = new SizeF(widthRatio / scale.Width, heightRatio / scale.Height);
+        //    this.Scale(scale_);
+        //    Console.WriteLine("resize");
+        //}
     }
 }
 

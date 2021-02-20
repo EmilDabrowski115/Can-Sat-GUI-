@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Windows.Forms;
+using System.Linq;
 
 
 namespace CanSatGUI
@@ -77,6 +78,17 @@ namespace CanSatGUI
             double max = -30;
             db += -min;
             return db / (max - min) * 100;
+        }
+
+        public static IEnumerable<Control> GetAllControls(Control container)
+        {
+            List<Control> controlList = new List<Control>();
+            foreach (Control c in container.Controls)
+            {
+                controlList.AddRange(GetAllControls(c));
+                controlList.Add(c);
+            }
+            return controlList;
         }
     }
 
