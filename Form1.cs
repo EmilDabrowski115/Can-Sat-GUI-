@@ -26,6 +26,7 @@ using GMap.NET.Internals;
 using System.Collections.Generic;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Drawing.Drawing2D;
+using GMap.NET.CacheProviders;
 
 
 namespace CanSatGUI
@@ -231,6 +232,9 @@ namespace CanSatGUI
 
             GMapOverlay markersOverlay = new GMapOverlay("markers");
             map.Overlays.Add(markersOverlay);
+            GMaps.Instance.Mode = AccessMode.CacheOnly; //cache only means offline , server only online , cache and server online but loads offline files to folder
+            map.CacheLocation = "cache"; // location is in bin/debug/cache
+            
         }
 
 
