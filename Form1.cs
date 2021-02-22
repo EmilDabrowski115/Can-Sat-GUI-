@@ -233,9 +233,35 @@ namespace CanSatGUI
             GMapOverlay markersOverlay = new GMapOverlay("markers");
             map.Overlays.Add(markersOverlay);
             GMaps.Instance.Mode = AccessMode.CacheOnly; //cache only means offline , server only online , cache and server online but loads offline files to folder
-            map.CacheLocation = "cache"; // location is in bin/debug/cache
-            
+            map.CacheLocation = System.IO.Path.GetDirectoryName(Application.ExecutablePath); // ta linijka jest ok, przyda sie 
+            //https://stackoverflow.com/questions/40847505/gmap-net-explicit-load-cache <^ tu masz link to tego // ta widziałem
+            // teraz patrze program do zapisywania cache https://github.com/williamwdu/GMap.NETChacher
+            map.CacheLocation = @"E:/Visual Studios/Can-Sat-GUI-/cache";
         }
+
+        /*
+         *  RectLatLng area = mapView.SelectedArea;
+
+        if (!area.IsEmpty)
+        {
+            for (int i = (int)mapView.Zoom; i <= mapView.MaxZoom; i++)
+            {
+                TilePrefetcher obj = new TilePrefetcher();
+                obj.Title = "Prefetching Tiles";
+                obj.Icon = this.Icon;
+                obj.Owner = this;
+                obj.ShowCompleteMessage = false;
+                obj.Start(area, i, mapView.MapProvider, 100);
+            }
+
+            DialogResult = true;
+            Close();
+        }
+        else
+        {
+            MessageBox.Show("No Area Chosen", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+        */
 
 
         private async void Form1_Load(object sender, EventArgs e)
