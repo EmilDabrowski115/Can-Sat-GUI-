@@ -87,19 +87,12 @@ namespace CanSatGUI
             while (true)
             {
                 await Task.Delay(1000);
-                try
+                if (SerialPort1 != null && !SerialPort1.IsOpen)
                 {
-                    Console.WriteLine(SerialPort1.IsOpen);
-                }
-                catch {
                     string dropdownText = ComboBox1.GetItemText(ComboBox1.SelectedItem);
-                    SerialPort1 = null;
-                    tryToConnectToCOM("COM9");
-                    SerialPort1 = null;
+                    DataStream.AppendText("Connecting to " + dropdownText + "\n");
                     tryToConnectToCOM(dropdownText);
                 }
-
-                
             }
         }
 
@@ -259,13 +252,22 @@ namespace CanSatGUI
             GMapOverlay markersOverlay = new GMapOverlay("markers");
             map.Overlays.Add(markersOverlay);
             GMaps.Instance.Mode = AccessMode.CacheOnly; //cache only means offline , server only online , cache and server online but loads offline files to folder
-            map.CacheLocation = System.IO.Path.GetDirectoryName(Application.ExecutablePath); // ta linijka jest ok, przyda sie 
+            //map.CacheLocation = System.IO.Path.GetDirectoryName(Application.ExecutablePath); // ta linijka jest ok, przyda sie 
             //https://stackoverflow.com/questions/40847505/gmap-net-explicit-load-cache <^ tu masz link to tego // ta widziałem
             // teraz patrze program do zapisywania cache https://github.com/williamwdu/GMap.NETChacher
-            map.CacheLocation = @"E:/Visual Studios/Can-Sat-GUI-/cache";
+            try
+            {
+                map.CacheLocation = @"E:/Visual Studios/Can-Sat-GUI-/cache";
+            }
+            catch
+            {
+                DataStream.AppendText("Couldn't load map cache. Using online maps.\n");
+                GMaps.Instance.Mode = AccessMode.ServerAndCache; //cache only means offline , server only online , cache and server online but loads offline files to folder
+            }
+
         }
 
-        
+
 
 
         private async void Form1_Load(object sender, EventArgs e)
@@ -315,7 +317,7 @@ namespace CanSatGUI
             tryToConnectToCOM(dropdownText);
         }
 
-        private void tryToConnectToCOM(string portName)
+        private bool tryToConnectToCOM(string portName)
         {
             // init COM
             //serial.DataReceived -= myPort_DataReceived;
@@ -323,12 +325,16 @@ namespace CanSatGUI
             {
                 SerialPort1 = Utils.InitSerialPort(portName);
                 SerialPort1.DataReceived += myPort_DataReceived;
+                DataStream.AppendText("Connected\n");
                 //lastSerialPortName = portName;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
+                DataStream.AppendText("Connection failed\n");
+                return false;
             }
+            return true;
         }
 
 
