@@ -167,7 +167,6 @@ namespace CanSatGUI
             pitchtxt.Text = packetElems[20] + " °";
             rolltxt.Text = packetElems[21] + " °";
             yawtxt.Text = packetElems[22] + " °";
-
             if (packetElems[13] == "x" || packetElems[13] == "X")
             {
                 lattxt.Text = "NO GPS";
@@ -228,6 +227,10 @@ namespace CanSatGUI
             double Hall = Convert.ToDouble(packetElems[19]);
             double windSpeed = Utils.WindSpeed(Hall);
             Upd.UpdateChart(chart3, windSpeed, time);
+
+            
+            windtxt.Text = Convert.ToString(windSpeed); ;
+
 
             double signal = Convert.ToDouble(packetElems[0]);
             //gauge2.Update(chart5, signal, time);

@@ -94,7 +94,7 @@ namespace CanSatGUI
         public static double WindSpeed(double hallRPM)
         {
             double radius = 0.018; // in meters
-            return Math.PI * radius * hallRPM;
+            return ((0.00418410041841 * hallRPM) + 1.7866108786611);
         }
 
 

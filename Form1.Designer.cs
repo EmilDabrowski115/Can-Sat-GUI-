@@ -139,6 +139,8 @@
             this.label33 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.label34 = new System.Windows.Forms.Label();
+            this.windtxt = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.openGLControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -499,7 +501,7 @@
             this.rssitxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.rssitxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.rssitxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
-            this.rssitxt.Location = new System.Drawing.Point(127, 68);
+            this.rssitxt.Location = new System.Drawing.Point(136, 68);
             this.rssitxt.Name = "rssitxt";
             this.rssitxt.Size = new System.Drawing.Size(75, 20);
             this.rssitxt.TabIndex = 30;
@@ -685,7 +687,7 @@
             // 
             this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(1630, 107);
+            this.label18.Location = new System.Drawing.Point(1850, 107);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(0, 13);
             this.label18.TabIndex = 45;
@@ -758,7 +760,7 @@
             "COM5",
             "COM6",
             "COM7"});
-            this.ComboBox1.Location = new System.Drawing.Point(112, 542);
+            this.ComboBox1.Location = new System.Drawing.Point(112, 568);
             this.ComboBox1.Name = "ComboBox1";
             this.ComboBox1.Size = new System.Drawing.Size(100, 34);
             this.ComboBox1.TabIndex = 51;
@@ -770,7 +772,7 @@
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Calibri", 11F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(11, 553);
+            this.label5.Location = new System.Drawing.Point(11, 579);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(68, 18);
             this.label5.TabIndex = 52;
@@ -966,6 +968,8 @@
             // 
             this.groupBox5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.groupBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.groupBox5.Controls.Add(this.windtxt);
+            this.groupBox5.Controls.Add(this.label34);
             this.groupBox5.Controls.Add(this.vertveltxt);
             this.groupBox5.Controls.Add(this.box2);
             this.groupBox5.Controls.Add(this.label17);
@@ -1515,7 +1519,7 @@
             this.label28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
             this.label28.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
-            this.label28.Location = new System.Drawing.Point(1026, 9);
+            this.label28.Location = new System.Drawing.Point(1136, 9);
             this.label28.Name = "label28";
             this.label28.Size = new System.Drawing.Size(203, 19);
             this.label28.TabIndex = 74;
@@ -1561,7 +1565,7 @@
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(100)))), ((int)(((byte)(80)))));
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button2.Location = new System.Drawing.Point(1856, 8);
+            this.button2.Location = new System.Drawing.Point(2076, 8);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(24, 23);
             this.button2.TabIndex = 77;
@@ -1583,6 +1587,31 @@
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // label34
+            // 
+            this.label34.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.label34.Location = new System.Drawing.Point(8, 530);
+            this.label34.Margin = new System.Windows.Forms.Padding(2);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(92, 19);
+            this.label34.TabIndex = 63;
+            this.label34.Text = "Wind Speed";
+            this.label34.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // windtxt
+            // 
+            this.windtxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.windtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.windtxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.windtxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.windtxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.windtxt.Location = new System.Drawing.Point(137, 530);
+            this.windtxt.Name = "windtxt";
+            this.windtxt.Size = new System.Drawing.Size(75, 20);
+            this.windtxt.TabIndex = 64;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1590,7 +1619,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1684, 1031);
+            this.ClientSize = new System.Drawing.Size(1904, 1041);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label28);
@@ -1726,6 +1755,8 @@
         private System.Windows.Forms.Label box2;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox windtxt;
+        private System.Windows.Forms.Label label34;
     }
 
 }
