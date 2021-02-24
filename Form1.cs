@@ -27,6 +27,8 @@ using System.Collections.Generic;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Drawing.Drawing2D;
 using GMap.NET.CacheProviders;
+using System.Threading.Tasks;
+
 
 
 namespace CanSatGUI
@@ -75,14 +77,39 @@ namespace CanSatGUI
             // setupChartGauge(40.0, 0.0, 100.0, 90.0f);
             gauge1 = new GaugeChart(chart7, veltxt, "{0} m/s");
             gauge2 = new GaugeChart(chart5, textBox3, "{0}%");
+
+            // com port background task
+            ComPortConnetionRenewer();
+        }
+
+        private async void ComPortConnetionRenewer()
+        {
+            while (true)
+            {
+                await Task.Delay(1000);
+                try
+                {
+                    Console.WriteLine(SerialPort1.IsOpen);
+                }
+                catch {
+                    string dropdownText = ComboBox1.GetItemText(ComboBox1.SelectedItem);
+                    SerialPort1 = null;
+                    tryToConnectToCOM("COM9");
+                    SerialPort1 = null;
+                    tryToConnectToCOM(dropdownText);
+                }
+
+                
+            }
         }
 
         // poczatek czesci wykonawczej serial port txt box v1.0
-        private void myPort_DataReceived(object sender, SerialDataReceivedEventArgs _)
+        private void myPort_DataReceived(object sender1, SerialDataReceivedEventArgs _)
         {
             try
             {
-                rxString = SerialPort1.ReadLine();
+                SerialPort sender = (SerialPort)sender1;
+                rxString = sender.ReadLine();
                 writer.Write(rxString);
                 this.Invoke(new EventHandler(UpdateWidgets));
             }
@@ -99,7 +126,7 @@ namespace CanSatGUI
 
         private async void UpdateWidgets(object sender, EventArgs e)
         {
-
+            //162;-0.02;-0.12;0.88;0.06;0.12;0.00;277.36;247.41;384.70;1028.69;25.00;X;X;X;X;X;1:0:0;0.00;1.57;-7.42;-43.99
             // RSSI; framenr; xaccel; yaccel; zaccel; xtilt; ytilt; ztilt; xmag; ymag; zmag; pressure; temp; lat; long; alt; speed; course; h:m:s:ms; hall
             DataStream.AppendText(rxString);
             string[] packetElems = Utils.ParsePacket(rxString);
@@ -113,36 +140,74 @@ namespace CanSatGUI
 
             rssitxt.Text = packetElems[0] + " dBm";
             framenrtxt.Text = packetElems[1];
-            xacceltxt.Text = packetElems[2]+ " G";
+            xacceltxt.Text = packetElems[2] + " G";
             yacceltxt.Text = packetElems[3] + " G";
             zacceltxt.Text = packetElems[4] + " G";
-            xtilttxt.Text = packetElems[5]+ " °/s";
+            xtilttxt.Text = packetElems[5] + " °/s";
             ytilttxt.Text = packetElems[6] + " °/s";
             ztilttxt.Text = packetElems[7] + " °/s";
             xmagtxt.Text = packetElems[8] + " µT";
             ymagtxt.Text = packetElems[9] + " µT";
             zmagtxt.Text = packetElems[10] + " µT";
-            psrtxt.Text = packetElems[11]+ " hPa";
-            temptxt.Text = packetElems[12]+" C";
-            lattxt.Text = packetElems[13];
-            longtxt.Text = packetElems[14];
+            psrtxt.Text = packetElems[11] + " hPa";
+            temptxt.Text = packetElems[12] + " C";
+       
             alttxt.Text = packetElems[15] + " m";
             speedtxt.Text = packetElems[16] + "m/s";
-            coursetxt.Text = packetElems[17]+ " °";
+            coursetxt.Text = packetElems[17] + " °";
             timetxt.Text = packetElems[18];
-            halltxt.Text = packetElems[19]+ " Hz";
+            halltxt.Text = packetElems[19] + " Hz";
             pitchtxt.Text = packetElems[20] + " °";
             rolltxt.Text = packetElems[21] + " °";
             yawtxt.Text = packetElems[22] + " °";
-            
 
+            if (packetElems[13] == "x" || packetElems[13] == "X")
+            {
+                lattxt.Text = "NO GPS";
+                longtxt.Text = "NO GPS";
+                previousAltitude = -1;
+            }
+            else
+            {
+                // lat; long; alt; speed; course
+                lattxt.Text = packetElems[13];
+                longtxt.Text = packetElems[14];
+
+                double latitude = Convert.ToDouble(packetElems[13]);
+                double Longitude = Convert.ToDouble(packetElems[14]);
+                double Altitude = Convert.ToDouble(packetElems[15]);
+                double speed = Convert.ToDouble(packetElems[16]);
+                double course = Convert.ToDouble(packetElems[17]);
+
+                double fallingSpeed;
+                if (previousAltitude == -1)
+                {
+                    fallingSpeed = 0;
+                }
+                else
+                {
+                    fallingSpeed = previousAltitude - Altitude;
+                }
+                gauge1.Update(fallingSpeed);
+
+
+                Upd.UpdateMap(map, latitude, Longitude, Altitude, fallingSpeed, speed, (int)course);
+                lastPoint = new PointLatLng(latitude, Longitude);
+                chart3D.Update(latitude, Longitude, Altitude);
+
+                vertveltxt.Text = fallingSpeed.ToString() + " m/s";
+
+                previousAltitude = Altitude;
+                Upd.UpdateChart(chart4, Altitude, time);
+
+                Upd.UpdateChart(chart6, speed, time);
+
+                pictureBox1.Image = Compass.DrawCompass(course / 100, 0, 80, 0, 80, pictureBox1.Size);
+            }
 
             pitch = float.Parse(packetElems[20], CultureInfo.InvariantCulture.NumberFormat);
             roll = float.Parse(packetElems[21], CultureInfo.InvariantCulture.NumberFormat);
             yaw = float.Parse(packetElems[22], CultureInfo.InvariantCulture.NumberFormat);
-
-            double course = (Convert.ToDouble(packetElems[17]));
-            pictureBox1.Image = Compass.DrawCompass(course / 100, 0, 80, 0, 80, pictureBox1.Size);
 
             double temperature = Convert.ToDouble(packetElems[12]);
             Upd.UpdateChart(chart1, temperature, time);
@@ -162,45 +227,8 @@ namespace CanSatGUI
             double signalPercent = Utils.SignalStrengthInPercent(signal);
             gauge2.Update(signalPercent);
 
-            double speed = Convert.ToDouble(packetElems[16]);
-            Upd.UpdateChart(chart6, speed, time);
-
-            double latitude = Convert.ToDouble(packetElems[13]);
-            double Longitude = Convert.ToDouble(packetElems[14]);
-            // double altitude, double fallingSpeed, double windSpeed, int course
-
-            double Altitude = Convert.ToDouble(packetElems[15]);
-
-            double fallingSpeed;
-            if (previousAltitude == -1)
-            {
-                fallingSpeed = 0;
-            }
-            else
-            {
-                fallingSpeed = previousAltitude - Altitude;
-            }
-            //Console.WriteLine(previousAltitude);
-            //Console.WriteLine(Altitude);
-            //Console.WriteLine(fallingSpeed);
-            vertveltxt.Text = fallingSpeed.ToString() + " m/s";
-
-            previousAltitude = Altitude;
-            Upd.UpdateChart(chart4, Altitude, time);
-
-            // Upd.UpdateChartGauge(chart7, veltxt, fallingSpeed);
-
-
-            // Upd.UpdateChart(chart7, fallingSpeed, time);
-            gauge1.Update(fallingSpeed);
-
-
-            Upd.UpdateMap(map, latitude, Longitude, Altitude, fallingSpeed, speed, (int)course);
-            lastPoint = new PointLatLng(latitude, Longitude);
-
-            chart3D.Update(latitude, Longitude, Altitude);
-
-            //openGLControl1.DoRender();
+            
+            
 
             // socketio
             string json = JsonConvert.SerializeObject(new { psrtxt = psrtxt.Text, tmptxt = temptxt.Text, txtLat = lattxt.Text, txtLong = longtxt.Text, hghttext = alttxt.Text });
@@ -209,8 +237,6 @@ namespace CanSatGUI
                 _ = client.EmitAsync("data", json);
             }
             catch { }
-
-
         }
 
         private void InitWidgets()
@@ -239,29 +265,7 @@ namespace CanSatGUI
             map.CacheLocation = @"E:/Visual Studios/Can-Sat-GUI-/cache";
         }
 
-        /*
-         *  RectLatLng area = mapView.SelectedArea;
-
-        if (!area.IsEmpty)
-        {
-            for (int i = (int)mapView.Zoom; i <= mapView.MaxZoom; i++)
-            {
-                TilePrefetcher obj = new TilePrefetcher();
-                obj.Title = "Prefetching Tiles";
-                obj.Icon = this.Icon;
-                obj.Owner = this;
-                obj.ShowCompleteMessage = false;
-                obj.Start(area, i, mapView.MapProvider, 100);
-            }
-
-            DialogResult = true;
-            Close();
-        }
-        else
-        {
-            MessageBox.Show("No Area Chosen", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-        }
-        */
+        
 
 
         private async void Form1_Load(object sender, EventArgs e)
@@ -292,7 +296,7 @@ namespace CanSatGUI
                 Console.WriteLine(control.ToString());
             }
 
-            /////// heree
+            
             ///// Set the center of the plot region at (350, 280), and set width x depth x height to
             // 360 x 360 x 270 pixels
             //chart3D.scale(scale);
@@ -307,12 +311,19 @@ namespace CanSatGUI
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs _)
         {
+            string dropdownText = ComboBox1.GetItemText(ComboBox1.SelectedItem);
+            tryToConnectToCOM(dropdownText);
+        }
+
+        private void tryToConnectToCOM(string portName)
+        {
             // init COM
-            string Dropdown = ComboBox1.GetItemText(ComboBox1.SelectedItem);
+            //serial.DataReceived -= myPort_DataReceived;
             try
             {
-                SerialPort1 = Utils.InitSerialPort(Dropdown);
+                SerialPort1 = Utils.InitSerialPort(portName);
                 SerialPort1.DataReceived += myPort_DataReceived;
+                //lastSerialPortName = portName;
             }
             catch (Exception e)
             {
@@ -320,7 +331,7 @@ namespace CanSatGUI
             }
         }
 
-      
+
         private void DataStream_TextChanged(object sender, EventArgs e)
         {
             if (checkBox1.Checked)
@@ -337,30 +348,12 @@ namespace CanSatGUI
         }
 
         
-        /* //DEBUG Mouse 3d object
-        private void openGLControl1_MouseDown(object sender, MouseEventArgs e)
-        {
-            arcBallEffect.ArcBall.SetBounds(openGLControl1.Width, openGLControl1.Height);
-            arcBallEffect.ArcBall.MouseDown(e.X, e.Y);
-        }
-
-        private void openGLControl1_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-                arcBallEffect.ArcBall.MouseMove(e.X, e.Y);
-        }
-
-        private void openGLControl1_MouseUp(object sender, MouseEventArgs e)
-        {
-            arcBallEffect.ArcBall.MouseUp(e.X, e.Y);
-        } */
+        
 
 
         private void openGLControl1_Load(object sender, EventArgs e)
         {
-            //openGLControl1.MouseDown += new MouseEventHandler(openGLControl1_MouseDown); //DEBUG Mouse 3d object
-            //openGLControl1.MouseMove += new MouseEventHandler(openGLControl1_MouseMove); //DEBUG Mouse 3d object
-            //openGLControl1.MouseUp += new MouseEventHandler(openGLControl1_MouseUp); //DEBUG Mouse 3d object
+            
 
             var obj = new ObjFileFormat();
             var objScene = obj.LoadData("Assets/cansat_gotowy.obj");
@@ -458,7 +451,7 @@ namespace CanSatGUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Environment.Exit(0);
+           
         }
 
       
@@ -482,97 +475,13 @@ namespace CanSatGUI
 
        
 
-        private void chart7_Load(object sender, EventArgs e)
+        
+        private void button3_Click(object sender, EventArgs e)
         {
-
+            Environment.Exit(0);
         }
 
-        private void chart7_Load(object sender, PaintEventArgs e)
-        {
-            //e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-            //Rectangle r = chart1.ClientRectangle;
-            //r.Inflate(-10, -10);
-            //using (SolidBrush brush = new SolidBrush(Color.FromArgb(55, Color.Beige)))
-            //e.Graphics.FillEllipse(brush, r);
-        }
-
-        //private void setupChartGauge(Chart chart, double val, double vMin, double vMax, float a)
-        //{
-        //    Series s = chart.Series[0];
-        //    // s.ChartType = SeriesChartType.Doughnut;
-        //    //s.SetCustomProperty("PieStartAngle", (90 - angle / 2) + "");
-        //    s.SetCustomProperty("PieStartAngle", 0 + "");
-        //    s.SetCustomProperty("DoughnutRadius", "30");
-        //    //s.Points.Clear();
-        //    //s.Points.AddY(90);
-        //    //s.Points.AddY(0);
-        //    //s.Points.AddY(0);
-        //    ////setChartGauge(0);
-        //    //s.Points[0].Color = Color.Transparent;
-        //    //s.Points[1].Color = Color.Chartreuse;
-        //    //s.Points[2].Color = Color.Tomato;
-        //}
-
-        private void rssitxt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void vertveltxt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void psrtxt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void veltxt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label28_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void longtxt_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        //private void Form1_Resize(object sender, EventArgs e)
-        //{
-
-        //    //float widthRatio = this.Width / Screen.PrimaryScreen.Bounds.Width;
-        //    //float heightRatio = this.Height / Screen.PrimaryScreen.Bounds.Height;
-        //    //SizeF scale = new SizeF(widthRatio, heightRatio);
-        //    //this.Scale(scale);
-        //    //foreach (Control control in this.Controls)
-        //    //{
-        //    //Screen.PrimaryScreen.Bounds.Height;
-
-        //    //    control.Font = new Font("Verdana", control.Font.SizeInPoints * heightRatio * widthRatio);
-        //    //}
-        //}
-
-        //private void Form1_ResizeEnd(object sender, EventArgs e)
-        //{
-        //    float widthRatio = Screen.PrimaryScreen.Bounds.Width / this.Size.Width;
-        //    float heightRatio = Screen.PrimaryScreen.Bounds.Height / this.Size.Height;
-        //    //this.Size = new Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
-
-        //    SizeF scale_ = new SizeF(widthRatio / scale.Width, heightRatio / scale.Height);
-        //    this.Scale(scale_);
-        //    Console.WriteLine("resize");
-        //}
+        
     }
 }
 

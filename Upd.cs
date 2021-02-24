@@ -33,10 +33,13 @@ namespace CanSatGUI
         static bool isStartingPointSet = false;
         public static void UpdateMap(GMapControl map, double latitude, double Longitude, double altitude, double fallingSpeed, double windSpeed, int course)
         {
-            if (latitude == 0 && Longitude == 0)
-            {
-                return;
-            }
+            //string Latstr = Convert.ToString(latitude);
+            //string longstr = Convert.ToString(Longitude);
+
+            //if (Latstr == "X" && longstr == "X")
+            //{
+            //    return;
+            //}
             if (!isStartingPointSet)
             {
                 map.Position = new PointLatLng(latitude, Longitude);

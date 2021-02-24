@@ -25,13 +25,13 @@ namespace CanSatGUI
 {
     class Utils
     {
-        static Regex valid_packet_regex = new Regex(@"^([0-9\-;:\.]+\s+$)");
+        static Regex valid_packet_regex = new Regex(@"^([0-9\-;:\.x]+\s+$)");
 
         public static string[] ParsePacket(string packet)
         {
             MatchCollection matches = valid_packet_regex.Matches(packet);
             if (matches.Count == 0) {
-                Console.Write("skipping packet: invalid packet");
+                Console.Write("skipping packet: invalid packet " + packet);
                 return null;
             }
             //Console.Write("matched");
@@ -40,10 +40,10 @@ namespace CanSatGUI
             return list;
         }
 
-        public static SerialPort InitSerialPort(string defaultPortName)
+        public static SerialPort InitSerialPort(string portName)
         {
             SerialPort port = new SerialPort();
-            port.PortName = defaultPortName;
+            port.PortName = portName;
             port.BaudRate = 9600;
             port.Parity = Parity.None;
             port.DataBits = 8;
@@ -52,6 +52,44 @@ namespace CanSatGUI
             port.Open();
             return port;
         }
+
+        //public bool reconnect(SerialPort serialPort, string portName, int attempts = 3)
+        //{
+        //    try
+        //    {
+        //        //if (TPumpSerialPort != null && TPumpSerialPort.IsOpen == true)
+        //        if (serialPort != null)
+        //        {
+        //            serialPort.Close();
+        //            serialPort.Dispose();
+        //        }
+
+        //        int i = 1;
+        //        while (true)
+        //        {
+        //            Log(string.Format("Reconnecting Turbo Pump attempt {0}", i));
+
+        //            Thread.Sleep(2000);
+
+        //            if (tryToConnectToCOM(serialPort))
+        //                break;
+
+        //            if (i == attempts)
+        //                return false;
+
+        //            i++;
+        //        }
+
+        //        return true;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Log(string.Format("Could not reconnect to serial port: {0}", ex.Message));
+        //        return false;
+        //    }
+        //}
+
+        
 
         public static double WindSpeed(double hall)
         {

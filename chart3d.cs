@@ -43,7 +43,7 @@ namespace CanSatGUI
             c.zAxis().setLabelStyle("Arial Bold", labelFontSize, 7913160);
             
             // Add a title to the chart using 20 points Times New Roman Italic font
-            c.addTitle("3D Scatter Chart ", "Calibri", labelFontSize * 2, 7913160);
+            c.addTitle(" ", "Calibri", labelFontSize * 2, 7913160);
 
             // Set the center of the plot region at (350, 280), and set width x depth x height to
             // 360 x 360 x 270 pixels
