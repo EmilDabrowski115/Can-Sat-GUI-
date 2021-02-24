@@ -91,10 +91,10 @@ namespace CanSatGUI
 
         
 
-        public static double WindSpeed(double hall)
+        public static double WindSpeed(double hallRPM)
         {
             double radius = 0.018; // in meters
-            return Math.PI * radius * hall;
+            return Math.PI * radius * hallRPM;
         }
 
 

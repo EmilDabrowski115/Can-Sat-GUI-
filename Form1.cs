@@ -77,9 +77,6 @@ namespace CanSatGUI
             // setupChartGauge(40.0, 0.0, 100.0, 90.0f);
             gauge1 = new GaugeChart(chart7, veltxt, "{0} m/s");
             gauge2 = new GaugeChart(chart5, textBox3, "{0}%");
-
-            // com port background task
-            ComPortConnetionRenewer();
         }
 
         private async void ComPortConnetionRenewer()
@@ -87,13 +84,30 @@ namespace CanSatGUI
             while (true)
             {
                 await Task.Delay(1000);
-                if (SerialPort1 != null && !SerialPort1.IsOpen)
+                if ((SerialPort1 == null || !SerialPort1.IsOpen) && ComboBox1.GetItemText(ComboBox1.SelectedItem) != "")
                 {
                     string dropdownText = ComboBox1.GetItemText(ComboBox1.SelectedItem);
                     DataStream.AppendText("Connecting to " + dropdownText + "\n");
                     tryToConnectToCOM(dropdownText);
                 }
             }
+        }
+
+        private bool AutoDetectComPort()
+        {
+            for (int i = 2; i < 8; i++)
+            {
+                string portName = "COM" + i;
+                bool connected = tryToConnectToCOM(portName);
+                DataStream.AppendText("Connecting to " + portName + "\n");
+
+                if (connected)
+                {
+                    ComboBox1.SelectedIndex = ComboBox1.FindStringExact(portName);
+                    return true;
+                }
+            }
+            return true;
         }
 
         // poczatek czesci wykonawczej serial port txt box v1.0
@@ -261,7 +275,7 @@ namespace CanSatGUI
             }
             catch
             {
-                DataStream.AppendText("Couldn't load map cache. Using online maps.\n");
+                DataStream.AppendText("Couldn't load map cache. Using online map.\n");
                 GMaps.Instance.Mode = AccessMode.ServerAndCache; //cache only means offline , server only online , cache and server online but loads offline files to folder
             }
 
@@ -308,6 +322,11 @@ namespace CanSatGUI
             WindowState = FormWindowState.Normal;
             FormBorderStyle = FormBorderStyle.None;
             WindowState = FormWindowState.Maximized;
+
+            AutoDetectComPort();
+
+            // com port background task
+            ComPortConnetionRenewer();
         }
 
 
@@ -320,13 +339,20 @@ namespace CanSatGUI
         private bool tryToConnectToCOM(string portName)
         {
             // init COM
-            //serial.DataReceived -= myPort_DataReceived;
+            if (SerialPort1 != null)
+            {
+                SerialPort1.Close();
+            }
+            SerialPort1 = null;
             try
             {
                 SerialPort1 = Utils.InitSerialPort(portName);
                 SerialPort1.DataReceived += myPort_DataReceived;
                 DataStream.AppendText("Connected\n");
                 //lastSerialPortName = portName;
+            }
+            catch (System.UnauthorizedAccessException) { 
+                
             }
             catch (Exception e)
             {
