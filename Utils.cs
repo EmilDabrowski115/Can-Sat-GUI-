@@ -118,6 +118,21 @@ namespace CanSatGUI
             return db / (max - min) * 100;
         }
 
+        public static double SeaLevelPressure(double h, double P, double T)
+        {
+            return P * Math.Pow(1 - (0.0065 * h / (T + 0.0065 * h + 273.15)), -5.257);
+        }
+
+        public static double HypsometricFormula(double P0, double P, double T)
+        {
+            // P0 - pressure at sea level in hPa (constant)
+            // P - pressure at cansat level
+            // T - temperature in C at cansat level
+            // returns level 
+            return (Math.Pow(P0 / P, 1 / 5.257) - 1) * (T + 273.15) / 0.0065;
+        }
+
+
         public static IEnumerable<Control> GetAllControls(Control container)
         {
             List<Control> controlList = new List<Control>();

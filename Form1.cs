@@ -31,6 +31,7 @@ using System.Threading.Tasks;
 
 
 
+
 namespace CanSatGUI
 {
     public partial class Form1 : Form
@@ -50,6 +51,7 @@ namespace CanSatGUI
         float roll = 00.0f;
         GaugeChart gauge1;
         GaugeChart gauge2;
+        double P0 = 0.0;
 
 
         public Form1()  //definiowanie ustawienia oraz port szeregowy
@@ -131,7 +133,7 @@ namespace CanSatGUI
         }
 
 
-        private async void UpdateWidgets(object sender, EventArgs e)
+        public async void UpdateWidgets(object sender, EventArgs e)
         {
             //162;-0.02;-0.12;0.88;0.06;0.12;0.00;277.36;247.41;384.70;1028.69;25.00;X;X;X;X;X;1:0:0;0.00;1.57;-7.42;-43.99
             // RSSI; framenr; xaccel; yaccel; zaccel; xtilt; ytilt; ztilt; xmag; ymag; zmag; pressure; temp; lat; long; alt; speed; course; h:m:s:ms; hall
@@ -159,7 +161,6 @@ namespace CanSatGUI
             psrtxt.Text = packetElems[11] + " hPa";
             temptxt.Text = packetElems[12] + " C";
        
-            alttxt.Text = packetElems[15] + " m";
             speedtxt.Text = packetElems[16] + "m/s";
             coursetxt.Text = packetElems[17] + " °";
             timetxt.Text = packetElems[18];
@@ -167,6 +168,12 @@ namespace CanSatGUI
             pitchtxt.Text = packetElems[20] + " °";
             rolltxt.Text = packetElems[21] + " °";
             yawtxt.Text = packetElems[22] + " °";
+
+            double pressure = Convert.ToDouble(packetElems[11]);
+            double temperature = Convert.ToDouble(packetElems[12]);
+
+            Upd.UpdateChart(chart2, pressure, time);
+
             if (packetElems[13] == "x" || packetElems[13] == "X")
             {
                 lattxt.Text = "NO GPS";
@@ -181,7 +188,20 @@ namespace CanSatGUI
 
                 double latitude = Convert.ToDouble(packetElems[13]);
                 double Longitude = Convert.ToDouble(packetElems[14]);
-                double Altitude = Convert.ToDouble(packetElems[15]);
+
+
+                //if (altitudeSwitch)
+                //{
+                //    alttxt.Text = packetElems[15] + " m";
+                //    double Altitude = Convert.ToDouble(packetElems[15]);
+                //}
+                //else
+                //{
+                    double Altitude = Utils.HypsometricFormula(P0, pressure, temperature);
+                    alttxt.Text = Altitude + " m";
+                //}
+               
+
                 double speed = Convert.ToDouble(packetElems[16]);
                 double course = Convert.ToDouble(packetElems[17]);
 
@@ -215,11 +235,9 @@ namespace CanSatGUI
             roll = float.Parse(packetElems[21], CultureInfo.InvariantCulture.NumberFormat);
             yaw = float.Parse(packetElems[22], CultureInfo.InvariantCulture.NumberFormat);
 
-            double temperature = Convert.ToDouble(packetElems[12]);
             Upd.UpdateChart(chart1, temperature, time);
 
-            double pressure = Convert.ToDouble(packetElems[11]);
-            Upd.UpdateChart(chart2, pressure, time);
+            
 
             // double course = (Convert.ToDouble(packetElems[17])/100);
             //Upd.UpdateChart(chart7, course, time);
@@ -516,7 +534,30 @@ namespace CanSatGUI
             Environment.Exit(0);
         }
 
-        
+        public void start_pressure_Click(object sender, EventArgs _)
+        {
+            double P, T, h;
+            try
+            {
+                P = Convert.ToDouble(psrtxt.Text);    //current preassure read by the cansat
+                T = Convert.ToDouble(temptxt.Text);  //current temperature read by the cansat
+                h = Convert.ToDouble(startalttxt.Text); //input box with current altitude
+            }
+            catch (Exception e)
+            {
+                DataStream.AppendText("Couldn't set pressure at sea level (P0)\n");
+                Console.WriteLine(e);
+                return;
+            }
+            // 321 m
+            P0 = Utils.SeaLevelPressure(h, P, T); // calc once at ground level
+            DataStream.AppendText(h + " height, set to" + P0 + " hPa at sea level\n");
+        }
+
+        private void start_pressure_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 

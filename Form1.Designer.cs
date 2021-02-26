@@ -110,9 +110,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.start_pressure = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.windtxt = new System.Windows.Forms.TextBox();
+            this.label34 = new System.Windows.Forms.Label();
             this.vertveltxt = new System.Windows.Forms.TextBox();
             this.box2 = new System.Windows.Forms.Label();
             this.pitchtxt = new System.Windows.Forms.TextBox();
@@ -139,8 +142,8 @@
             this.label33 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.label34 = new System.Windows.Forms.Label();
-            this.windtxt = new System.Windows.Forms.TextBox();
+            this.startalttxt = new System.Windows.Forms.TextBox();
+            this.label35 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.openGLControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -241,7 +244,7 @@
             this.DataStream.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
             this.DataStream.Location = new System.Drawing.Point(6, 32);
             this.DataStream.Name = "DataStream";
-            this.DataStream.Size = new System.Drawing.Size(905, 101);
+            this.DataStream.Size = new System.Drawing.Size(850, 101);
             this.DataStream.TabIndex = 8;
             this.DataStream.Text = "";
             this.DataStream.TextChanged += new System.EventHandler(this.DataStream_TextChanged);
@@ -928,16 +931,33 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.label35);
+            this.groupBox3.Controls.Add(this.startalttxt);
+            this.groupBox3.Controls.Add(this.start_pressure);
             this.groupBox3.Controls.Add(this.checkBox1);
             this.groupBox3.Controls.Add(this.DataStream);
             this.groupBox3.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold);
             this.groupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
             this.groupBox3.Location = new System.Drawing.Point(548, 427);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1094, 148);
+            this.groupBox3.Size = new System.Drawing.Size(1104, 148);
             this.groupBox3.TabIndex = 69;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Data Stream";
+            // 
+            // start_pressure
+            // 
+            this.start_pressure.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.start_pressure.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.start_pressure.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.start_pressure.Location = new System.Drawing.Point(988, 54);
+            this.start_pressure.Name = "start_pressure";
+            this.start_pressure.Size = new System.Drawing.Size(106, 28);
+            this.start_pressure.TabIndex = 11;
+            this.start_pressure.Text = "input tmp,psr";
+            this.start_pressure.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.start_pressure.UseVisualStyleBackColor = true;
+           
             // 
             // checkBox1
             // 
@@ -945,7 +965,7 @@
             this.checkBox1.Checked = true;
             this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox1.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold);
-            this.checkBox1.Location = new System.Drawing.Point(943, 32);
+            this.checkBox1.Location = new System.Drawing.Point(988, 27);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(91, 21);
             this.checkBox1.TabIndex = 9;
@@ -1024,6 +1044,31 @@
             this.groupBox5.TabIndex = 71;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Data";
+            // 
+            // windtxt
+            // 
+            this.windtxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.windtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
+            this.windtxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.windtxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.windtxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
+            this.windtxt.Location = new System.Drawing.Point(137, 530);
+            this.windtxt.Name = "windtxt";
+            this.windtxt.Size = new System.Drawing.Size(75, 20);
+            this.windtxt.TabIndex = 64;
+            // 
+            // label34
+            // 
+            this.label34.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.label34.Location = new System.Drawing.Point(8, 530);
+            this.label34.Margin = new System.Windows.Forms.Padding(2);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(92, 19);
+            this.label34.TabIndex = 63;
+            this.label34.Text = "Wind Speed";
+            this.label34.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // vertveltxt
             // 
@@ -1587,30 +1632,25 @@
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // label34
+            // startalttxt
             // 
-            this.label34.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label34.AutoSize = true;
-            this.label34.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.label34.Location = new System.Drawing.Point(8, 530);
-            this.label34.Margin = new System.Windows.Forms.Padding(2);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(92, 19);
-            this.label34.TabIndex = 63;
-            this.label34.Text = "Wind Speed";
-            this.label34.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.startalttxt.Location = new System.Drawing.Point(979, 98);
+            this.startalttxt.Name = "startalttxt";
+            this.startalttxt.Size = new System.Drawing.Size(100, 33);
+            this.startalttxt.TabIndex = 12;
             // 
-            // windtxt
+            // label35
             // 
-            this.windtxt.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.windtxt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(18)))), ((int)(((byte)(34)))));
-            this.windtxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.windtxt.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.windtxt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(190)))), ((int)(((byte)(200)))));
-            this.windtxt.Location = new System.Drawing.Point(137, 530);
-            this.windtxt.Name = "windtxt";
-            this.windtxt.Size = new System.Drawing.Size(75, 20);
-            this.windtxt.TabIndex = 64;
+            this.label35.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.label35.Location = new System.Drawing.Point(877, 104);
+            this.label35.Margin = new System.Windows.Forms.Padding(2);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(94, 19);
+            this.label35.TabIndex = 14;
+            this.label35.Text = "input height";
+            this.label35.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // Form1
             // 
@@ -1757,6 +1797,10 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox windtxt;
         private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.TextBox startpsrtxt;
+        private System.Windows.Forms.Button start_pressure;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.TextBox startalttxt;
     }
 
 }
