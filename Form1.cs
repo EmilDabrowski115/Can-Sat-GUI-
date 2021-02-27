@@ -28,6 +28,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 using System.Drawing.Drawing2D;
 using GMap.NET.CacheProviders;
 using System.Threading.Tasks;
+using System.Text;
 
 
 
@@ -86,11 +87,45 @@ namespace CanSatGUI
             while (true)
             {
                 await Task.Delay(1000);
-                if ((SerialPort1 == null || !SerialPort1.IsOpen) && ComboBox1.GetItemText(ComboBox1.SelectedItem) != "")
+                if ((SerialPort1 == null || !SerialPort1.IsOpen) &&
+                    ComboBox1.GetItemText(ComboBox1.SelectedItem) != "" &&
+                    ComboBox1.GetItemText(ComboBox1.SelectedItem) != "Text File")
                 {
                     string dropdownText = ComboBox1.GetItemText(ComboBox1.SelectedItem);
                     DataStream.AppendText("Connecting to " + dropdownText + "\n");
                     tryToConnectToCOM(dropdownText);
+                }
+            }
+        }
+
+        private async void SendALineFromTextFileEverySecond()
+        {
+            
+            string filepath = String.Empty;
+            String fileExt = String.Empty;
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                filepath = openFileDialog.FileName;
+                fileExt = Path.GetExtension(filepath);
+                Console.WriteLine(filepath + " " + fileExt);
+                try
+                {
+                    StreamReader reader = new StreamReader(filepath);
+
+                    string line = "";
+                    while ((line = reader.ReadLine()) != null && ComboBox1.GetItemText(ComboBox1.SelectedItem) == "Text File")
+                    {
+                        rxString = line + "\n";
+                        this.Invoke(new EventHandler(UpdateWidgets));
+                        await Task.Delay(1000);
+                    }
+                    DataStream.AppendText("EOF");
+                    reader.Close();
+                }
+                catch (Exception ex) {
+                    Console.WriteLine(ex);
                 }
             }
         }
@@ -297,7 +332,7 @@ namespace CanSatGUI
             catch
             {
                 DataStream.AppendText("Couldn't load map cache. Using online map.\n");
-                GMaps.Instance.Mode = AccessMode.ServerAndCache; //cache only means offline , server only online , cache and server online but loads offline files to folder
+                GMaps.Instance.Mode = AccessMode.CacheOnly; //cache only means offline , server only online , cache and server online but loads offline files to folder
             }
 
         }
@@ -354,7 +389,14 @@ namespace CanSatGUI
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs _)
         {
             string dropdownText = ComboBox1.GetItemText(ComboBox1.SelectedItem);
-            tryToConnectToCOM(dropdownText);
+            if (dropdownText == "Text File")
+            {
+                SendALineFromTextFileEverySecond();
+            }
+            else
+            {
+                tryToConnectToCOM(dropdownText);
+            }
         }
 
         private bool tryToConnectToCOM(string portName)

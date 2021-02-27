@@ -202,7 +202,11 @@ namespace CanSatGUI
             //Console.WriteLine(s.Points[2].YValues[0]);
             //Console.WriteLine("");
 
-            textBox.Text = String.Format(outputFormat, Convert.ToInt32(val));
+            try
+            {
+                textBox.Text = String.Format(outputFormat, Convert.ToInt32(val));
+            }
+            catch { }
             chart.Refresh();
 
             
