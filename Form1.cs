@@ -534,13 +534,14 @@ namespace CanSatGUI
             Environment.Exit(0);
         }
 
-        public void start_pressure_Click(object sender, EventArgs _)
+
+        private void start_pressure_Click_2(object sender, EventArgs _)
         {
             double P, T, h;
             try
             {
-                P = Convert.ToDouble(psrtxt.Text);    //current preassure read by the cansat
-                T = Convert.ToDouble(temptxt.Text);  //current temperature read by the cansat
+                P = Convert.ToDouble(psrtxt.Text.Substring(0, psrtxt.Text.Length - 4));    //current preassure read by the cansat
+                T = Convert.ToDouble(temptxt.Text.Substring(0, temptxt.Text.Length - 2));  //current temperature read by the cansat
                 h = Convert.ToDouble(startalttxt.Text); //input box with current altitude
             }
             catch (Exception e)
@@ -552,11 +553,6 @@ namespace CanSatGUI
             // 321 m
             P0 = Utils.SeaLevelPressure(h, P, T); // calc once at ground level
             DataStream.AppendText(h + " height, set to" + P0 + " hPa at sea level\n");
-        }
-
-        private void start_pressure_Click_1(object sender, EventArgs e)
-        {
-
         }
     }
 }
