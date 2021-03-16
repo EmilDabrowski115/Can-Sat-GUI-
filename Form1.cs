@@ -176,7 +176,7 @@ namespace CanSatGUI
             string[] packetElems = Utils.ParsePacket(rxString);
             double time = Convert.ToInt32(timer.Elapsed.TotalSeconds);
 
-            if (packetElems == null || packetElems.Length != 23)
+            if (packetElems == null || packetElems.Length != 24)
             {
                 Console.WriteLine("Skipped corrupted packet");
                 return;
@@ -203,6 +203,7 @@ namespace CanSatGUI
             pitchtxt.Text = packetElems[20] + " °";
             rolltxt.Text = packetElems[21] + " °";
             yawtxt.Text = packetElems[22] + " °";
+            volttxt.Text = packetElems[23];
 
             double pressure = Convert.ToDouble(packetElems[11]);
             double temperature = Convert.ToDouble(packetElems[12]);
@@ -224,18 +225,18 @@ namespace CanSatGUI
                 double latitude = Convert.ToDouble(packetElems[13]);
                 double Longitude = Convert.ToDouble(packetElems[14]);
 
-
-                //if (altitudeSwitch)
-                //{
-                //    alttxt.Text = packetElems[15] + " m";
-                //    double Altitude = Convert.ToDouble(packetElems[15]);
-                //}
-                //else
-                //{
-                    double Altitude = Utils.HypsometricFormula(P0, pressure, temperature);
+                double Altitude;
+                if (checkBox2.Checked)
+                {
+                    Altitude = Utils.HypsometricFormula(P0, pressure, temperature);
                     alttxt.Text = Altitude + " m";
-                //}
-               
+                }
+                else
+                {
+                    alttxt.Text = packetElems[15] + " m";
+                    Altitude = Convert.ToDouble(packetElems[15]);
+                }
+
 
                 double speed = Convert.ToDouble(packetElems[16]);
                 double course = Convert.ToDouble(packetElems[17]);
@@ -336,9 +337,6 @@ namespace CanSatGUI
             }
 
         }
-
-
-
 
         private async void Form1_Load(object sender, EventArgs e)
         {
@@ -443,13 +441,9 @@ namespace CanSatGUI
         }
 
         
-        
-
 
         private void openGLControl1_Load(object sender, EventArgs e)
         {
-            
-
             var obj = new ObjFileFormat();
             var objScene = obj.LoadData("Assets/cansat_gotowy.obj");
 
@@ -494,8 +488,6 @@ namespace CanSatGUI
 
         private void openGLControl1_OpenGLInitialized(object sender, EventArgs e)
         {
-
-
             //clear grid and axis
             openGLControl1.Scene.SceneContainer.Children.Clear();
             //set background color
@@ -549,7 +541,6 @@ namespace CanSatGUI
            
         }
 
-      
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -568,8 +559,6 @@ namespace CanSatGUI
 
         }
 
-       
-
         
         private void button3_Click(object sender, EventArgs e)
         {
@@ -579,22 +568,29 @@ namespace CanSatGUI
 
         private void start_pressure_Click_2(object sender, EventArgs _)
         {
-            double P, T, h;
+            //double P, T, h;
             try
             {
-                P = Convert.ToDouble(psrtxt.Text.Substring(0, psrtxt.Text.Length - 4));    //current preassure read by the cansat
-                T = Convert.ToDouble(temptxt.Text.Substring(0, temptxt.Text.Length - 2));  //current temperature read by the cansat
-                h = Convert.ToDouble(startalttxt.Text); //input box with current altitude
+                P0 = Convert.ToDouble(startalttxt.Text);    //current preassure read by the cansat
+                //T = Convert.ToDouble(temptxt.Text.Substring(0, temptxt.Text.Length - 2));  //current temperature read by the cansat
+                //h = Convert.ToDouble(startalttxt.Text); //input box with current altitude
             }
             catch (Exception e)
             {
-                DataStream.AppendText("Couldn't set pressure at sea level (P0)\n");
+                DataStream.AppendText("Couldn't set pressure at ground station altitude (P0)\n");
                 Console.WriteLine(e);
                 return;
             }
             // 321 m
-            P0 = Utils.SeaLevelPressure(h, P, T); // calc once at ground level
-            DataStream.AppendText(h + " height, set to" + P0 + " hPa at sea level\n");
+            //P0 = Utils.SeaLevelPressure(h, P, T); // calc once at ground level
+            DataStream.AppendText(P0 + " hPa set at ground level\n");
+        }
+
+        
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

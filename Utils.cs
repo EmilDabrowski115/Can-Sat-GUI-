@@ -25,7 +25,7 @@ namespace CanSatGUI
 {
     class Utils
     {
-        static Regex valid_packet_regex = new Regex(@"^([0-9\-;:\.x]+\s+$)");
+        static Regex valid_packet_regex = new Regex(@"^([0-9\-;:\.xX]+\s+$)");
 
         public static string[] ParsePacket(string packet)
         {
@@ -118,10 +118,10 @@ namespace CanSatGUI
             return db / (max - min) * 100;
         }
 
-        public static double SeaLevelPressure(double h, double P, double T)
-        {
-            return P * Math.Pow(1 - (0.0065 * h / (T + 0.0065 * h + 273.15)), -5.257);
-        }
+        //public static double SeaLevelPressure(double h, double P, double T)
+        //{
+        //    return P * Math.Pow(1 - (0.0065 * h / (T + 0.0065 * h + 273.15)), -5.257);
+        //}
 
         public static double HypsometricFormula(double P0, double P, double T)
         {
